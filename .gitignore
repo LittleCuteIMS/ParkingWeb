@@ -1,0 +1,4 @@
+#php
+*.buildpath
+*.project
+/.settings
