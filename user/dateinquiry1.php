@@ -1,6 +1,20 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+
 <body>
- <table border="1"  align="center" width="80%" height="60%">
+		<div>
+			<form style="width:300px; height:16px"method="POST" action="">
+				<p>请输入查询开始日期：<input type="text" name="date1" value="2017-10-5">
+				<p>请输入查询截止日期：<input type="text" name="date2" value="2017-10-6">
+				<p><input type="submit" name="dtSubmit" value="提交">
+			</form>
+		</div>
+
+		<div>
+<table border="1"  align="center" width="80%" height="60%">
          <tr  valign="middle" height="40" align="center" > 
          <td width=30%>注册日期</td>
          <td width="10%">id</td>
@@ -35,6 +49,10 @@
             }
             mysqli_close($link);
      ?>
-</table>
+
+
+		</div>
+		
 </body>
+
 </html>

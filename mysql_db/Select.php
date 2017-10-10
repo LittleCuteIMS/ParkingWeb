@@ -7,7 +7,38 @@ include "Mysql_DB.php";
 
 class Select extends Mysql_DB
 {
-  
+
+  function select_user_all($db_name) //$sql是一条查询SQL语句
+  {
+    # 连接数据库
+    $con = mysqli_connect("localhost","root","",$db_name);
+    if (!$con)
+    {
+      die('Could not connect: ' . mysqli_connect_error());
+    }
+
+
+    $sql = "SELECT * FROM user";
+    $result = mysqli_query($con,$sql);  //mysqli_query()函数必需有两个参数且不能是字符串
+    
+    while($row = mysqli_fetch_array($result))
+    {
+    echo "<tr>";
+    echo "<td width='12%'>".$row['id']."</td>";
+    echo "<td width='20%'>".$row['nickname']."</td>";
+    echo "<td width='20%'>".$row['balance']."</td>";
+    echo "<td width='28%'>".$row['regis_date']."</td>";
+    echo "<td width='20%'>".$row['mobile']."</td>";
+    echo "</tr>";
+    echo "<br />";
+    }
+
+    json_encode($result);
+    
+    # 关闭数据库
+    Mysql_DB::close($db_name);
+  }
+
   function select_user($db_name,$str1,$value1) //$sql是一条查询SQL语句
   {
     # 连接数据库

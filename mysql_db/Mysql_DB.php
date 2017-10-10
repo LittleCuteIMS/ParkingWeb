@@ -22,8 +22,19 @@ class Mysql_DB
       $con = mysqli_connect("localhost","root","",$db_name);
       mysqli_close($con);
     }
-    
+}
 
+class Response{
+    public  static  function json($code,$message="",$data=array()){
+        $feedback=array(
+            'code'=>$code,
+            'message'=>$message,
+            'data'=>$data
+        );
+        
+        echo  json_encode($feedback,JSON_UNESCAPED_UNICODE);
+        exit;
+    }
 }
 
 ?>
