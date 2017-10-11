@@ -48,14 +48,18 @@ class Select extends Mysql_DB
       die('Could not connect: ' . mysqli_connect_error());
     }
 
-
     $sql = "SELECT * FROM user WHERE $str1 = '$value1' ";
     $result = mysqli_query($con,$sql);  //mysqli_query()函数必需有两个参数且不能是字符串
     
     while($row = mysqli_fetch_array($result))
     {
-    echo $row['id'] . " " . $row['nickname']. " " .$row['balance']." ".$row['regis_date']." ".$row['password']." ".$row['mobile'];
-    echo "<br />";
+    echo "<tr>";
+    echo "<td width='12%'>".$row['id']."</td>";
+    echo "<td width='20%'>".$row['nickname']."</td>";
+    echo "<td width='20%'>".$row['balance']."</td>";
+    echo "<td width='28%'>".$row['regis_date']."</td>";
+    echo "<td width='20%'>".$row['mobile']."</td>";
+    echo "</tr>";
     }
 
     # 关闭数据库

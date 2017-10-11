@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/blog.js"></script>
+    <script type="text/javascript" src="js/custom/selectuser.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -80,7 +81,7 @@
     <div class="header">
     	<ul class="headermenu">
         	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
-            <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li class="current"><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="reports.html"><span class="icon icon-chart"></span>财务管理</a></li>
         </ul>
@@ -98,78 +99,37 @@
     
     <div class="vernav">
     	<ul>
-        	<li class="current"><a href="#" class="editor">用户注册信息查询</a></li>
+        	<li><a href="manageblog.php" class="editor">用户注册信息查询</a></li>
             <li><a href="newpost.html">用户停车信息</a></li>
-            <li><a href="userinfo.html">用户信息变动</a></li>
+            <li class="current"><a href="#">用户信息变动</a></li>
             <li><a href="">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
     
     <div class="centercontent">
-    
+
         <div class="pageheader notab">           
-            <h1 class="pagetitle">用户注册基本信息</h1>
+            <h1 class="pagetitle">用户信息修改查询</h1>
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">
-            <form name="select" action="" method="POST">
-                <p>请选择查询方案：
-                <select size="1" name="sltUser">
-                    <option value="所有用户">所有用户</option>
-                    <option value="id">id</option>
-                    <option value="昵称">昵称</option>
-                    <option value="余额">余额</option>
-                    <option value="注册日期">注册日期</option>
-                    <option value="手机号">手机号</option>
+        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
+
+            <div>
+                <form action="" style="margin-top:15px;"> 
+                <label>请选择一位客户：
+                <select name="users" onchange="showUser(this.value)" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+                <option value="1">蔡创</option>
+                <option value="2">梁家铖</option>
+                <option value="3">张琳</option>
+                <option value="4">荣誉婷</option>
                 </select>
-                <input type="submit" class="butn" name="sltSubmit" value="提交">
-            </form>
-
-            <div>           
-                <?php
-                /*
-                在网页上输出所有已注册用户信息
-                */
-                include_once "mysql_db/Select.php";                             
-                
-                if ( isset($_POST['sltSubmit']) ) {
-                    $select = new Select();                   
-
-                    if ($_POST["sltUser"] == "所有用户") 
-                    {
-                            echo "<table style='text-align:center;' border='1'>";
-                            echo "<tr valign='top' height='60'>"; 
-                            echo "<td width='12%'>id</td>";
-                            echo "<td width='20%'>昵称</td>";
-                            echo "<td width='20%'>余额</td>";
-                            echo "<td width='28%'>注册日期</td>";
-                            echo "<td width='20%'>手机号</td>";
-                            echo "</tr>"; 
-
-                            $select->select_user_all('intelligentparking');
-                    }   
-                    /*
-                    else if($_POST["sltUser"] == "注册日期")
-                        {
-                            echo "<p>";
-                            echo "<form action='' method='GET' style='width:300px; height:16px'>";
-                            echo "请输入查询日期：";
-                            echo "<input type='text' name='date' value='2017-10-5'>";
-                            echo "<p><input type='submit' name='dtSubmit' value='确认'>";
-                            echo "</form>";
-                        }*/
-                        else
-                            echo "暂不支持查找！<p>";
-                } 
-                else{
-                    echo "没有提交数据！";
-                }
-
-                ?>        
-            </table>
-                <!--ajax实现局部页面刷新，将查询结果显示在当前div块中-->
-            </div>
+                </label>
+                </form>
+                <br />
+                <div id="txtHint">客户信息将在此处列出 ...</div>
+            </div>            
 
         </div><!--contentwrapper-->
     
