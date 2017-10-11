@@ -34,7 +34,7 @@
 	$insert->insert_user('intelligentparking','$nickName','$regisDate','$passWord','$userTelephone');//向user表录入数据
 
 	
-	include_once '../mysql_db/Select.php'
+	include_once '../mysql_db/Select.php';
 
 	$select = new Select();
 	//检查数据是否录入成功，若成功反馈信息给客户端
