@@ -1,38 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>查看消息页面</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/messages.js"></script>
-<!--[if IE 9]>
-    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-<![endif]-->
-<!--[if IE 8]>
-    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-<![endif]-->
-<!--[if lt IE 9]>
-	<script src="js/plugins/css3-mediaqueries.js"></script>
-<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>停车场管理页面</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/custom/general.js"></script>
+    <script type="text/javascript" src="js/custom/messages.js"></script>
+    <!--[if IE 9]>
+        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+    <![endif]-->
+    <!--[if IE 8]>
+        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    	<script src="js/plugins/css3-mediaqueries.js"></script>
+    <![endif]-->
 </head>
 
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
         <div class="left">
-            <h1 class="logo">Ama.<span>Admin</span></h1>
+            <h1 class="logo">停了吗</h1>
             <span class="slogan">后台管理系统</span>
             
             <div class="search">
             	<form action="" method="post">
-                	<input type="text" name="keyword" id="keyword" value="Enter keyword(s)" />
+                	<input type="text" name="keyword" id="keyword" value="请输入" />
                     <button class="submitbutton"></button>
                 </form>
             </div><!--search-->
@@ -48,14 +48,14 @@
 			-->
         	<div class="userinfo">
             	<img src="images/thumbs/avatar.png" alt="" />
-                <span>Juan Dela Cruz</span>
+                <span>管理员</span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
             	<div class="avatar">
                 	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
                     <div class="changetheme">
-                    	Change theme: <br />
+                    	切换主题 <br />
                     	<a class="default"></a>
                         <a class="blueline"></a>
                         <a class="greenline"></a>
@@ -64,13 +64,13 @@
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
-                	<h4>Juan Dela Cruz</h4>
+                	<h4>管理员</h4>
                     <span class="email">youremail@yourdomain.com</span>
                     <ul>
-                    	<li><a href="editprofile.html">Edit Profile</a></li>
-                        <li><a href="accountsettings.html">Account Settings</a></li>
-                        <li><a href="help.html">Help</a></li>
-                        <li><a href="index.html">Sign Out</a></li>
+                    	<li><a href="editprofile.html">编辑资料</a></li>
+                        <li><a href="accountsettings.html">账号设置</a></li>
+                        <li><a href="help.html">帮助</a></li>
+                        <li><a href="index.html">退出</a></li>
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -80,22 +80,18 @@
     
     <div class="header">
     	<ul class="headermenu">
-        	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>Dashboard</a></li>
-            <li><a href="manageblog.html"><span class="icon icon-pencil"></span>Manage Blog</a></li>
-            <li class="current"><a href="messages.html"><span class="icon icon-message"></span>Messages</a></li>
-            <li><a href="reports.html"><span class="icon icon-chart"></span>Reports</a></li>
+        	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
+            <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li class="current"><a href="#"><span class="icon icon-message"></span>停车场管理</a></li>
+            <li><a href="reports.html"><span class="icon icon-chart"></span>财务管理</a></li>
         </ul>
         
         <div class="headerwidget">
-        	<div class="earnings">
-            	<div class="one_half">
-                	<h4>Today's Earnings</h4>
-                    <h2>$640.01</h2>
-                </div><!--one_half-->
-                <div class="one_half last alignright">
-                	<h4>Current Rate</h4>
-                    <h2>53%</h2>
-                </div><!--one_half last-->
+            <div class="earnings">
+                <div class="one_half">
+                    <h4>今日进帐</h4>
+                    <h2>￥640.01</h2>
+                </div>
             </div><!--earnings-->
         </div><!--headerwidget-->
         
@@ -103,10 +99,10 @@
     
     <div class="vernav iconmenu">
     	<ul>
-        	<li class="current"><a href="manageblog.html" class="inbox">Inbox</a></li>
-            <li><a href="newpost.html" class="drafts">Drafts</a></li>
-            <li><a href="" class="sent">Sent Mail</a></li>
-            <li><a href="" class="trash">Trash</a></li>
+        	<li class="current"><a href="#" class="inbox">停车记录信息</a></li>
+            <li><a href="" class="drafts">停车场注册信息</a></li>
+            <li><a href="" class="sent">停车场变动信息</a></li>
+            <li><a href="" class="trash">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
         <br /><br />
@@ -115,12 +111,12 @@
     <div class="centercontent">
     
         <div class="pageheader">
-            <h1 class="pagetitle">Messages</h1>
-            <span class="pagedesc">The content below are loaded using ajax</span>
+            <h1 class="pagetitle">停车场信息</h1>
+            <span class="pagedesc">以下内容使用了ajax。</span>
             
             <ul class="hornav">
-                <li class="current"><a href="#inbox">Inbox</a></li>
-                <li><a href="#compose">Compose New</a></li>
+                <li class="current"><a href="#inbox">记录</a></li>
+                <li><a href="#compose">其他</a></li>
             </ul>
         </div><!--pageheader-->
         
@@ -133,20 +129,20 @@
                         <li><a class="reportspam">Report Spam</a></li>
                         <li class="marginleft5 dropdown" id="actions">
                             <a class="dropdown_label" href="#actions">
-                            Actions
+                            更多操作
                             <span class="arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="">Mark as Read</a></li>
-                                <li><a href="">Mark as Unread</a></li>
-                                <li><a href="">Move to Folder</a></li>
-                                <li><a href="">Add Star</a></li>
+                                <li><a href="">标记已读</a></li>
+                                <li><a href="">标记未读</a></li>
+                                <li><a href="">移动到文件夹</a></li>
+                                <li><a href="">增加信息</a></li>
                             </ul>
                         </li>
                         <li class="marginleft5"><a class="msgtrash" title="Trash"></a></li>
                     	<li class="right"><a class="next"></a></li>
                         <li class="right"><a class="prev prev_disabled"></a></li>
-                        <li class="right"><span class="pageinfo">1-10 of 2,139</span></li>
+                        <li class="right"><span class="pageinfo">第1-10条记录,共139条记录</span></li>
                     </ul>
                     <span class="clearall"></span>
                 </div><!--msghead-->
