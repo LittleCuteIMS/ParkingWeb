@@ -13,18 +13,12 @@
  */
 require_once 'link1.php';
 $json = file_get_contents('php://input');                         //接收json数据
-//$arr = json_decode($json, true);
-//$json = '{"nick_name":"张连","password":"6735y6drf","mobile":16892095267}';    （测试用的）
-$arr=(array)json_decode($json);
+$arr = json_decode($json, true);
+
 $nickName=$arr['nick_name'];
 $passWord=$arr['password'];
-if(strlen($arr['mobile'])==11){                         //判断号码是否为11位
-    $userTelephone=$arr['mobile'];
-}
-else{
-    Response::json(0,"号码不正确");
-}
-time()."<br>";                                         //获取日期
+$userTelephone=$arr['mobile'];
+
 $regisDate=date("Y-m-d");                                 //格式化日期                               
 $sql= "INSERT INTO user(nickname,regis_date,password,mobile)               
 VALUES ('$nickName','$regisDate','$passWord','$userTelephone')";        //向user表录入数据
@@ -32,13 +26,10 @@ mysqli_query($link,$sql);
 $new=mysqli_query($link, "select * from user where mobile='$userTelephone'");    //检查数据是否录入成功，若成功反馈信息给客户端
 $datarow = mysqli_num_rows($new);
 if($datarow==1){
-    $data=mysqli_fetch_array($new);
-    $result=array();
-    $result[]=$data;
-    Response::json(1,"注册成功",$result);
+    echo '在服务器上注册成功';
 }
 else {
-    Response::json(0,"注册失败");
+    echo '在服务器上注册失败';
 }
 mysqli_close($link);
 ?>

@@ -16,16 +16,4 @@ $db_select=mysqli_select_db($link,$db);   //连接数据库
 if(!$db_select) {
     die ("Can't use database:".mysql_errno());
 }
-class Response{
-    public  static  function json($code,$message="",$data=array()){
-        $feedback=array(
-            'code'=>$code,
-            'message'=>$message,
-            'data'=>$data
-        );
-        
-        echo  json_encode($feedback,JSON_UNESCAPED_UNICODE);
-        exit;
-    }
-}
-    ?>
+?>
