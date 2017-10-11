@@ -19,7 +19,12 @@ class Select extends Mysql_DB
 
 
     $sql = "SELECT * FROM user";
+    $str = "set character set 'UTF8' ";
+    mysqli_query($con,$str);
+    $str = "set names 'UTF8' ";
+    mysqli_query($con,$str);
     $result = mysqli_query($con,$sql);  //mysqli_query()函数必需有两个参数且不能是字符串
+    
     
     while($row = mysqli_fetch_array($result))
     {
