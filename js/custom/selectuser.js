@@ -10,7 +10,7 @@ if (xmlHttp==null)
  }
 var url="user/userinfo.php"
 url=url+"?q="+str
-url=url+"&sid="+Math.random()
+url=url+"&sid="+Math.random()         //保证每次请求的地址不完全一样，防止从缓存读取数据
 xmlHttp.onreadystatechange=stateChanged 
 xmlHttp.open("GET",url,true)
 xmlHttp.send(null)

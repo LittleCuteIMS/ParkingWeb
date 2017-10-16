@@ -8,7 +8,7 @@ include "Mysql_DB.php";
 class Select extends Mysql_DB
 {
 
-  function select_user_all($db_name) //$sql是一条查询SQL语句
+    function select_user_all($db_name) //$sql是一条查询SQL语句
   {
     # 连接数据库
     $con = mysqli_connect("localhost","root","",$db_name);
