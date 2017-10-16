@@ -11,27 +11,39 @@
  * 数据录入后，检查数据是否录入成功，将检查结果进行json转化，反馈给客户端
  * 
  */
-require_once 'link1.php';
-$json = file_get_contents('php://input');                         //接收json数据
-$arr = json_decode($json, true);
-
+include_once '../mysql_db/Insert.php';
+include_once 'link1.php';
+//$json = file_get_contents('php://input');  //接收json数据
+//$arr = json_decode($json,true);
+$json = '{"nick_name":"王笑笑","password":"676drf","mobile":13272521765}'; 
+$arr=(array)json_decode($json);
+$insert=new Insert();
 $nickName=$arr['nick_name'];
 $passWord=$arr['password'];
-$userTelephone=$arr['mobile'];
-
-$regisDate=date("Y-m-d");                                 //格式化日期                               
-$sql= "INSERT INTO user(nickname,regis_date,password,mobile)               
-VALUES ('$nickName','$regisDate','$passWord','$userTelephone')";        //向user表录入数据
-mysqli_query($link,$sql);
-$new=mysqli_query($link, "select * from user where mobile='$userTelephone'");    //检查数据是否录入成功，若成功反馈信息给客户端
-$datarow = mysqli_num_rows($new);
-if($datarow==1){
-    echo '在服务器上注册成功';
+$regisDate=date("Y-m-d"); //格式化日期
+if(strlen($arr['mobile'])==11)  //判断号码是否为11位
+{  
+    $sql= mysqli_query($link,"select * from user where mobile=$arr[mobile]");    
+    if (mysqli_num_rows($sql)==0)
+        {
+            $userTelephone=$arr['mobile'];
+            $insert->insert_user("intelligentparking", "$nickName", "$regisDate", "$passWord", "$userTelephone");
+            $new=mysqli_query($link, "select * from user where mobile='$userTelephone'");    //检查数据是否录入成功，若成功反馈信息给客户端
+            $datarow = mysqli_num_rows($new);
+            if($datarow==1){
+                echo '注册成功';
+            }
+            else {
+                echo '注册失败';
+            }
+            mysqli_close($link);
+        }else {
+            echo"该号码已被注册"; 
+        }
 }
-else {
-    echo '在服务器上注册失败';
+else{  
+    echo "号码不正确"; 
 }
-mysqli_close($link);
 ?>
 </body>
 </html>

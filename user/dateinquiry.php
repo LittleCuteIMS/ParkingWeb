@@ -5,13 +5,6 @@
 </head>
 
 <body>
-		<div>
-			<form style="width:300px; height:16px"method="POST" action="">
-				<p>请输入查询开始日期：<input type="text" name="date1" value="2017-10-5">
-				<p>请输入查询截止日期：<input type="text" name="date2" value="2017-10-6">
-				<p><input type="submit" name="dtSubmit" value="提交">
-			</form>
-		</div>
 
 		<div>
 <table border="1"  align="center" width="80%" height="60%">
@@ -26,9 +19,9 @@
      * 根据给出的时间范围查询用户信息
      * 
      */
-    require_once 'link1.php';
-       $date1=$_POST['date1'];
-       $date2=$_POST['date2'];  
+    include_once "link1.php";
+       $date1=$_GET['date1'];
+       $date2=$_GET['date2'];  
         $sql="SELECT * FROM user where regis_date between '$date1' AND '$date2'";
          $result = mysqli_query($link,$sql);
          $datarow = mysqli_num_rows($result);          //长度
