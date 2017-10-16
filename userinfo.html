@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/blog.js"></script>
     <script type="text/javascript" src="js/custom/selectuser.js"></script>
+  <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -99,9 +100,9 @@
     
     <div class="vernav">
     	<ul>
-        	<li><a href="manageblog.php" class="editor">用户注册信息查询</a></li>
-            <li><a href="newpost.html">用户停车信息</a></li>
-            <li class="current"><a href="#">用户信息变动</a></li>
+        	<li><a href="manageblog.html" >用户手机号查询</a></li>
+            <li class="current"><a href="userinfo.html">注册时间查询</a></li>
+            <li ><a href="newpost.html">用户停车信息</a></li>
             <li><a href="">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
@@ -110,25 +111,64 @@
     <div class="centercontent">
 
         <div class="pageheader notab">           
-            <h1 class="pagetitle">用户信息修改查询</h1>
+            <h1 class="pagetitle">用户变动信息查询</h1>
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">
         <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
 
             <div>
-                <form action="" style="margin-top:15px;"> 
-                <label>请选择一位客户：
-                <select name="users" onchange="showUser(this.value)" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
-                <option value="1">蔡创</option>
-                <option value="2">梁家铖</option>
-                <option value="3">张琳</option>
-                <option value="4">荣誉婷</option>
-                </select>
-                </label>
+                <form  id="check"  method="get" "margin-top:15px;"> 
+                <h3 >请输入查询时间</h3>
+                <p>起始日期
+                <input type="text" name="date1" value=""  id="date1" />
+                 <p>截止日期
+                <input type="text" name="date2" value=""  id="date2" />
+                <p>
+                <input type="button" onclick="startGet()" value="查询"  id="btnGet" />
                 </form>
-                <br />
-                <div id="txtHint">客户信息将在此处列出 ...</div>
+                 <br />
+                <div id="txtHint"></div> 
+               <script type="text/javascript">
+var xmlHttp;
+window.document.getElementById("btnGet").onclick=function startGet()
+{
+	GetXmlHttpObject();
+	var url="user/dateinquiry.php?timestamp="+new Date().getTime();
+	xmlHttp.open("GET",url+"&"+dateCheck());
+	xmlHttp.send(null);
+	xmlHttp.onreadystatechange=stateChanged;
+	
+}
+function GetXmlHttpObject()
+{
+	if(window.ActiveXObject){
+		xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}else{
+		xmlHttp=new XMLHttpRequest();
+	}
+}
+/*
+ * 当readyState属性值发生改变时就会激活此函数来执行
+ */
+function stateChanged()
+{
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200 ){
+			var content=xmlHttp.responseText;
+			document.getElementById("txtHint").innerHTML=content;
+		}
+		
+	}
+}
+function dateCheck()
+{
+	var date1=document.getElementById("date1").value;
+	var date2=document.getElementById("date2").value;
+	var dateString="date1="+date1+"&date2="+date2;
+	return dateString;
+}
+</script>
             </div>            
 
         </div><!--contentwrapper-->
