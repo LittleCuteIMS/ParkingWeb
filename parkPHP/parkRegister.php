@@ -33,7 +33,7 @@ if($strName!=null){
     //检测插入是否成功
     $result=$mysqli->query($sql);
     if($result){
-        echo '注册成功，请<a href="parkRegister.html">返回</a>';
+        echo '注册成功</a>';
     }else{
         echo '注册失败';
     }
@@ -41,7 +41,7 @@ if($strName!=null){
     //关闭连接
     $mysqli->close();
 }else{
-    echo '输入数据有误，请<a href="parkRegister.html">返回</a>重新输入'.'<br />';
+    echo '输入数据有误，请重新输入'.'<br />';
 }
 
 ob_end_flush();//将缓冲内容发送到浏览器并关闭输出缓冲
