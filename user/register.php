@@ -37,7 +37,7 @@ if(strlen($arr['mobile'])==11)  //判断号码是否为11位
         }
 }
 else{  
-    echo "号码不正确"; 
+    echo "号码不正确！"; 
 }
 ?>
 
