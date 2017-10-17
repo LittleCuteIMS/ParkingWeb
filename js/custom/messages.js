@@ -13,7 +13,7 @@
 jQuery(document).ready(function(){	
 
 	///// CHECKBOX TRANSFORM /////
-	jQuery('input:checkbox').uniform();
+	jQuery('input:checkbox,input:button').uniform();
 
 	///// STAR /////
 	jQuery('.msgstar').click(function(){
