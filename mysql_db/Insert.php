@@ -37,7 +37,7 @@ class Insert extends Mysql_DB
       Mysql_DB::close($db_name);
   }
 
-  function insert_user($db_name,$value1,$value2,$value3,$value4,$value5,$value6)
+  function insert_user($db_name,$value1,$value2,$value3,$value4)
   {     
       # 在phpmyadmin中连接数据库，$db_name为数据库名称
       $con = mysqli_connect("localhost","root","",$db_name);
@@ -47,9 +47,7 @@ class Insert extends Mysql_DB
 
       $sql = "INSERT INTO user 
         (
-        id, 
         nickname, 
-        balance,
         regis_date,
         password,
         mobile
@@ -59,9 +57,7 @@ class Insert extends Mysql_DB
         '$value1', 
         '$value2', 
         '$value3',
-        '$value4',
-        '$value5',
-        '$value6'
+        '$value4'
         )";
       $str = "set character set 'UTF8' ";
       mysqli_query($con,$str);

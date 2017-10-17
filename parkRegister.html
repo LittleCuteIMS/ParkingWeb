@@ -3,17 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>财务管理页面</title>
+    <title>停车场管理页面</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/charts.js"></script>
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript" src="js/custom/messages.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -25,7 +23,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
         <div class="left">
@@ -57,7 +55,7 @@
             	<div class="avatar">
                 	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
                     <div class="changetheme">
-                    	切换主题： <br />
+                    	切换主题 <br />
                     	<a class="default"></a>
                         <a class="blueline"></a>
                         <a class="greenline"></a>
@@ -83,92 +81,50 @@
     <div class="header">
     	<ul class="headermenu">
         	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
-            <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
-            <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-            <li class="current"><a href="reports.html"><span class="icon icon-chart"></span>财务管理</a></li>
-        </ul>
-        
-        <div class="headerwidget">
-        	<div class="earnings">
-            	<div class="one_half">
-                	<h4>今日进帐</h4>
-                    <h2>￥640.01</h2>
-                </div>
-            </div><!--earnings-->
-        </div><!--headerwidget-->
+            <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li class="current"><a href="#"><span class="icon icon-message"></span>停车场管理</a></li>
+            <li><a href="reports.html"><span class="icon icon-chart"></span>财务管理</a></li>
+		</ul>
         
     </div><!--header-->
-    
-    <div class="vernav">
-        <ul>
-            <li class="current"><a href="#" class="editor">系统收入信息查询</a></li>
-            <li><a href="">用户财务信息变动</a></li>
-            <li><a href="">其他</a></li>
+    <div class="vernav iconmenu">
+    	<ul>
+        	<li><a href="messages.html" class="inbox">停车场信息查询</a></li>
+            <li class="current"><a href="#" class="drafts">停车场信息注册</a></li>
         </ul>
         <a class="togglemenu"></a>
+        <br /><br />
     </div><!--leftmenu-->
-
+    
     <div class="centercontent">
-
+    
         <div class="pageheader">
-        	<h1 class="pagetitle">收入情况汇总</h1>
+            <h1 class="pagetitle">停车场信息注册</h1>
             
             <ul class="hornav">
-            	<li class="current"><a href="#charts">表格</a></li>
-                <li><a href="#statistics">统计</a></li>
             </ul>
         </div><!--pageheader-->
         
-        <div class="contentwrapper">
-        
-        	<div id="charts" class="subcontent">
-        	
-                <div class="one_half">
-                    <div class="contenttitle2">
-                        <h3>Simple Chart</h3>
-                    </div><!--contenttitle-->
-                    <br />
-                    <div id="chartplace" style="height:300px;"></div>
-                </div><!--one_half-->
-                
-                <div class="one_half last">            
-                    <div class="contenttitle2">
-                        <h3>Bar Graph</h3>
-                    </div><!--contenttitle-->
-                    <br />
-                    <div id="bargraph" style="height:300px;"></div>
-                </div><!--one_half last-->
-                
-                <br clear="all" /><br />
-                
-                <div class="one_half">
-                    <div class="contenttitle2">
-                        <h3>Real Time Chart</h3>
-                    </div><!--contenttitle-->
-                    <br />
-                    <div id="realtime" style="height:300px;"></div>
-                    <br />
-                </div><!--one_half-->
-                
-                <div class="one_half last">
-                    <div class="contenttitle2">
-                        <h3>Pie Chart</h3>
-                    </div><!--contenttitle-->
-                    <br />
-                    <div id="piechart" style="height: 300px;"></div>
-                </div><!--one_half last-->
-            
-            <br clear="all" />
-            
-            </div><!--#charts-->
-            
-            <div id="statistics" class="subcontent">
-            	&nbsp;
-            </div><!--#statistics-->
-            
+        <div id="contentwrapper" class="contentwrapper">
+        <form action="">
+        	停车场名称：<br />
+        	<input style="margin:auto" type="text" name="name" /><br />
+        	车位总数：<br />
+        	<input style="margin:auto" type="text" name="carportSum" /><br />
+        	空闲车位总数：<br />
+        	<input style="margin:auto" type="text" name="carportFreeSum" /><br />
+        	地址：<br />
+        	<input style="margin:auto" type="text" name="address" /><br />
+        	联系电话：<br />
+        	<input style="margin:auto" type="text" name="phone" /><br />
+        	收费标准：<br />
+        	<input style="margin:auto" type="text" name="charge" /><br />
+        	<input type="submit" name="注册" />
+        </form>
         </div><!--contentwrapper-->
-
+    
     </div><!--centercontent-->
+    
     
 </div><!--bodywrapper-->
 

@@ -1,6 +1,13 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+
 <body>
- <table border="1"  align="center" width="80%" height="60%">
+
+		<div>
+<table border="1"  align="center" width="80%" height="60%">
          <tr  valign="middle" height="40" align="center" > 
          <td width=30%>注册日期</td>
          <td width="10%">id</td>
@@ -12,9 +19,9 @@
      * 根据给出的时间范围查询用户信息
      * 
      */
-    require_once 'link1.php';
-       $date1=$_POST['date1'];
-       $date2=$_POST['date2'];  
+    include_once "link1.php";
+       $date1=$_GET['date1'];
+       $date2=$_GET['date2'];  
         $sql="SELECT * FROM user where regis_date between '$date1' AND '$date2'";
          $result = mysqli_query($link,$sql);
          $datarow = mysqli_num_rows($result);          //长度
@@ -35,6 +42,10 @@
             }
             mysqli_close($link);
      ?>
-</table>
+
+
+		</div>
+		
 </body>
+
 </html>
