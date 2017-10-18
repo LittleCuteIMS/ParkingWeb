@@ -9,10 +9,10 @@
  * 若存在则进行新密码的修改，若不存在则反馈——原始密码错误
  */
 include_once 'link1.php';
-$json = file_get_contents('php://input');  //接收json数据
-$arr = json_decode($json,true);
-//$json = '{"mobile":17867856434,"password":"636drf"}'; 
-//$arr=(array)json_decode($json);
+//$json = file_get_contents('php://input');  //接收json数据
+//arr = json_decode($json,true);
+$json = '{"mobile":19890765674,"password":"6790y"}'; 
+$arr=(array)json_decode($json);
 $userTelephone=$arr['mobile'];
 $passWord=$arr['password'];
 $sql="SELECT * FROM user WHERE mobile='$userTelephone' AND password='$passWord'";
