@@ -26,10 +26,10 @@ if(strlen($arr['mobile'])==11)  //判断号码是否为11位
             $new=mysqli_query($link, "select * from user where mobile='$userTelephone'");    //检查数据是否录入成功，若成功反馈信息给客户端
             $datarow = mysqli_num_rows($new);
             if($datarow==1){
-                echo '注册成功！';
+                echo 'SUCCEED';
             }
             else {
-                echo '注册失败!';
+                echo 'FAILURE';
             }
             mysqli_close($link);
         }else {
