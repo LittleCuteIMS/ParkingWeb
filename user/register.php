@@ -8,10 +8,10 @@
  */
 include_once '../mysql_db/Insert.php';
 include_once 'link1.php';
-$json = file_get_contents('php://input');  //接收json数据
-$arr = json_decode($json,true);
-//$json ='{"nick_name":"王笑笑","password":"676drf","mobile":13272521765}'; 
-//$arr=(array)json_decode($json);
+//$json = file_get_contents('php://input');  //接收json数据
+//$arr = json_decode($json,true);
+$json ='{"nick_name":"snani","password":"676","mobile":18272521765}'; 
+$arr=(array)json_decode($json);
 $insert=new Insert();
 $nickName=$arr['nick_name'];
 $passWord=$arr['password'];
@@ -26,10 +26,10 @@ if(strlen($arr['mobile'])==11)  //判断号码是否为11位
             $new=mysqli_query($link, "select * from user where mobile='$userTelephone'");    //检查数据是否录入成功，若成功反馈信息给客户端
             $datarow = mysqli_num_rows($new);
             if($datarow==1){
-                echo '注册成功！';
+                echo 'SUCCEED';
             }
             else {
-                echo '注册失败!';
+                echo 'FAILURE';
             }
             mysqli_close($link);
         }else {
@@ -37,7 +37,7 @@ if(strlen($arr['mobile'])==11)  //判断号码是否为11位
         }
 }
 else{  
-    echo "号码不正确！"; 
+    echo "号码不正确!"; 
 }
 ?>
 
