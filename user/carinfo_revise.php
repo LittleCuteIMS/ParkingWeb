@@ -12,18 +12,18 @@ $plateNumber1=$arr['plate_number1'];
 $plateNumber2=$arr['plate_number2'];
 $userTelephone=$arr['mobile'];
 //根据电话号码查找用户id
-$result1= mysqli_query($link,"select * from user where mobile=$userTelephone");
-if (mysqli_num_rows($result1)==1)
+$result= mysqli_query($link,"select * from user where mobile=$userTelephone");
+if (mysqli_num_rows($result)==1)
 {
-    $row=mysqli_fetch_assoc($result1);
+    $row=mysqli_fetch_assoc($result);
     $userId=$row['id'];
   //echo $userId;
 }else{
     echo "FAILURE";
 }
 $sql="SELECT * FROM car WHERE user_id='$userId' AND plate_number='$plateNumber1'";
-$result2=mysqli_query($link, $sql);
-if(mysqli_num_rows($result2))
+$result=mysqli_query($link, $sql);
+if(mysqli_num_rows($result))
 {
     $sql = "UPDATE car SET plate_number= '$plateNumber2' WHERE plate_number='$plateNumber1'  ";
     mysqli_query($link,$sql);
