@@ -2,12 +2,14 @@
 include '../mysql_db/selectBySql.php';
 
 $mode=$_GET['mode'];
-$parkName=$_GET['parkName'];
 
-if($mode='all'){
+if($mode=='all'){
     $sql="select * from park";
-}else{
+}elseif($mode=='part'){
+    $parkName=$_GET['parkName'];
     $sql="select * from park where name='".$parkName."'";
+}else{
+	die('请确定查询模式');
 }
 
 $jsonData=selectBySql($sql);//查询结果为json格式数据

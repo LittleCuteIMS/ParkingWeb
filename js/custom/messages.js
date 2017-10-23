@@ -115,5 +115,71 @@ jQuery(document).ready(function(){
 		jQuery('.dropdown').removeClass('open').find('ul').hide();
 	});
 	
+	//点击所有查询，将数据库中的信息放在表中
+	jQuery(".searchAll").click(function(){
+		var xmlhttp;
+		if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		}else{// code for IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				var jsonData=xmlhttp.responseText.toString();
+				var jsonObj = eval ("(" + jsonData + ")");
+				var dataTable="";
+				for(var i in jsonObj){
+					dataTable=dataTable
+						+"<tr><td>"+jsonObj[i].id
+						+"</td><td>"+jsonObj[i].name
+						+"</td><td>"+jsonObj[i].carport_sum
+						+"</td><td>"+jsonObj[i].carport_free_num
+						+"</td><td>"+jsonObj[i].address
+						+"</td><td>"+jsonObj[i].phone
+						+"</td><td>"+jsonObj[i].charge+"</td></tr>";
+				}
+				jQuery("#tb1").html(dataTable);
+			}
+		};
+		xmlhttp.open("GET","parkPHP/parkSelect.php?mode=all",true);
+		xmlhttp.send();
+	});
+
+	//点击部分查询，然后点击查询，根据名称将数据库中的信息放在表中
+	jQuery("#searchByName").click(function(){
+		var xmlhttp;
+		if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		}else{// code for IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				var jsonData=xmlhttp.responseText.toString();
+				var jsonObj = eval ("(" + jsonData + ")");
+				var dataTable="";
+				for(var i in jsonObj){
+					dataTable=dataTable
+						+"<tr><td>"+jsonObj[i].id
+						+"</td><td>"+jsonObj[i].name
+						+"</td><td>"+jsonObj[i].carport_sum
+						+"</td><td>"+jsonObj[i].carport_free_num
+						+"</td><td>"+jsonObj[i].address
+						+"</td><td>"+jsonObj[i].phone
+						+"</td><td>"+jsonObj[i].charge+"</td></tr>";
+				}
+				jQuery("#tb2").html(dataTable);
+				if(dataTable==""){
+					alert("您查询的停车场信息不存在");
+				}
+			}
+		};
+		var name=jQuery("#parkName").val();
+		xmlhttp.open("GET","parkPHP/parkSelect.php?mode=part"+"&parkName="+name,true);
+		xmlhttp.send();
+	});
+	
+	
+	
 
 });

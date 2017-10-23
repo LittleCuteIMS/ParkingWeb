@@ -102,7 +102,7 @@
             <h1 class="pagetitle">停车场信息</h1>
             
             <ul class="hornav">
-                <li class="current"><a class="all" href="#inbox">所有查询</a></li>
+                <li class="current"><a class="searchAll" href="#inbox">所有查询</a></li>
                 <li><a href="#compose">部分查询</a></li>
             </ul>
         </div><!--pageheader-->
@@ -131,17 +131,15 @@
 							<th class="head0">收费标准</th>
 						</tr>
                     </thead>
-                    <tfoot id="tfoot">
-                    </tfoot>
-                    <tbody>
+                    <tbody id="tb1">
                     </tbody>
                 </table>             
              </div>
              <div id="compose" class="subcontent" style="display: none">
              	<form action="" style="margin-bottom: 20px">
              		请输入停车场名称：
-             		<input type="text" name="parkName" />
-             		<input type="submit" name="查询" />
+             		<input type="text" name="parkName" id="parkName"/>
+             		<input type="button" value="查询" id="searchByName"/>
              	</form>
              	
              	<table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
@@ -159,15 +157,13 @@
 							<th class="head0">id</th>
 							<th class="head1">停车场名称</th>
 							<th class="head0">车位总数</th>
-							<th class="head1 attachement">空闲车位数</th>
+							<th class="head1">空闲车位数</th>
 							<th class="head0">地址</th>
 							<th class="head1">联系电话</th>
 							<th class="head0">收费标准</th>
 						</tr>
                     </thead>
-                    <tfoot>
-                    </tfoot>
-                    <tbody>
+                    <tbody id="tb2">
                     </tbody>
                 </table>   
              </div>
