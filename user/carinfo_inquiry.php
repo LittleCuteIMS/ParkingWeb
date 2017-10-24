@@ -1,12 +1,12 @@
 <?php
 /*
- * 查询车牌号
+ * 查询车牌号向客户端返回查询到的车牌号
  * 
  */
 include_once 'link1.php';
 $json = file_get_contents('php://input');  //接收json数据
 $arr = json_decode($json,true);
-//$json ='{"mobile":13272521765}';
+//$json ='{"mobile":17867856434}';
 //$arr=(array)json_decode($json);
 $userTelephone=$arr['mobile'];
 //根据电话号码查找用户id
@@ -17,7 +17,7 @@ if (mysqli_num_rows($result)==1)
     $userId=$row['id'];
     //echo $userId;
 }else{
-    echo "FAILURE";
+    echo "FAILURE1";
 }
 $sql="SELECT * FROM car WHERE user_id='$userId'";  //在car表中查询对应用户id
 $result=mysqli_query($link, $sql);
@@ -26,13 +26,14 @@ if($datarow>=1)                                     //查询的行数不为0，�
 {
     for($i=0;$i<$datarow;$i++)
      { 
-         $result_arr = mysqli_fetch_assoc($result2);
+         $result_arr = mysqli_fetch_assoc($result);
          $plateNumber=$result_arr['plate_number'];
-         echo $plateNumber;
-         echo"<br>";
+         $jsonarr=array('plate_number'=>$plateNumber);//将带输出内容放到数组中，以键值对的形式，方便后面转化成json数组
+         $json=json_encode($jsonarr,JSON_UNESCAPED_UNICODE);//转换成json数组
+         echo $json;
      }
      mysqli_close($link);
 }else {
-    echo'FAILURE';
+    echo'FAILURE2';
 }
 ?>
