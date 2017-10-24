@@ -115,6 +115,11 @@ jQuery(document).ready(function(){
 		jQuery('.dropdown').removeClass('open').find('ul').hide();
 	});
 	
+	/*
+	*以下两个函数负责向服务器放松查询请求，然后接受服务器传送回来的json数据并做相应处理
+	*请求类型为GET,参数有mode和parkName两个，全部查询使用mode="all"
+	*部分查询mode="part"&parkName="要查询的名称"
+	*/
 	//点击所有查询，将数据库中的信息放在表中
 	jQuery(".searchAll").click(function(){
 		var xmlhttp;
@@ -155,10 +160,10 @@ jQuery(document).ready(function(){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200){
-				var jsonData=xmlhttp.responseText.toString();
-				var jsonObj = eval ("(" + jsonData + ")");
-				var dataTable="";
-				for(var i in jsonObj){
+				var jsonData=xmlhttp.responseText.toString();	//存放服务器返回的json数据
+				var jsonObj = eval ("(" + jsonData + ")");		//存放解析后的json对象
+				var dataTable="";								//存放表格化处理的数据
+				for(var i in jsonObj){							//利用for in 循环，获取json对象中的值
 					dataTable=dataTable
 						+"<tr><td>"+jsonObj[i].id
 						+"</td><td>"+jsonObj[i].name
@@ -168,15 +173,17 @@ jQuery(document).ready(function(){
 						+"</td><td>"+jsonObj[i].phone
 						+"</td><td>"+jsonObj[i].charge+"</td></tr>";
 				}
+				//将表单项写入html页面
 				jQuery("#tb2").html(dataTable);
-				if(dataTable==""){
+				if(dataTable==""){//查询的消息在数据库中不存在
 					alert("您查询的停车场信息不存在");
 				}
 			}
 		};
 		var name=jQuery("#parkName").val();
-		xmlhttp.open("GET","parkPHP/parkSelect.php?mode=part"+"&parkName="+name,true);
-		xmlhttp.send();
+		//向服务器发起请求
+		xmlhttp.open("GET","parkPHP/parkSelect.php?mode=part"+"&parkName="+name,true);//规定请求的类型、URL 以及是否异步处理请求。
+		xmlhttp.send();//将请求发送到服务器
 	});
 	
 	

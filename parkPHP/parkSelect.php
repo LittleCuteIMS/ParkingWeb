@@ -1,5 +1,5 @@
 <?php
-include '../mysql_db/selectBySql.php';
+include '../mysql_db/mysqliBySql.php';
 
 $mode=$_GET['mode'];
 
