@@ -13,7 +13,9 @@
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/blog.js"></script>
     <script type="text/javascript" src="js/custom/selectuser.js"></script>
-  <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
+    <script type="text/javascript" src="js/custom/messages.js"></script>
+    <script type="text/javascript" src="js/custom/user_dateinquiry.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -125,50 +127,12 @@
                  <p>截止日期
                 <input type="text" name="date2" value=""  id="date2" />
                 <p>
-                <input type="button" onclick="startGet()" value="查询"  id="btnGet" />
+                <input type="button" onclick="startGet()" value="查询"  />
+                <input type="button" onclick="withdraw()" value="取消"  /> 
                 </form>
                  <br />
                 <div id="txtHint"></div> 
-               <script type="text/javascript">
-var xmlHttp;
-window.document.getElementById("btnGet").onclick=function startGet()
-{
-	GetXmlHttpObject();
-	var url="user/dateinquiry.php?timestamp="+new Date().getTime();
-	xmlHttp.open("GET",url+"&"+dateCheck());
-	xmlHttp.send(null);
-	xmlHttp.onreadystatechange=stateChanged;
-	
-}
-function GetXmlHttpObject()
-{
-	if(window.ActiveXObject){
-		xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}else{
-		xmlHttp=new XMLHttpRequest();
-	}
-}
-/*
- * 当readyState属性值发生改变时就会激活此函数来执行
- */
-function stateChanged()
-{
-	if(xmlHttp.readyState==4){
-		if(xmlHttp.status==200 ){
-			var content=xmlHttp.responseText;
-			document.getElementById("txtHint").innerHTML=content;
-		}
-		
-	}
-}
-function dateCheck()
-{
-	var date1=document.getElementById("date1").value;
-	var date2=document.getElementById("date2").value;
-	var dateString="date1="+date1+"&date2="+date2;
-	return dateString;
-}
-</script>
+
             </div>            
 
         </div><!--contentwrapper-->
