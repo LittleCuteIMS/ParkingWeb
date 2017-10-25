@@ -13,7 +13,7 @@
 jQuery(document).ready(function(){	
 
 	///// CHECKBOX TRANSFORM /////
-	jQuery('input:checkbox').uniform();
+	jQuery('input:checkbox,input:button').uniform();
 
 	///// STAR /////
 	jQuery('.msgstar').click(function(){
@@ -70,7 +70,7 @@ jQuery(document).ready(function(){
 				});
 				
 				if(hidetrash)
-					jQuery('.dropdown_label, .reportspam, .msgtrash').hide();
+					jQuery('.dropdown_label, .financialpam, .msgtrash').hide();
 				
 				//check if this checkbox is part of the list(tbody) not in the header/footer (thead/tfoot)
 				//this will remove class "selected" in a row when checked
@@ -81,7 +81,7 @@ jQuery(document).ready(function(){
 				
 				//we use css({display:block}) instead of show() because show() is 
 				//using display: inline to show element
-				jQuery('.dropdown_label, .reportspam, .msgtrash').css({display: 'block'});
+				jQuery('.dropdown_label, .financialpam, .msgtrash').css({display: 'block'});
 				
 				//check if this checkbox is part of the list(tbody) not in the header/footer (thead/tfoot)
 				//this will add class "selected" in a row when checked

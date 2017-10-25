@@ -11,7 +11,7 @@ class Alter extends Mysql_DB
 	function alter($table_name='',$str1='',$value1='',$str2='',$value2='')
 	{
 		# 连接数据库
-	    $con = mysqli_connect("localhost","root","","parking");
+	    $con = mysqli_connect("localhost","root","","intelligentparking");
 	    if (!$con)
 	    {
 	      die('Could not connect: ' . mysqli_connect_error());

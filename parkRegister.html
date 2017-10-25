@@ -83,7 +83,7 @@
         	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
             <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li class="current"><a href="#"><span class="icon icon-message"></span>停车场管理</a></li>
-            <li><a href="reports.html"><span class="icon icon-chart"></span>财务管理</a></li>
+            <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
 		</ul>
         
     </div><!--header-->
@@ -106,23 +106,54 @@
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">
-        <form action="">
-        	停车场名称：<br />
-        	<input style="margin:auto" type="text" name="name" /><br />
-        	车位总数：<br />
-        	<input style="margin:auto" type="text" name="carportSum" /><br />
-        	空闲车位总数：<br />
-        	<input style="margin:auto" type="text" name="carportFreeSum" /><br />
-        	地址：<br />
-        	<input style="margin:auto" type="text" name="address" /><br />
-        	联系电话：<br />
-        	<input style="margin:auto" type="text" name="phone" /><br />
-        	收费标准：<br />
-        	<input style="margin:auto" type="text" name="charge" /><br />
-        	<input type="submit" name="注册" />
-        </form>
+			<form>
+				停车场名称：<br />
+				<input name="name" type="text" id="name" /><br />
+				车位总数：<br />
+				<input name="carportSum" type="text" id="carportSum" /><br />
+				空闲车位总数：<br />
+				<input name="carportFreeNum" type="text" id="carportFreeNum" /><br />
+				地址：<br />
+				<input name="address" type="text" id="address" /><br />
+				联系电话：<br />
+				<input name="phone" type="text" id="phone" /><br />
+				收费标准：<br />
+				<input name="charge" type="text" id="charge" /><br />
+				<input type="button" value="注册" onclick="register()" />
+			</form>
+
+			<div id="regisFeedback"></div>		
+			<script type="text/javascript">
+			function register(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				}else{// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function(){
+					if (xmlhttp.readyState==4 && xmlhttp.status==200){
+						document.getElementById("regisFeedback").innerHTML=xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("POST","parkPHP/parkRegister.php",true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xmlhttp.send(getData());
+			}
+			function getData(){
+				var name=document.getElementById("name").value.trim();
+				var carportSum=document.getElementById("carportSum").value.trim();
+				var carportFreeNum=document.getElementById("carportFreeNum").value.trim();
+				var address=document.getElementById("address").value.trim();
+				var phone=document.getElementById("phone").value.trim();
+				var charge=document.getElementById("charge").value.trim();
+				var data="name="+name+"&carportSum="+carportSum+"&carportFreeNum="+carportFreeNum+
+						"&address="+address+"&phone="+phone+"&charge="+charge;
+				return data;
+			}
+			</script>
         </div><!--contentwrapper-->
-    
+
     </div><!--centercontent-->
     
     

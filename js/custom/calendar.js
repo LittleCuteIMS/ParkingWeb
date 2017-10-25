@@ -43,10 +43,10 @@ jQuery(document).ready(function() {
 				next: '&raquo;',
 				prevYear: '&nbsp;&lt;&lt;&nbsp;',
 				nextYear: '&nbsp;&gt;&gt;&nbsp;',
-				today: 'today',
-				month: 'month',
-				week: 'week',
-				day: 'day'
+				today: '今天',
+				month: '月',
+				week: '周',
+				day: '日'
 			},
 			editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar !!!

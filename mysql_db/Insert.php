@@ -143,7 +143,7 @@ class Insert extends Mysql_DB
       Mysql_DB::close($db_name);
   }
 
-  function insert_trading_record($db_name,$value1,$value2,$value3,$value4,$value5,$value6)
+  function insert_trading_record($db_name,$value1,$value2,$value3,$value4,$value5)
   {     
       # 在phpmyadmin中连接数据库，$db_name为数据库名称
       $con = mysqli_connect("localhost","root","",$db_name);
@@ -153,8 +153,7 @@ class Insert extends Mysql_DB
 
       $sql = "INSERT INTO trading_record 
         (
-        id, 
-        paytime, 
+        datetime, 
         amount,
         remarks,
         user_id,
@@ -166,8 +165,7 @@ class Insert extends Mysql_DB
         '$value2', 
         '$value3',
         '$value4',
-        '$value5',
-        '$value6'
+        '$value5'
         )";
       $str = "set character set 'UTF8' ";
       mysqli_query($con,$str);
@@ -179,7 +177,7 @@ class Insert extends Mysql_DB
       Mysql_DB::close($db_name);
   }
 
-  function insert_parking_record($db_name,$value1,$value2,$value3,$value4,$value5,$value6)
+  function insert_parking_record($db_name,$value1,$value2,$value3,$value4,$value5)
   {     
       # 在phpmyadmin中连接数据库，$db_name为数据库名称
       $con = mysqli_connect("localhost","root","",$db_name);
@@ -189,7 +187,6 @@ class Insert extends Mysql_DB
 
       $sql = "INSERT INTO parking_record 
         (
-        id,
         in_datetime, 
         out_datetime,
         remarks,
@@ -202,8 +199,7 @@ class Insert extends Mysql_DB
         '$value2', 
         '$value3',
         '$value4',
-        '$value5',
-        '$value6'
+        '$value5'
         )";
       $str = "set character set 'UTF8' ";
       mysqli_query($con,$str);
@@ -215,18 +211,21 @@ class Insert extends Mysql_DB
       Mysql_DB::close($db_name);
   }
 
-  function insert_pay_rank($db_name,$value1,$value2,$value3,$value4,$value5)
+  function insert_pay_rank($db_name,$value1,$value2,$value3,$value4)
   {     
       # 在phpmyadmin中连接数据库，$db_name为数据库名称
       $con = mysqli_connect("localhost","root","",$db_name);
       if (!$con){
         die('Could not connect: ' . mysqli_connect_error());
       }
+      $str = "set character set 'UTF8' ";
+      mysqli_query($con,$str);
+      $str = "set names 'UTF8' ";
+      mysqli_query($con,$str);
       
       $sql = "INSERT INTO pay_rank 
       (
-        id,
-        paytime,
+        datetime,
         amount,
         remarks,
         user_id
@@ -236,13 +235,8 @@ class Insert extends Mysql_DB
         '$value1', 
         '$value2', 
         '$value3',
-        '$value4',
-        '$value5'
+        '$value4'
       )";
-      $str = "set character set 'UTF8' ";
-      mysqli_query($con,$str);
-      $str = "set names 'UTF8' ";
-      mysqli_query($con,$str);
       mysqli_query($con,$sql);
 
       # 关闭数据库

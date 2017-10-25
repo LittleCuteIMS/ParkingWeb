@@ -1,5 +1,5 @@
 /*
- * 	Additional function for reports.html
+ * 	Additional function for financial.php
  *	Written by ThemePixels	
  *	http://themepixels.com/
  *	

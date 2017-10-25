@@ -1850,7 +1850,7 @@ blockquote.bq2 {
 .msghead_menu li a.next_disabled { background-position: -39px -46px; cursor: default; }
 .msghead_menu li a.next_disabled:hover { border-color: #ccc; background-color: #fff; }
 
-.msghead_menu li a.reportspam { 
+.msghead_menu li a.financialpam { 
 	background-image: url(../images/icons/info.png); background-position: 7px 8px; background-repeat: no-repeat; padding-left: 30px; 
 }
 .msghead_menu li a.msgtrash { 
@@ -1858,7 +1858,7 @@ blockquote.bq2 {
 }
 .msghead_menu li.right { float: right; }
 .msghead_menu .pageinfo { padding-right: 20px; display: block; margin-top: 5px; }
-.msghead_menu .dropdown_label, .msghead_menu .msgtrash, .msghead_menu .reportspam { display: none; }
+.msghead_menu .dropdown_label, .msghead_menu .msgtrash, .msghead_menu .financialpam { display: none; }
 
 
 
