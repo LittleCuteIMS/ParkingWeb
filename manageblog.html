@@ -12,6 +12,8 @@
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/blog.js"></script>
+    <script type="text/javascript" src="js/custom/messages.js"></script>
+    <script type="text/javascript" src="js/custom/user_userinfo.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -74,9 +76,7 @@
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
-    </div><!--topheader-->
-    
-    
+    </div><!--topheader-->  
     <div class="header">
     	<ul class="headermenu">
         	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
@@ -99,8 +99,8 @@
     <div class="vernav">
     	<ul>
         	<li class="current"><a href="manageblog.html" class="editor">用户注册信息查询</a></li>
-            <li><a href="newpost.html">注册时间查询</a></li>
-            <li><a href="userinfo.html  ">用户停车信息</a></li>
+            <li><a href="userinfo.html">注册时间查询</a></li>
+            <li><a href="newpost.html  ">用户停车信息</a></li>
             <li><a href="">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
@@ -115,55 +115,16 @@
         <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
 
             <div>
-                <form    method="get" "margin-top:15px;"> 
+                <form   method="get" "margin-top:15px;"> 
                 <h3 >请输入查询号码</h3>
                 <p>查询号码
                 <input type="text" name="userTelephone" value=""  id="userTelephone" />
                  <p>
-                <input type="button" onclick="startGet()" value="查询"  id="btnGet" />
+              <input type="button" onclick="startGet()" value="查询"  />
+                <input type="button" onclick="withdraw()" value="取消"  />
                 </form>
-                 <br />
+                <br />
                 <div id="txtHint"></div> 
- <script type="text/javascript">
-var xmlHttp;
-window.document.getElementById("btnGet").onclick=function startGet()
-{
-	GetXmlHttpObject();
-	var url="user/userinfo.php?timestamp="+new Date().getTime();
-	xmlHttp.open("GET",url+"&"+phoneCheck());
-	xmlHttp.send(null);
-	xmlHttp.onreadystatechange=stateChanged;
-	
-}
-function GetXmlHttpObject()
-{
-	if(window.ActiveXObject){
-		xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}else{
-		xmlHttp=new XMLHttpRequest();
-	}
-}
-/*
- * 当readyState属性值发生改变时就会激活此函数来执行
- */
-function stateChanged()
-{
-	if(xmlHttp.readyState==4){
-		if(xmlHttp.status==200 ){
-			var content=xmlHttp.responseText;
-			document.getElementById("txtHint").innerHTML=content;
-		}
-		
-	}
-}
-function phoneCheck()
-{
-	    var userTelephone=document.getElementById("userTelephone").value;
-		var dateString="userTelephone="+userTelephone;
-		return dateString;
-	
-}
-</script>
         </div><!--pageheader-->
    
             <div>        
