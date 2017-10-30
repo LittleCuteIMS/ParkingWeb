@@ -17,29 +17,17 @@
             {
                 while($row = mysqli_fetch_array($result))
                 {
-                    echo"<table border='1'  align='center' width='80%'height='10%'>
-                        <tr  valign='middle' height='40' align='center' >
-                        <td width='20%'>手机号</td>
-                        <td width='12%'>id</td>
-                        <td width='20%'>昵称</td>
-                        <td width='20%'>余额</td>
-                        <td width='28%'>注册日期</td>
-                       
-                        </tr>";
-                    echo "<tr  valign='middle' height='40' align='center'>";
+                    echo "<tr  valign='middle' height='40' >";
                     echo "<td width='20%'>".$row['mobile']."</td>";
                     echo "<td width='12%'>".$row['id']."</td>";
                     echo "<td width='20%'>".$row['nickname']."</td>";
                     echo "<td width='20%'>".$row['balance']."</td>";
                     echo "<td width='28%'>".$row['regis_date']."</td>";
-                    
                     echo "</tr>";
                 }
+            }else{       
+                echo "用户不存在！";
             }
-            else{
-                echo '用户不存在！';
-            }
-           
         }
         
         ?>

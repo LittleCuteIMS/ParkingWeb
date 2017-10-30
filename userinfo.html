@@ -14,8 +14,6 @@
     <script type="text/javascript" src="js/custom/blog.js"></script>
     <script type="text/javascript" src="js/custom/selectuser.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
-    <script type="text/javascript" src="js/custom/messages.js"></script>
-    <script type="text/javascript" src="js/custom/user_dateinquiry.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -83,20 +81,10 @@
     
     <div class="header">
     	<ul class="headermenu">
-        	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
             <li class="current"><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
-        </ul>
-        
-        <div class="headerwidget">
-        	<div class="earnings">
-            	<div class="one_half">
-                	<h4>今日进帐</h4>
-                    <h2>￥640.01</h2>
-                </div>
-            </div><!--earnings-->
-        </div><!--headerwidget-->
+        </ul>       
         
     </div><!--header-->
     
@@ -127,9 +115,27 @@
                  <p>截止日期
                 <input type="text" name="date2" value=""  id="date2" />
                 <p>
-                <input type="button" onclick="startGet()" value="查询"  />
+                <input type="button" onclick="timeGet()" value="查询"  />
                 <input type="button" onclick="withdraw()" value="取消"  /> 
                 </form>
+                 <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">
+                    <colgroup>
+                        <col class="con1" width="30%"/>
+                        <col class="con0" width="10%" />
+                        <col class="con1" width="30%"/>
+                        <col class="con0" width="30%"/>                    
+                    </colgroup>
+                    <thead>
+						<tr>
+							<th class="head0">注册日期</th>
+							<th class="head1">id</th>
+							<th class="head0">昵称</th>
+							<th class="head1">手机号码</th>	
+						</tr>
+                    </thead>
+                    <tbody id="Datetable">
+                    </tbody>
+                </table>   
                  <br />
                 <div id="txtHint"></div> 
 

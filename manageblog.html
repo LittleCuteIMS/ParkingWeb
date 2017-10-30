@@ -12,8 +12,6 @@
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/blog.js"></script>
-    <script type="text/javascript" src="js/custom/messages.js"></script>
-    <script type="text/javascript" src="js/custom/user_userinfo.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -79,20 +77,10 @@
     </div><!--topheader-->  
     <div class="header">
     	<ul class="headermenu">
-        	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
             <li class="current"><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
         </ul>
-        
-        <div class="headerwidget">
-        	<div class="earnings">
-            	<div class="one_half">
-                	<h4>今日进帐</h4>
-                    <h2>￥640.01</h2>
-                </div>
-            </div><!--earnings-->
-        </div><!--headerwidget-->
         
     </div><!--header-->
     
@@ -101,7 +89,7 @@
         	<li class="current"><a href="manageblog.html" class="editor">用户注册信息查询</a></li>
             <li><a href="userinfo.html">注册时间查询</a></li>
             <li><a href="newpost.html  ">用户停车信息</a></li>
-            <li><a href="">其他</a></li>
+            <li><a href="manageblog.html">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
@@ -120,9 +108,30 @@
                 <p>查询号码
                 <input type="text" name="userTelephone" value=""  id="userTelephone" />
                  <p>
-              <input type="button" onclick="startGet()" value="查询"  />
-                <input type="button" onclick="withdraw()" value="取消"  />
+              <input type="button" onclick="phoneGet()" value="查询"  />
+                <input type="button" onclick="cancle()" value="取消"  />
                 </form>
+
+                <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">
+                    <colgroup>
+                        <col class="con1" width="20%"/>
+                        <col class="con0" width="12%" />
+                        <col class="con1" width="20%"/>
+                        <col class="con0" width="20%"/>
+                        <col class="con1" width="28%"/>      
+                    </colgroup>
+                    <thead>
+						<tr>
+							<th class="head0">手机号</th>
+							<th class="head1">id</th>
+							<th class="head0">昵称</th>
+							<th class="head1">余额</th>
+							<th class="head0">注册时间</th>		
+						</tr>
+                    </thead>
+                    <tbody id="Infotable">
+                    </tbody>
+                </table>   
                 <br />
                 <div id="txtHint"></div> 
         </div><!--pageheader-->

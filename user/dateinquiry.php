@@ -20,13 +20,6 @@
          $datarow = mysqli_num_rows($result); //长度
          if ($datarow>0)
          {
-             echo "<table border='1' align='center' width='80%' height='60%'>
-             <tr  valign='middle' height='40' align='center' >
-             <td width=30%>注册日期</td>
-             <td width='10%'>id</td>
-             <td width='30%'>昵称</td>
-             <td width='30%'>手机号码</td>
-             </tr>";
             //循环遍历出数据表中的数据
             for ($i=0;$i<$datarow;$i++)
             {
@@ -35,7 +28,7 @@
                 $nickName = $result_arr['nickname'];    
                 $regisDate= $result_arr['regis_date'];
                 $mobile=$result_arr['mobile'];           
-                echo  "<tr  valign='middle' height='40' align='center'>
+                echo  "<tr  valign='middle' height='40'>
                        <td width=30%>$regisDate</td>
                        <td width='10%'>$userId</td>
                        <td width='30%'>$nickName</td>
