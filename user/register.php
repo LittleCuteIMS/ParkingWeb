@@ -8,10 +8,8 @@
  */
 include_once '../mysql_db/Insert.php';
 include_once 'link1.php';
-//$json = file_get_contents('php://input');  //接收json数据
-//$arr = json_decode($json,true);
-$json ='{"nick_name":"snani","password":"676","mobile":18272521765}'; 
-$arr=(array)json_decode($json);
+$json = file_get_contents('php://input');  //接收json数据
+$arr = json_decode($json,true);
 $insert=new Insert();
 $nickName=$arr['nick_name'];
 $passWord=$arr['password'];
