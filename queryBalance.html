@@ -8,11 +8,10 @@
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/charts.js"></script>
+    <script type="text/javascript" src="js/custom/queryBalance.js"></script>
 </head>
 
 <body>
@@ -73,31 +72,19 @@
         
         <div class="header">
         	<ul class="headermenu">
-            	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
                 <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
                 <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-                <li class="current"><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
-            </ul>
-            
-            <div class="headerwidget">
-            	<div class="earnings">
-                	<div class="one_half">
-                    	<h4>今日进帐</h4>
-                        <h2>￥640.01</h2>
-                    </div>
-                </div><!--earnings-->
-            </div><!--headerwidget-->
-            
+                <li class="current"><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
+            </ul>            
         </div><!--header-->
         
         <div class="vernav">
             <ul>
-                <li><a href="financial.php">账单管理</a></li>
-                <li><a href="charge.html">财务扣费</a></li>
-                <li class="current"><a href="balance.php" class="editor">余额管理</a>
+                <li><a href="financial.html">账单管理</a></li>
+                <li class="current"><a href="balance.html" class="editor">余额管理</a>
                     <span class="arrow"></span>
                     <ul id="formsub">
-                        <li><a href="recha_record.php">充值记录</a></li>
+                        <li><a href="rechargeRecord.php">充值记录</a></li>
                         <li><a href="">查询账户余额</a></li>
                     </ul>
                 </li>
@@ -113,24 +100,34 @@
                 </ul>
             </div><!--pageheader-->
             
-            <div class="contentwrapper">
+            <div  id="contentwrapper" class="contentwrapper">
                 
-                <div id="inbox" class="subcontent">
-                    <form method="post" action="" style="margin-bottom: 20px">
-                        请输入账户手机号：
-                        <input type="text" name="userPhone" />
-                        <p>
-                        <center><input type="submit" name="submit" value="查询" /></center>
+                <div id="compose" class="subcontent">
+                    <form action="" style="margin-bottom: 20px">
+                        请输入账户手机号：<p>
+                        <input type="text" name="userPhone" id="mobile"/>
+                        <input type="button" value="查询" id="btn"/>
                     </form>
-
-                    <?php
-                    If ( isset($_POST['userPhone']) ){
-                       include "mysql_db/Select.php";
-                        $s = new Select();
-                        $s->select_user('intelligentparking','mobile',$_POST['userPhone']); 
-                    }
-                    ?>                
-                 </div>
+                
+                    <table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
+                    <colgroup>
+                        <col class="con1" width="20%"/>
+                        <col class="con0" width="25%" />
+                        <col class="con1" width="30%"/>
+                        <col class="con0" width="25%"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="head0">用户编号</th>
+                            <th class="head1">用户昵称</th>
+                            <th class="head0">手机号</th>
+                            <th class="head1">账户余额</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table3">
+                    </tbody>
+                    </table>   
+                </div>
                 
             </div><!--contentwrapper-->
 

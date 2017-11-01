@@ -1,4 +1,3 @@
-<!DOCTYPE>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,15 +7,16 @@
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.flot.pie.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-
+    <script type="text/javascript" src="js/custom/charts.js"></script>
 </head>
 
 <body>
 
     <div class="bodywrapper">
-
         <div class="topheader">
             <div class="left">
                 <h1 class="logo">停了吗</h1>
@@ -72,68 +72,56 @@
         
         <div class="header">
         	<ul class="headermenu">
-            	<li><a href="dashboard.html"><span class="icon icon-flatscreen"></span>智能后台</a></li>
                 <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
                 <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-                <li class="current"><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
+                <li class="current"><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
             </ul>
-            
-            <div class="headerwidget">
-            	<div class="earnings">
-                	<div class="one_half">
-                    	<h4>今日进帐</h4>
-                        <h2>￥640.01</h2>
-                    </div>
-                </div><!--earnings-->
-            </div><!--headerwidget-->           
         </div><!--header-->
         
         <div class="vernav">
             <ul>
-                <li class="current"><a href="financial.php" class="editor">账单管理</a>
+                <li><a href="financial.html">账单管理</a></li>
+                <li class="current"><a href="balance.html" class="editor">余额管理</a>
                     <span class="arrow"></span>
                     <ul id="formsub">
-                        <li><a href="delet_record.php">添加账单记录</a></li>
-                        <li><a href="">查询账户消费账单</a></li>
+                        <li><a href="">充值记录</a></li>
+                        <li><a href="queryBalance.html">查询账户余额</a></li>
                     </ul>
                 </li>
-                <li><a href="charge.html">财务扣费</a></li>
-                <li><a href="balance.php">余额管理</a></li>
             </ul>
             <a class="togglemenu"></a>
         </div><!--leftmenu-->
 
-        <div class="centercontent">        
+        <div class="centercontent">
+
             <div class="pageheader">            
                 <ul class="hornav">
-                    <li class="current"><a href="#charts">查询账户消费账单</a></li>
+                	<li class="current"><a href="#inbox">充值记录</a></li>
                 </ul>
             </div><!--pageheader-->
-
-            <div class="contentwrapper">
             
-                <div id="charts" class="subcontent">
+            <div class="contentwrapper">
+
+                <div id="inbox" class="subcontent">
                     <table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
                         <colgroup>
-                            <col class="con0" width="9%" />
-                            <col class="con1" width="13%"/>
+                            <col class="con0" width="8%"/>
+                            <col class="con1" width="9%"/>
+                            <col class="con0" width="20%"/>
+                            <col class="con1" width="25%"/>
                             <col class="con0" width="10%"/>
-                            <col class="con1" width="18%"/>
-                            <col class="con0" width="10%"/>
-                            <col class="con1" width="20%"/>
-                            <col class="con0" width="10%"/>
-                            <col class="con1" width="10%"/>
+                            <col class="con1" width="15%"/>
+                            <col class="con0" width="13%"/>
                         </colgroup>
                         <thead>
                             <tr>
-                                <th class="head0">用户编号</th>
-                                <th class="head1">手机号</th>
-                                <th class="head0">车牌号</th>
-                                <th class="head1">停车场名称</th>
-                                <th class="head0">收费标准</th>
-                                <th class="head1">交易时间</th>
-                                <th class="head0">本次消费</th>
-                                <th class="head1">账户余额</th>
+                                <th class="head0">记录</th>
+                                <th class="head1">用户编号</th>
+                                <th class="head0">手机号码</th>
+                                <th class="head1">充值时间</th>
+                                <th class="head0">充值金额</th>
+                                <th class="head1">充值后余额</th>
+                                <th class="head0">备注</th>
                             </tr>
                             <?php
                             $number = 0;
@@ -151,65 +139,53 @@
                             $sql = "set character_set_results=utf8";
                             mysqli_query($con,$sql);
 
-                            $sql = "SELECT * FROM parking_record";
+                            $sql = "SELECT * FROM pay_rank";
                             $result = mysqli_query($con,$sql);
                             while( $row = mysqli_fetch_array($result) ){
                                 $number = $number+1;
                             }
-                            
+
                             for($i=1;$i<=$number;$i++){
-                                $sql1 = "SELECT * FROM parking_record WHERE id = '$i'";
+                                $sql1 = "SELECT * FROM pay_rank WHERE id = $i";
                                 $result1 = mysqli_query($con,$sql1);
                                 $row1 = mysqli_fetch_array($result1);
 
-                                $plate_number = $row1['plate_number'];
-                                $in_datetime = $row1['in_datetime'];
-                                $out_datetime = $row1['out_datetime'];
-                                $time = floor( (strtotime($out_datetime)-strtotime($in_datetime))%86400/3600 );
-                                $park_id = $row1['park_id'];
+                                $id = $row1['id'];
+                                $user_id = $row1['user_id'];                                
+                                $datetime = $row1['datetime'];
+                                $amount = $row1['amount'];     
+                                $remarks = $row1['remarks'];
 
-
-                                $sql2 = "SELECT * FROM car WHERE plate_number = '$plate_number'";
+                                $sql2 = "SELECT * FROM user WHERE id = $user_id";
                                 $result2 = mysqli_query($con,$sql2);
+                                if (!$result2) {
+                                    printf("Error: %s\n", mysqli_error($con));
+                                    exit();
+                                }
                                 $row2 = mysqli_fetch_array($result2);
 
-                                $user_id = $row2['user_id'];
-
-
-                                $sql3 = "SELECT * FROM user WHERE id = '$user_id'";
-                                $result3 = mysqli_query($con,$sql3);
-                                $row3 = mysqli_fetch_array($result3);
-
-                                $mobile = $row3['mobile'];
-                                $balance = $row3['balance'];
-
-
-                                $sql4 = "SELECT * FROM park WHERE id = '$park_id'";
-                                $result4 = mysqli_query($con,$sql4);
-                                $row4 = mysqli_fetch_array($result4);
-
-                                $name = $row4['name'];
-                                $charge = $row4['charge'];
+                                $mobile = $row2['mobile'];
+                                $balance = $row2['balance'];
 
                                 echo "<tr>";
+                                echo "<td >".$id."</td>";
                                 echo "<td >".$user_id."</td>";
                                 echo "<td >".$mobile."</td>";
-                                echo "<td >".$plate_number."</td>";
-                                echo "<td >".$name."</td>";
-                                echo "<td >".$charge."</td>";
-                                echo "<td >".$out_datetime."</td>";
-                                echo "<td >".($time*$charge)."</td>";
-                                echo "<td >".($balance-$time*$charge)."</td>";
+                                echo "<td >".$datetime."</td>";
+                                echo "<td >".$amount."</td>";
+                                echo "<td >".$balance."</td>";
+                                echo "<td >".$remarks."</td>";
                                 echo "</tr>";
                             }
                             ?>
                         </thead>
                     </table>             
-                </div>                       
-            </div><!--contentwrapper-->       
-                      
-        </div><!-- centercontent -->     
+                </div>
+                
+            </div><!--contentwrapper-->
 
+        </div><!--centercontent-->
+        
     </div><!--bodywrapper-->
 
 </body>
