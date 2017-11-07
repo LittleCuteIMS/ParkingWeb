@@ -46,7 +46,7 @@
                     <div class="thumb"><img alt="" src="images/thumbs/avatar1.png" /></div>
                     <div class="userlogged">
                         <h4></h4>
-                        <a href="index.html">账户不是 <span></span> 吗?</a> 
+                        <a href="index.php">账户不是 <span></span> 吗?</a> 
                     </div>
                 </div><!--loginf-->
             </div><!--nopassword-->
