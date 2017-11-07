@@ -1,3 +1,10 @@
+<?php session_start();
+if(!@$_SESSION["name"])
+{?>
+<script type="text/javascript">
+    window.location.href="index.php";
+    </script>
+<?php } ?>
 <!DOCTYPE>
 <html>
 <head>
@@ -62,7 +69,7 @@
                         	<li><a href="editprofile.html">编辑资料</a></li>
                             <li><a href="accountsettings.html">账号设置</a></li>
                             <li><a href="help.html">帮助</a></li>
-                            <li><a href="index.html">退出</a></li>
+                            <li><a href="exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->
@@ -72,21 +79,21 @@
         
         <div class="header">
         	<ul class="headermenu">
-                <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
-                <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-                <li class="current"><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
+                <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+                <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
+                <li class="current"><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
             </ul>         
         </div><!--header-->
         
         <div class="vernav">
             <ul>
-                <li class="current"><a href="financial.html" class="editor">账单管理</a>
+                <li class="current"><a href="financial.php" class="editor">账单管理</a>
                     <span class="arrow"></span>
                     <ul id="formsub">
                         <li><a href="">查询账户消费账单</a></li>
                     </ul>
                 </li>
-                <li><a href="balance.html">余额管理</a></li>
+                <li><a href="balance.php">余额管理</a></li>
             </ul>
             <a class="togglemenu"></a>
         </div><!--leftmenu-->

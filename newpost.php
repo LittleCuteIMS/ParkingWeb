@@ -1,3 +1,10 @@
+<?php session_start();
+if(!@$_SESSION["name"])
+{?>
+<script type="text/javascript">
+    window.location.href="index.php";
+    </script>
+<?php } ?>
 <!DOCTYPE>
 <html>
 <head>
@@ -138,7 +145,7 @@
                     	<li><a href="editprofile.html">编辑资料</a></li>
                         <li><a href="accountsettings.html">账号设置</a></li>
                         <li><a href="help.html">帮助</a></li>
-                        <li><a href="index.html">退出</a></li>
+                        <li><a href="exit.php">退出</a></li>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
@@ -147,18 +154,18 @@
     
     <div class="header">
     	<ul class="headermenu">
-            <li class="current"><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
-            <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-            <li><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
+            <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
+            <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
         </ul>
    
     </div><!--header-->
     
     <div class="vernav">
     	<ul>
-        	<li><a href="manageblog.html">用户手机号查询</a></li>
-            <li ><a href="userinfo.html">注册时间查询</a></li>
-            <li class="current"><a href="newpost.html">用户停车信息</a></li>
+        	<li><a href="manageblog.php">用户手机号查询</a></li>
+            <li ><a href="userinfo.php">注册时间查询</a></li>
+            <li class="current"><a href="newpost.php">用户停车信息</a></li>
             <li><a href="">其他</a></li>
         </ul>
         <a class="togglemenu"></a>

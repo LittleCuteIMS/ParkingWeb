@@ -1,3 +1,10 @@
+<?php session_start();
+if(!@$_SESSION["name"])
+{?>
+<script type="text/javascript">
+    window.location.href="index.php";
+    </script>
+<?php } ?>
 <!DOCTYPE>
 <html>
 <head>
@@ -6,18 +13,17 @@
     <title>财务管理页面</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type='text/javascript' src='js/plugins/fullcalendar.min.js'></script>
+    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/calendar.js"></script>
+    <script type="text/javascript" src="js/custom/queryBalance.js"></script>
 </head>
 
 <body>
 
     <div class="bodywrapper">
-
         <div class="topheader">
             <div class="left">
                 <h1 class="logo">停了吗</h1>
@@ -63,7 +69,7 @@
                         	<li><a href="editprofile.html">编辑资料</a></li>
                             <li><a href="accountsettings.html">账号设置</a></li>
                             <li><a href="help.html">帮助</a></li>
-                            <li><a href="index.html">退出</a></li>
+                            <li><a href="exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->
@@ -73,21 +79,22 @@
         
         <div class="header">
         	<ul class="headermenu">
-                <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
-                <li><a href="messages.html"><span class="icon icon-message"></span>停车场管理</a></li>
-                <li class="current"><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
-            </ul>          
+                <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+                <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
+                <li class="current"><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
+            </ul>            
         </div><!--header-->
         
         <div class="vernav">
             <ul>
-                <li class="current"><a href="" class="editor">账单管理</a>
+                <li><a href="financial.php">账单管理</a></li>
+                <li class="current"><a href="balance.php" class="editor">余额管理</a>
                     <span class="arrow"></span>
                     <ul id="formsub">
-                        <li><a href="queryRecord.php">查询账户消费账单</a></li>
+                        <li><a href="rechargeRecord.php">充值记录</a></li>
+                        <li><a href="">查询账户余额</a></li>
                     </ul>
                 </li>
-                <li><a href="balance.html">余额管理</a></li>
             </ul>
             <a class="togglemenu"></a>
         </div><!--leftmenu-->
@@ -96,42 +103,43 @@
 
             <div class="pageheader">            
                 <ul class="hornav">
-                    <li class="current"><a href="#statistics">导出账户消费账单</a></li>
+                    <li class="current"><a href="#compose">查询账户余额</a></li>
                 </ul>
             </div><!--pageheader-->
-
-            <div id="contentwrapper" class="contentwrapper withrightpanel">
             
-                <div id="calendar"></div>
-            
+            <div  id="contentwrapper" class="contentwrapper">
+                
+                <div id="compose" class="subcontent">
+                    <form action="" style="margin-bottom: 20px">
+                        请输入账户手机号：<p>
+                        <input type="text" name="userPhone" id="mobile"/>
+                        <input type="button" value="查询" id="btn"/>
+                    </form>
+                
+                    <table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
+                    <colgroup>
+                        <col class="con1" width="20%"/>
+                        <col class="con0" width="25%" />
+                        <col class="con1" width="30%"/>
+                        <col class="con0" width="25%"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="head0">用户编号</th>
+                            <th class="head1">用户昵称</th>
+                            <th class="head0">手机号</th>
+                            <th class="head1">账户余额</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table3">
+                    </tbody>
+                    </table>   
+                </div>
+                
             </div><!--contentwrapper-->
 
-            <div class="rightpanel">
-                <div class="rightpanelinner">
-                    <div class="widgetbox">
-                        <div class="title"><h4>导出</h4></div>
-                        <div class="widgetcontent">
-                            <div id="external-events">                          
-                                <div class="external-event">
-                                    <form method="post" action="financialPHP/downloadExcel.php">
-                                        <input type="submit" name="Submit" value="导出Excel文档">
-                                    </form>
-                                </div>
-                                <div class="external-event">
-                                    <form method="post" action="">
-                                        <input type="submit" name="Submit" value="导出Word文档">
-                                    </form>
-                                </div>
-
-                              	<p>点击导出。</p>
-                            </div>  
-                            
-                        </div><!--widgetcontent-->
-                    </div><!--widgetbox-->
-                </div><!--rightpanelinner-->
-            </div><!--rightpanel-->
         </div><!--centercontent-->
-
+        
     </div><!--bodywrapper-->
 
 </body>

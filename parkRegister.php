@@ -1,3 +1,10 @@
+<?php session_start();
+if(!@$_SESSION["name"])
+{?>
+<script type="text/javascript">
+    window.location.href="index.php";
+    </script>
+<?php } ?>
 <!DOCTYPE>
 <html>
 <head>
@@ -12,6 +19,7 @@
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
     <script type="text/javascript" src="js/custom/messages.js"></script>
+	<script type="text/javascript" src="js/custom/parkRegister.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -70,7 +78,7 @@
                     	<li><a href="editprofile.html">编辑资料</a></li>
                         <li><a href="accountsettings.html">账号设置</a></li>
                         <li><a href="help.html">帮助</a></li>
-                        <li><a href="index.html">退出</a></li>
+                        <li><a href="exit.php">退出</a></li>
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -80,16 +88,16 @@
     
     <div class="header">
     	<ul class="headermenu">
-            <li><a href="manageblog.html"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li class="current"><a href="#"><span class="icon icon-message"></span>停车场管理</a></li>
-            <li><a href="financial.html"><span class="icon icon-chart"></span>财务管理</a></li>
+            <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
 		</ul>
         
     </div><!--header-->
     <div class="vernav iconmenu">
     	<ul>
-        	<li class="current"><a href="#" class="inbox">停车场信息查询</a></li>
-            <li><a href="parkRegister.html" class="drafts">停车场信息注册</a></li>
+        	<li><a href="messages.php" class="inbox">停车场信息查询</a></li>
+            <li class="current"><a href="#" class="drafts">停车场信息注册</a></li>
         </ul>
         <a class="togglemenu"></a>
         <br /><br />
@@ -98,76 +106,34 @@
     <div class="centercontent">
     
         <div class="pageheader">
-            <h1 class="pagetitle">停车场信息</h1>
+            <h1 class="pagetitle">停车场信息注册</h1>
             
             <ul class="hornav">
-                <li class="current"><a class="searchAll" href="#inbox">所有查询</a></li>
-                <li><a href="#compose">部分查询</a></li>
             </ul>
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">
-             
-             <div id="inbox" class="subcontent">
-                <table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
-                    <colgroup>
-                        <col class="con1" width="5%"/>
-                        <col class="con0" width="15%" />
-                        <col class="con1" width="5%"/>
-                        <col class="con0" width="5%"/>
-                        <col class="con1" width="40%"/>
-                        <col class="con0" width="20%"/>
-                        <col class="con1" width="10%"/>
-                    </colgroup>
-                    <thead>
-						<tr>
-							<th class="head0">id</th>
-							<th class="head1">停车场名称</th>
-							<th class="head0">车位总数</th>
-							<th class="head1">空闲车位数</th>
-							<th class="head0">地址</th>
-							<th class="head1">联系电话</th>
-							<th class="head0">收费标准</th>
-						</tr>
-                    </thead>
-                    <tbody id="tb1">
-                    </tbody>
-                </table>             
-             </div>
-             <div id="compose" class="subcontent" style="display: none">
-             	<form action="" style="margin-bottom: 20px">
-             		请输入停车场名称：
-             		<input type="text" name="parkName" id="parkName"/>
-             		<input type="button" value="查询" id="searchByName"/>
-             	</form>
-             	
-             	<table cellpadding="0" cellspacing="0" border="0" class="stdtable mailinbox">
-                    <colgroup>
-                        <col class="con1" width="5%"/>
-                        <col class="con0" width="15%" />
-                        <col class="con1" width="5%"/>
-                        <col class="con0" width="5%"/>
-                        <col class="con1" width="40%"/>
-                        <col class="con0" width="20%"/>
-                        <col class="con1" width="10%"/>
-                    </colgroup>
-                    <thead>
-						<tr>
-							<th class="head0">id</th>
-							<th class="head1">停车场名称</th>
-							<th class="head0">车位总数</th>
-							<th class="head1">空闲车位数</th>
-							<th class="head0">地址</th>
-							<th class="head1">联系电话</th>
-							<th class="head0">收费标准</th>
-						</tr>
-                    </thead>
-                    <tbody id="tb2">
-                    </tbody>
-                </table>   
-             </div>
+			<form>
+				停车场名称：<br />
+				<input name="name" type="text" id="name" /><br />
+				车位总数：<br />
+				<input name="carportSum" type="text" id="carportSum" /><br />
+				空闲车位总数：<br />
+				<input name="carportFreeNum" type="text" id="carportFreeNum" /><br />
+				地址：<br />
+				<input name="address" type="text" id="address" /><br />
+				联系电话：<br />
+				<input name="phone" type="text" id="phone" /><br />
+				收费标准：<br />
+				<input name="charge" type="text" id="charge" /><br />
+				<input type="button" value="注册" onclick="register()" />
+				<input type="button" value="重置" onclick="withdraw()" />
+			</form>
+
+			<div id="regisFeedback"></div>		
+
         </div><!--contentwrapper-->
-    
+
     </div><!--centercontent-->
     
     

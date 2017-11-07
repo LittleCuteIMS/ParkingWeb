@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 
 <html>
@@ -49,7 +51,7 @@
                 </div><!--loginf-->
             </div><!--nopassword-->
             
-            <form id="login" action="manageblog.html" method="post">
+            <form id="login" action=" " method="post">
             	
                 <div class="username">
                 	<div class="usernameinner">
@@ -71,7 +73,15 @@
             
         </div><!--loginboxinner-->
     </div><!--loginbox-->
-
+<?php
+@$name=$_POST["username"];
+@$pwd=$_POST["password"];
+if(($name=="admin") && ($pwd=="123"))
+{$_SESSION["name"]=$name;
+?>
+<script type="text/javascript">window.location.href="manageblog.php";</script>
+<?php }
+?>
 
 </body>
 </html>
