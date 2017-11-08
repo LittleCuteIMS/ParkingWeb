@@ -1,7 +1,5 @@
 <?php session_start();?>
-
 <!DOCTYPE html>
-
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -74,14 +72,16 @@
         </div><!--loginboxinner-->
     </div><!--loginbox-->
 <?php
-@$name=$_POST["username"];
-@$pwd=$_POST["password"];
-if(($name=="admin") && ($pwd=="123"))
-{$_SESSION["name"]=$name;
+if(isset($_POST['username'],$_POST['password'])){
+    $name=$_POST["username"];
+    $pwd=$_POST["password"];
+    if(($name=="admin") && ($pwd=="123")){
+        $_SESSION["name"]=$name;
+        echo "<script> window.location.href = 'manageblog.php';</script>";
+    }
+}
 ?>
-<script type="text/javascript">window.location.href="manageblog.php";</script>
-<?php }
-?>
+
 
 </body>
 </html>

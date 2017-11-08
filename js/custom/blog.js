@@ -166,7 +166,7 @@ function phoneGet()
 	     if(xmlHttp.readyState==4 && xmlHttp.status==200)
 		 {
 			var content=xmlHttp.responseText;
-			document.getElementById("Infotable").innerHTML=content;					
+			document.getElementById("Infotable").innerHTML=content;						
 		 }
 	
      }
@@ -174,8 +174,8 @@ function phoneGet()
      function phoneCheck()
      {
 	    var userTelephone=document.getElementById("userTelephone").value;
-		var dateString="userTelephone="+userTelephone;
-		return dateString;
+	    var dateString="userTelephone="+userTelephone;
+		return dateString;		
      }
 }
 function cancle(){

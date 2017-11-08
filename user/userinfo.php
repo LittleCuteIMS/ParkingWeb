@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <body>
-
         <?php
         /*
          * 在网页上输出所有已注册用户信息
@@ -25,9 +23,7 @@
                     echo "<td width='28%'>".$row['regis_date']."</td>";
                     echo "</tr>";
                 }
-            }else{       
-                echo "用户不存在！";
-            }
+            }else{ echo "用户不存在！";}
         }
         
         ?>
