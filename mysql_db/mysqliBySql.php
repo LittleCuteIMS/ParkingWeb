@@ -25,22 +25,28 @@ function selectBySql($sql){//查询表中的信息
     
     //插入数据，成功返回查询对象，失败返回false
     $result=$mysqli->query($sql);
+    if($result->num_rows > 0){
+        //声明数组
+        $data=Array();
     
-    //声明数组
-    $data=Array();
+        while($row=$result->fetch_array()){
+            array_push($data, $row);    //将查询结果数组放入一个新数组中
+        }
     
-    while($row=$result->fetch_array()){
-        array_push($data, $row);    //将查询结果数组放入一个新数组中
+        //将查询结果转换为json格式数据
+        $json=json_encode($data,JSON_UNESCAPED_UNICODE|JSON_FORCE_OBJECT);
+    
+        # 关闭数据库
+        $mysqli->close();
+    
+        //返回json数据
+    return $json;
+    }else{
+        $mysqli->close();
+        return false;
     }
     
-    //将查询结果转换为json格式数据
-    $json=json_encode($data,JSON_UNESCAPED_UNICODE|JSON_FORCE_OBJECT);
     
-    # 关闭数据库
-    $mysqli->close();
-    
-    //返回json数据
-    return $json;
 }
 
 function updateBySql($sql){//更新表中的信息
