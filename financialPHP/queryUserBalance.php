@@ -1,10 +1,16 @@
 <?php
 	include '../mysql_db/mysqliBySql.php';
 	
-	$userPhone=$_GET['userPhone'];
-	//$userPhone="18782003437";
-    $sql="select * from user where mobile='".$userPhone."'";
-    
+	$json = file_get_contents('php://input');
+	$arr = json_decode($json,true);
+	$userPhone=$arr['mobile'];
+    $sql="select balance from user where mobile='".$userPhone."'";
     $jsonData=selectBySql($sql);//查询结果为json格式数据
-	echo $jsonData;//将json数据发送到浏览器
+	if($jsonData != false){
+		$userinfo=json_decode($jsonData,true);
+		$balance=$userinfo[0]['balance'];
+		echo $balance;
+	}else{
+	    echo "0";
+	}
 ?>
