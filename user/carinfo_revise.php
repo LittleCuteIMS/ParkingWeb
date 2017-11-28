@@ -1,7 +1,7 @@
 <?php 
 /*
  * 修改车牌号
- * 
+ * written by 荣誉婷
  */
 include_once 'link1.php';
 $json = file_get_contents('php://input');  //接收json数据

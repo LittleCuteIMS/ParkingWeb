@@ -1,4 +1,4 @@
-<?php 
+ <?php 
     If ( isset($_POST['Submit']) ) {
         include_once "mysql_db/Insert.php";
         $s = new Insert();
@@ -15,7 +15,7 @@
         }
 
         //防止中文乱码
-        $sql = "set names 'utf8' ";
+        $sql = "set names 'utf8' ";                                                                                                      
         mysqli_query($con,$sql);
         $sql = "set character_set_client=utf8";
         mysqli_query($con,$sql);

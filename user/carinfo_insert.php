@@ -1,14 +1,14 @@
   <?php
 /*
  * 新增或添加车牌号
- * 
+ * written by 荣誉婷
  */
 include_once '../mysql_db/Insert.php';
 include_once 'link1.php';
-$json = file_get_contents('php://input');  //接收json数据
-$arr = json_decode($json,true);
-//$json ='{"plate_number":"川B22T34","remarks":"","mobile":13272521765}';
-//$arr=(array)json_decode($json);
+//$json = file_get_contents('php://input');  //接收json数据
+//$arr = json_decode($json,true);
+$json ='{"plate_number":"川B12T21","remarks":"","mobile":17689045670}';
+$arr=(array)json_decode($json);
 $plateNumber=$arr['plate_number'];
 $beiZhu=$arr['remarks'];
 $userTelephone=$arr['mobile'] ;

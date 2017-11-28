@@ -1,10 +1,7 @@
 <?php session_start();
-if(!@$_SESSION["name"])
-{?>
-<script type="text/javascript">
-    window.location.href="index.php";
-    </script>
-<?php } ?>
+if(empty($_SESSION["name"])){
+    echo "<script> window.location.href = 'index.php';</script>";
+}?>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

@@ -1,7 +1,7 @@
 <?php
 /*
  * 接收客户端发来的停车历史查询请求，在parking_record表中查找信息并返回给客户端
- * 
+ * written by 荣誉婷
  */
 include_once 'link1.php';
 $json = file_get_contents('php://input');  //接收json数据

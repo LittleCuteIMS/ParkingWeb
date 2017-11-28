@@ -1,7 +1,8 @@
 <?php session_start();
-if(!@$_SESSION["name"]){
-    echo "<script> window.location.href = 'index.php';</script>";
+if(empty($_SESSION["name"]))
+{ echo "<script> window.location.href = 'index.php';</script>";
 }?>
+
 <!DOCTYPE>
 <html>
 <head>

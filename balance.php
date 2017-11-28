@@ -1,10 +1,7 @@
 <?php session_start();
-if(!@$_SESSION["name"])
-{?>
-<script type="text/javascript">
-    window.location.href="index.php";
-    </script>
-<?php } ?>
+if(empty($_SESSION["name"]))
+{ echo "<script> window.location.href ='index.php';</script>";
+}?>
 <!DOCTYPE>
 <html>
 <head>
@@ -69,7 +66,7 @@ if(!@$_SESSION["name"])
                         	<li><a href="editprofile.html">编辑资料</a></li>
                             <li><a href="accountsettings.html">账号设置</a></li>
                             <li><a href="help.html">帮助</a></li>
-                            <li><a href="withdraw.php">退出</a></li>
+                            <li><a href="exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->
