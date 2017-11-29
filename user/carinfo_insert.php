@@ -5,10 +5,10 @@
  */
 include_once '../mysql_db/Insert.php';
 include_once 'link1.php';
-//$json = file_get_contents('php://input');  //接收json数据
-//$arr = json_decode($json,true);
-$json ='{"plate_number":"川B12T21","remarks":"","mobile":17689045670}';
-$arr=(array)json_decode($json);
+$json = file_get_contents('php://input');  //接收json数据
+$arr = json_decode($json,true);
+//$json ='{"plate_number":"川B12T21","remarks":"","mobile":17689045670}';
+//$arr=(array)json_decode($json);
 $plateNumber=$arr['plate_number'];
 $beiZhu=$arr['remarks'];
 $userTelephone=$arr['mobile'] ;
@@ -19,7 +19,7 @@ if (mysqli_num_rows($result)==1)
     $userId=$row['id'];
     //echo $userId;
 }else{
-    echo "FAILURE";
+    echo "FAILURE1";
 }
 
 //向car表中录入车辆信息
@@ -31,7 +31,7 @@ if($datarow>=1){
     echo 'SUCCEED';
 }
 else {
-    echo 'FAILURE';
+    echo 'FAILURE2';
 }
 mysqli_close($link);
 ?>
