@@ -4,6 +4,7 @@
  * written by 荣誉婷
  */
 include_once 'link1.php';
+include_once '../mysql_db/mysqliBySql.php';
 $json = file_get_contents('php://input');  //接收json数据
 $arr = json_decode($json,true);
 //$json ='{"mobile":17867856434}';
@@ -20,20 +21,11 @@ if (mysqli_num_rows($result)==1)
     echo "FAILURE1";
 }
 $sql="SELECT * FROM car WHERE user_id='$userId'";  //在car表中查询对应用户id
-$result=mysqli_query($link, $sql);
-$datarow=mysqli_num_rows($result);
-if($datarow>=1)                                     //查询的行数不为0，就进行遍历输出
+
+$result=selectBySql($sql);
+if($result != false)                                     //查询的行数不为0，就进行遍历输出
 {
-    for($i=0;$i<$datarow;$i++)
-     { 
-         $result_arr = mysqli_fetch_assoc($result);
-         $plateNumber=$result_arr['plate_number'];
-         $remarks=$result_arr['remarks'];
-         $jsonarr=array('plate_number'=>$plateNumber,'remarks'=>$remarks);//将带输出内容放到数组中，以键值对的形式，方便后面转化成json数组
-         $json=json_encode($jsonarr,JSON_UNESCAPED_UNICODE);//转换成json数组
-         echo $json;
-     }
-     mysqli_close($link);
+    echo $result;
 }else {
     echo'FAILURE2';
 }
