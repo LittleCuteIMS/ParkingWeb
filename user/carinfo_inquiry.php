@@ -28,8 +28,8 @@ if($datarow>=1)                                     //查询的行数不为0，�
      { 
          $result_arr = mysqli_fetch_assoc($result);
          $plateNumber=$result_arr['plate_number'];
-         $remark=$result_arr['remarks'];
-         $jsonarr=array('plate_number'=>$plateNumber,'remarks'=>$remark);//将带输出内容放到数组中，以键值对的形式，方便后面转化成json数组
+         $remarks=$result_arr['remarks'];
+         $jsonarr=array('plate_number'=>$plateNumber,'remarks'=>$remarks);//将带输出内容放到数组中，以键值对的形式，方便后面转化成json数组
          $json=json_encode($jsonarr,JSON_UNESCAPED_UNICODE);//转换成json数组
          echo $json;
      }
