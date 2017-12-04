@@ -23,11 +23,17 @@ $result2=mysqli_query($link, $sql2);
 $row2=mysqli_fetch_assoc($result2);
 $plateNumber=$row2['plate_number'];
 $sql3="select * from parking_record where plate_number='".$plateNumber."'";
-$out=selectBySql($sql3);
-if($out==true)
-{
-    echo $out;
-}else {
-    echo "失败";
+$result3=mysqli_query($link, $sql3);
+$jarr = array();
+while ($row = mysqli_fetch_array($result3)){
+    $count=count($row);//不能在循环语句中，由于每次删除 row数组长度都减小
+    for($i=0;$i<$count;$i++){
+       unset($row[$i]);//删除冗余数据
+    }
+    array_push($jarr,$row);
 }
+$json=json_encode($jarr, JSON_UNESCAPED_UNICODE);//将数组进行json编码,防止中文乱码
+
+echo $json;
+
 ?>
