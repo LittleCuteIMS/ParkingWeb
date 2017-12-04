@@ -34,7 +34,7 @@ function selectBySql($sql){//查询表中的信息
         }
     
         //将查询结果转换为json格式数据
-        $json=json_encode($data,JSON_UNESCAPED_UNICODE|JSON_FORCE_OBJECT);
+        $json=json_encode($data,JSON_UNESCAPED_UNICODE);
     
         # 关闭数据库
         $mysqli->close();

@@ -5,9 +5,10 @@
  */
 include_once 'link1.php';
 include_once '../mysql_db/mysqliBySql.php';
+
 $json = file_get_contents('php://input');  //接收json数据
 $arr = json_decode($json,true);
-//$json ='{"mobile":17867856434}';
+//$json ='{"mobile":"13551374417"}';
 //$arr=(array)json_decode($json);
 $userTelephone=$arr['mobile'];
 //根据电话号码查找用户id
@@ -21,7 +22,6 @@ if (mysqli_num_rows($result)==1)
     echo "FAILURE1";
 }
 $sql="SELECT * FROM car WHERE user_id='$userId'";  //在car表中查询对应用户id
-
 $result=selectBySql($sql);
 if($result != false)                                     //查询的行数不为0，就进行遍历输出
 {
