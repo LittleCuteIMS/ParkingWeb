@@ -29,14 +29,14 @@
         $sql = "set character_set_results=utf8";
         mysqli_query($con,$sql);
     $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ";
-    $result1 = mysqli_query($con,$sql3);;
+    $result1 = mysqli_query($con,$sql3);
     
     $jarr = array();//说明$jarr是一个数组
 
     while ($row = mysqli_fetch_array($result1)) {
-    	$count=count($row);//不能在循环语句中，由于每次删除 row数组长度都减小  
+    	$count=count($row);   //不能在循环语句中，由于每次删除 row数组长度都减小  
         for($i=0;$i<$count;$i++){  
-            unset($row[$i]);//删除冗余数据
+            unset($row[$i]);  //删除冗余数据
         }
         array_push($jarr,$row);
     }
