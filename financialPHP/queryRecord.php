@@ -3,10 +3,15 @@
 	接收充值信息
 	 */
   	include_once "../mysql_db/Select.php";
-  	$json = '{"mobile":18782003437,"amount":10}'; //测试数据
-	$arr=(array)json_decode($json);
-    //$json = file_get_contents('php://input');  //接收json数据
-	//$arr = json_decode($json,true);
+<<<<<<< HEAD
+  	//$json = '{"mobile":12345678900,"amount":10}'; //测试数据
+	//$arr=(array)json_decode($json);
+=======
+//   	$json = '{"mobile":13551374417,"amount":10}'; //测试数据
+// 	$arr=(array)json_decode($json);
+>>>>>>> 3e1eed5809b4f6a5de564aa5d0cde9c881d40677
+    $json = file_get_contents('php://input');  //接收json数据
+	$arr = json_decode($json,true);
 	$userTelephone=$arr['mobile'];
    
     //连接用户id
@@ -29,14 +34,14 @@
         $sql = "set character_set_results=utf8";
         mysqli_query($con,$sql);
     $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ";
-    $result1 = mysqli_query($con,$sql3);;
+    $result1 = mysqli_query($con,$sql3);
     
     $jarr = array();//说明$jarr是一个数组
 
     while ($row = mysqli_fetch_array($result1)) {
-    	$count=count($row);//不能在循环语句中，由于每次删除 row数组长度都减小  
+    	$count=count($row);   //不能在循环语句中，由于每次删除 row数组长度都减小  
         for($i=0;$i<$count;$i++){  
-            unset($row[$i]);//删除冗余数据
+            unset($row[$i]);  //删除冗余数据
         }
         array_push($jarr,$row);
     }
