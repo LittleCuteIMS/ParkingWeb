@@ -1,20 +1,10 @@
 <?php
-/*
- * 查询余额
- */
-include_once '../user/link1.php';
-$json = file_get_contents('php://input');  //接收json数据
-$arr = json_decode($json,true);
-//$json = '{"mobile":18782003437}'; 
-//$arr=(array)json_decode($json);
-$userTelephone=$arr['mobile'];
-$sql="SELECT * FROM user WHERE mobile='".$userTelephone."' ";
-$result=mysqli_query($link, $sql); 
-if($row = mysqli_fetch_array($result))
-{
-    echo $row['balance'];
-}
-else{
-    echo 'FAILURE';
-}
+	include '../mysql_db/mysqliBySql.php';
+	
+	$userPhone=$_GET['userPhone'];
+	//$userPhone="18782003437";
+    $sql="select * from user where mobile='".$userPhone."'";
+    
+    $jsonData=selectBySql($sql);//查询结果为json格式数据
+	echo $jsonData;//将json数据发送到浏览器
 ?>
