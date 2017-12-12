@@ -7,8 +7,8 @@
  include_once '../mysql_db/mysqliBySql.php'; 
  $json = file_get_contents('php://input');  //接收json数据 
  $arr = json_decode($json,true); 
- //$json ='{"mobile":"12345678900"}'; 
- //$arr=(array)json_decode($json); 
+//  $json ='{"mobile":"13551374417"}'; 
+//  $arr=(array)json_decode($json); 
  $userTelephone=$arr['mobile']; 
  //根据电话号码查找用户id 
  $result= mysqli_query($link,"select * from user where mobile=$userTelephone"); 

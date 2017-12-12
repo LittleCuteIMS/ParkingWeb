@@ -25,11 +25,15 @@ function selectBySql($sql){//查询表中的信息
     
     //插入数据，成功返回查询对象，失败返回false
     $result=$mysqli->query($sql);
-    if($result->num_rows > 0){
+    if($result!=false){
         //声明数组
         $data=Array();
     
         while($row=$result->fetch_array()){
+            $count=count($row);
+            for($i=0;$i<$count;$i++){
+                unset($row[$i]);
+            }
             array_push($data, $row);    //将查询结果数组放入一个新数组中
         }
     
