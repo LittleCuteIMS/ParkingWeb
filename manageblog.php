@@ -67,27 +67,28 @@ if(empty($_SESSION["name"]))
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
-                	<h4>管理员</h4>
-                    <span class="email">youremail@yourdomain.com</span>
+                	<h4><?php echo $_SESSION["name"];?></h4>
+                    <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                        <li><a href="editprofile.html">编辑资料</a></li>
-                        <li><a href="accountsettings.html">账号设置</a></li>
-                        <li><a href="help.html">帮助</a></li>
+                       <li><a href="admin_check_info.php">账号</a></li> 
+                         <li><a href="help.php">帮助</a></li>   
+                          <li><a href="log.php">管理日志</a></li>   
                         <li><a href="exit.php">退出</a></li>
+              
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
     </div><!--topheader-->  
+    
     <div class="header">
     	<ul class="headermenu">
             <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
         </ul>
-        
-    </div><!--header-->
-    
+         
+    </div>
     <div class="vernav">
     	<ul>
         	<li class="current"><a href="manageblog.php" class="editor">用户注册信息查询</a></li>
@@ -101,7 +102,7 @@ if(empty($_SESSION["name"]))
     <div class="centercontent">
     
         <div class="pageheader notab">           
-            <h1 class="pagetitle">用户注册基本信息</h1>
+            <h1 class="pagetitle"></h1>
         </div><!--pageheader-->
        <div id="contentwrapper" class="contentwrapper">
         <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
@@ -137,12 +138,10 @@ if(empty($_SESSION["name"]))
                     </tbody>
                 </table>   
                 <br />
-                <div id="txtHint"></div> 
-        </div><!--pageheader-->
+        </div>
    
             <div>        
-             
-            </table>
+               
                 <!--ajax实现局部页面刷新，将查询结果显示在当前div块中-->
             </div>
 

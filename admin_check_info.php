@@ -7,7 +7,7 @@ if(empty($_SESSION["name"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>用户信息管理页面</title>
+    <title>管理员中心</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
@@ -15,10 +15,6 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/blog.js"></script>
-    <script type="text/javascript" src="js/custom/selectuser.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
-    
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -46,8 +42,7 @@ if(empty($_SESSION["name"]))
             
             <br clear="all" />
             
-        </div><!--left-->
-        
+        </div><!--left-->  
         <div class="right">
             <!--div class="notification">
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
@@ -70,81 +65,70 @@ if(empty($_SESSION["name"]))
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
-                	<h4>管理员</h4>
-                    <span class="email">youremail@yourdomain.com</span>
+                	<h4><?php echo $_SESSION["name"];?></h4>
+                    <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                        <li><a href="admin_check_info.php">账号</a></li> 
-                         <li><a href="help.php">帮助</a></li>   
-                          <li><a href="log.php">管理日志</a></li>   
+                        <li><a href="admin_check_info.php">账号</a></li>  
+                          <li><a href="help.php">帮助</a></li>   
+                        <li><a href="manageblog.php">返回主页</a></li>  
                         <li><a href="exit.php">退出</a></li>
+                        
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
-    </div><!--topheader-->
-    
+    </div><!--topheader-->  
     
     <div class="header">
     	<ul class="headermenu">
-            <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
-            <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
-            <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
-        </ul>       
-        
-    </div><!--header-->
-    
+            <li class="current"><a href="admin_check_info.php"><span class="icon icon-flatscreen"></span>管理员中心</a></li>  
+        </ul>
+         
+    </div>
     <div class="vernav">
     	<ul>
-        	<li><a href="manageblog.php" >用户手机号查询</a></li>
-            <li class="current"><a href="userinfo.php">注册时间查询</a></li>
-            <li ><a href="newpost.php">用户停车信息</a></li>
-            <li><a href="">其他</a></li>
+        	<li class="current"><a href="admin_check_info.php" class="editor">个人信息</a></li>
+        	<li><a href="accountsettings.php">账号设置</a></li>
+            <li><a href="editprofile.php">编辑资料</a></li>
+            <li><a href="security.php">安全设置</a></li>
+           <li><a href="log.php">管理日志</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
     
     <div class="centercontent">
-
+    
         <div class="pageheader notab">           
-            <h1 class="pagetitle">用户变动信息查询</h1>
+            <h1 class="pagetitle">管理员基本信息</h1>
         </div><!--pageheader-->
-        
-        <div id="contentwrapper" class="contentwrapper">
+       <div id="contentwrapper" class="contentwrapper">
         <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
 
             <div>
-                <form  id="check"  method="get" "margin-top:15px;"> 
-                <h3 >请输入查询时间</h3>
-                <p>起始日期:
-                &nbsp;<input type="text" name="date1" value=""  id="datepickfrom" />
-               &nbsp; &nbsp; 截止日期:
-                &nbsp;<input type="text" name="date2" value=""   id="datepickto"/>
-                <p>
-                <input type="button" onclick="timeGet()" value="查询"  />
-                <input type="button" onclick="withdraw()" value="取消"  /> 
-                </form>
-                 <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">
-                    <colgroup>
-                        <col class="con1" width="30%"/>
-                        <col class="con0" width="10%" />
-                        <col class="con1" width="30%"/>
-                        <col class="con0" width="30%"/>                    
-                    </colgroup>
-                    <thead>
-						<tr>
-							<th class="head0">注册日期</th>
-							<th class="head1">id</th>
-							<th class="head0">昵称</th>
-							<th class="head1">手机号码</th>	
-						</tr>
-                    </thead>
-                    <tbody id="Datetable">
-                    </tbody>
-                </table>   
-                 <br />
-                <div id="txtHint"></div> 
+               <div class="slide_img"><img src="images/thumbs/avatarbig.png" alt="" /></div>
+               <div class="slide_content">
+                                    	<font color="#f0801d" size="5"><?php echo $_SESSION["name"]; ?></font> 
+                                        <p><font size="2">电子邮箱 ：<?php echo $_SESSION["email"]; ?> </font>
+                                        <p><font size="2">创建日期 ：<?php echo $_SESSION["date"]; ?> </font>
+                                        <p><font size="2">联系电话 ：<?php echo $_SESSION["mobile"]; ?> </font> 
+                                      <div class="title" style="margin-top: 20px"><font color="#32415a" size="4">个人信息</font> 
+                                        <p><font size="2">真实姓名 ：<?php echo $_SESSION["real_name"]; ?> </font>
+                                        <p><font size="2">公司名称 ：<?php echo $_SESSION["confirm"]; ?> </font>
+                                        <p><font size="2">qq号 ：<?php echo $_SESSION["qq"]; ?> </font>
+                                        
+                                        <p><a href="editprofile.php"><button class="stdbtn btn_lime">完善信息</button></a>   
+                                        <a href="accountsettings.php "> <button class="stdbtn">修改信息</button></a></p> 
+                                    </div>
+                <div id="txtHint">
 
-            </div>            
+                </div> 
+        </div><!--pageheader-->
+   
+            <div>        
+             
+            </table>
+                <!--ajax实现局部页面刷新，将查询结果显示在当前div块中-->
+            </div>
 
         </div><!--contentwrapper-->
     
@@ -155,3 +139,4 @@ if(empty($_SESSION["name"]))
 
 </body>
 </html>
+

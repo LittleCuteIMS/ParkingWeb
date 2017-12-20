@@ -15,7 +15,7 @@ $sql="SELECT * FROM user WHERE mobile='$userTelephone' AND password='$oldPassWor
 $result=mysqli_query($link, $sql);
 if(mysqli_num_rows($result))
 {
-    $sql = "UPDATE user SET password = '$newPassWord' WHERE mobile = '$userTelephone' ";
+    $sql = "UPDATE administrator SET password = '$newPassWord' WHERE mobile = '$userTelephone' ";
     mysqli_query($link,$sql);
        echo 'SUCCEED';
        mysqli_close($link);

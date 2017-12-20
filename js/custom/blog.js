@@ -133,12 +133,13 @@ jQuery(document).ready(function(){
 		shortenedTab();
 	});
 
-	
+///// DATE PICKER /////
+	jQuery( "#datepickfrom, #datepickto" ).datepicker({ dateFormat: 'yy-mm-dd'});	
 	
 });
 
 
-function phoneGet()
+function phoneGet()   
 {
 	var xmlHttp;
 	GetXmlHttpObject();
@@ -186,13 +187,14 @@ function cancle(){
 }
 
 
-function timeGet()
-{   var xmlHttp;
+function timeGet(){   
+	var xmlHttp;
 	GetXmlHttpObject();
 	var url="user/dateinquiry.php?timestamp="+new Date().getTime();
 	xmlHttp.open("GET",url+"&"+dateCheck());
 	xmlHttp.send(null);
 	xmlHttp.onreadystatechange=stateChanged;
+	
     function GetXmlHttpObject()
     {
 	if(window.ActiveXObject){
@@ -214,17 +216,21 @@ function timeGet()
 		
 	   }
     }
+    
+    //时间查询
    function dateCheck()
     {
-	var date1=document.getElementById("date1").value;
-	var date2=document.getElementById("date2").value;
+	var date1=document.getElementById("datepickfrom").value;
+	var date2=document.getElementById("datepickto").value;
 	var dateString="date1="+date1+"&date2="+date2;
 	return dateString;
     }
 }
+
+//取消事件
 function withdraw(){
 	var i;
-	var items=new Array("date1","date2");
+	var items=new Array("datepickfrom","datepickto");
 	for(i=0;i<items.length;i++)
 	document.getElementById(items[i]).value=null;
 	document.getElementById("Datetable").innerHTML="";

@@ -14,8 +14,7 @@ if(empty($_SESSION["name"])){
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/queryBalance.js"></script>
+    <script type="text/javascript" src="js/custom/general.js"></script>   
 </head>
 
 <body>
@@ -63,10 +62,10 @@ if(empty($_SESSION["name"])){
                     	<h4>管理员</h4>
                         <span class="email">youremail@yourdomain.com</span>
                         <ul>
-                        	<li><a href="editprofile.html">编辑资料</a></li>
-                            <li><a href="accountsettings.html">账号设置</a></li>
-                            <li><a href="help.html">帮助</a></li>
-                            <li><a href="exit.php">退出</a></li>
+                        	<li><a href="admin_check_info.php">账号</a></li> 
+                         <li><a href="help.php">帮助</a></li>   
+                          <li><a href="log.php">管理日志</a></li>   
+                        <li><a href="exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->

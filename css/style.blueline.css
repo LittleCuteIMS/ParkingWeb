@@ -8,6 +8,10 @@
 
 .loginbox .username { background-color: #eee; }
 .loginbox .usernameinner { border-left: 1px solid #ddd; background: #fff; }
+.loginbox .mail { background-color: #eee; }
+.loginbox .usermailinner { border-left: 1px solid #ddd; background: #fff; }
+.loginbox .userphone { background-color: #eee; }
+.loginbox .userphoneinner { border-left: 1px solid #ddd; background: #fff; }
 .loginbox .password { background-color: #eee; }
 .loginbox .passwordinner { border-left: 1px solid #ddd; background: #fff; }
 .loginbox .password input { color: #666; }
