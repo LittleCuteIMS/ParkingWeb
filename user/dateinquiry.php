@@ -36,7 +36,7 @@
                        </tr>";
             }
          }else{
-             echo "请输入正确的查询时间！";
+             echo "请输入正确的查询时间范围！";
          }
             mysqli_close($link);
      ?>

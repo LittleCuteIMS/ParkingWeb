@@ -3,10 +3,10 @@
 	接收充值信息
 	 */
   	include_once "../mysql_db/Select.php";
-	$json = '{"mobile":18782003437,"amount":10}'; //测试数据
-	$arr=(array)json_decode($json);
-    //$json = file_get_contents('php://input');  //接收json数据
-	//$arr = json_decode($json,true);
+	//$json = '{"mobile":18782003437,"amount":10}'; //测试数据
+	//$arr=(array)json_decode($json);
+    $json = file_get_contents('php://input');  //接收json数据
+	$arr = json_decode($json,true);
 	$userTelephone=$arr['mobile'];
    
     //连接用户id

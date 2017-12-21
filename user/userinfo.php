@@ -6,7 +6,7 @@
          * 在网页上输出所有已注册用户信息
          */
         $userTelephone=$_GET['userTelephone'];
-        if ( isset($userTelephone) )
+        if (isset($userTelephone))
         {
            include_once 'link1.php';
             $sql="SELECT * FROM user WHERE mobile='$userTelephone' ";
