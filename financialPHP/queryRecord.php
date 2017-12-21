@@ -28,7 +28,7 @@
         mysqli_query($con,$sql);
         $sql = "set character_set_results=utf8";
         mysqli_query($con,$sql);
-    $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ";
+    $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ORDER BY id DESC";
     $result1 = mysqli_query($con,$sql3);
     
     $jarr = array();//说明$jarr是一个数组
