@@ -1,6 +1,6 @@
 <?php session_start();
 if(empty($_SESSION["name"]))
-{ echo "<script> window.location.href = 'index.php';</script>";
+{ echo "<script> window.location.href = 'administrator/index.php';</script>";
 }?>
 <!DOCTYPE>
 <html>
@@ -73,10 +73,9 @@ if(empty($_SESSION["name"]))
                 	<h4>管理员</h4>
                     <span class="email">youremail@yourdomain.com</span>
                     <ul>
-                        <li><a href="admin_check_info.php">账号</a></li> 
-                         <li><a href="help.php">帮助</a></li>   
-                          <li><a href="log.php">管理日志</a></li>   
-                        <li><a href="exit.php">退出</a></li>
+                        <li><a href="administrator/admin_check_info.php">账号</a></li> 
+                         <li><a href="administrator/help.php">帮助</a></li>  
+                        <li><a href="administrator/exit.php">退出</a></li>
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -98,7 +97,7 @@ if(empty($_SESSION["name"]))
         	<li><a href="manageblog.php" >用户手机号查询</a></li>
             <li class="current"><a href="userinfo.php">注册时间查询</a></li>
             <li ><a href="newpost.php">用户停车信息</a></li>
-            <li><a href="">其他</a></li>
+            <li><a href="manageblog.php">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
@@ -119,8 +118,7 @@ if(empty($_SESSION["name"]))
                 &nbsp;<input type="text" name="date1" value=""  id="datepickfrom" />
                &nbsp; &nbsp; 截止日期:
                 &nbsp;<input type="text" name="date2" value=""   id="datepickto"/>
-                <p>
-                <input type="button" onclick="timeGet()" value="查询"  />
+               &nbsp;&nbsp;&nbsp; <input type="button" onclick="timeGet()" value="查询"  />
                 <input type="button" onclick="withdraw()" value="取消"  /> 
                 </form>
                  <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">

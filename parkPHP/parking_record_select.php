@@ -13,7 +13,6 @@ $arr = json_decode($json,true);
 //$json ='{"mobile":"18281623534"}';
 //$arr=(array)json_decode($json);
 $userTelephone=$arr['mobile'];
-//echo $userTelephone;
 $sql1="select user.id from user where mobile='$userTelephone'";
 $result1=mysqli_query($link, $sql1);
 $row1=mysqli_fetch_assoc($result1);

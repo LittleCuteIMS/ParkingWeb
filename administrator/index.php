@@ -5,13 +5,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>登录页面</title>
-	<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-	<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-	<script type="text/javascript" src="js/custom/general.js"></script>
-	<script type="text/javascript" src="js/custom/index.js"></script>
+	<link rel="stylesheet" href="../css/style.default.css" type="text/css" />
+	<script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="../js/custom/general.js"></script>
+	<script type="text/javascript" src="../js/custom/index.js"></script>
 	<!--[if IE 9]>
 	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
 	<![endif]-->
@@ -41,7 +41,7 @@
             <div class="nopassword">
 				<div class="loginmsg">请输入密码.</div>
                 <div class="loginf">
-                    <div class="thumb"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                    <div class="thumb"><img alt="" src="../images/thumbs/avatar1.png" /></div>
                     <div class="userlogged">
                         <h4></h4>
                         <a href="index.php">账户不是 <span></span> 吗?</a> 
@@ -75,7 +75,7 @@
 </body>
 </html>
 <?php
-include_once 'user/link1.php';
+include_once '../user/link1.php';
 if(isset($_POST['username'],$_POST['password'])){
     $name=$_POST["username"];
     $pwd=md5($_POST["password"]);
@@ -84,17 +84,15 @@ if(isset($_POST['username'],$_POST['password'])){
     $datarow = mysqli_num_rows($result);
     if($datarow==1){
         $_SESSION["name"]=$name;
-        $_SESSION["pwd"]=$pwd;
         $row = mysqli_fetch_array($result);
         $_SESSION["mobile"]=$row['mobile'];
-        $_SESSION["email"]=$row['email']; 
-        $_SESSION["date"]=$row['date']; 
+        $_SESSION["email"]=$row['email'];  
+        $_SESSION["date"]=$row['date'];
         $_SESSION["real_name"]=$row['real_name'];
-        $_SESSION["confirm"]=$row['confirm'];  
+        $_SESSION["confirm"]=$row['confirm'];
         $_SESSION["qq"]=$row['qq'];
-        
-        echo"<script> alert('登录成功');</script>";
-        echo "<script> window.location.href = 'manageblog.php';</script>";
+        echo"<script> alert('欢迎您，管理员！');</script>";
+        echo "<script> window.location.href = '../manageblog.php';</script>";
     }else{
         echo"<script> alert('登录失败');</script>";
         echo "<script> window.location.href = 'index.php';</script>";
