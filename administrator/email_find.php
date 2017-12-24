@@ -49,7 +49,7 @@
    </form> 
    <span id="backdata"></span>
   <div class="form-group" align="center" style="margin-top: 10px" >
-                 <a href="index.php">返回登录</a>
+                 <a href="../index.php">返回登录</a>
   </div>  
 </div>
 </div>

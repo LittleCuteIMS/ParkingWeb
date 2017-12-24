@@ -1,3 +1,8 @@
+<?php session_start();
+if(empty($_SESSION["name"]))
+{ echo "<script> window.location.href = 'index.php';</script>";
+}?>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

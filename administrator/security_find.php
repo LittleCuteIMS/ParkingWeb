@@ -67,7 +67,7 @@
                 </div>
                 </form>
                 <div class="form-group" align="center" >
-                 <a href="index.php">返回登录</a>
+                 <a href="../index.php">返回登录</a>
                 </div>             
         </div>
          

@@ -46,7 +46,7 @@
             <p><a href=security_find.php class="pwd_button" style="align:center">密保找回</a>
             </p></div>
   <div class="form-group" align="center" style="margin-top: 10px" >
-                 <a href="index.php">返回登录</a>
+                 <a href="../index.php">返回登录</a>
   </div>  
 </div>
 </div>

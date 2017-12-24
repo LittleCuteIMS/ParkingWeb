@@ -5,13 +5,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>登录页面</title>
-	<link rel="stylesheet" href="../css/style.default.css" type="text/css" />
-	<script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
-	<script type="text/javascript" src="../js/custom/general.js"></script>
-	<script type="text/javascript" src="../js/custom/index.js"></script>
+	<link rel="stylesheet" href="css/style.default.css" type="text/css" />
+	<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="js/custom/general.js"></script>
+	<script type="text/javascript" src="js/custom/index.js"></script>
 	<!--[if IE 9]>
 	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
 	<![endif]-->
@@ -68,14 +68,14 @@
                 <div class="keep"><input type="checkbox" /> 记住密码</div>
             
             </form>
-             <div class="forget" align="center" ><a href="pwd_find.php"><font color="blank">忘记密码</font></a></div>
-              <div class="regist" align="center" style="margin-top: 10px" ><a href="admin_register.php"><font color="blank">未注册？点此注册</font></a></div>
+             <div class="forget" align="center" ><a href="administrator/pwd_find.php"><font color="blank">忘记密码</font></a></div>
+              <div class="regist" align="center" style="margin-top: 10px" ><a href="administrator/admin_register.php"><font color="blank">未注册？点此注册</font></a></div>
         </div><!--loginboxinner-->
     </div><!--loginbox-->
 </body>
 </html>
 <?php
-include_once '../user/link1.php';
+include_once 'user/link1.php';
 if(isset($_POST['username'],$_POST['password'])){
     $name=$_POST["username"];
     $pwd=md5($_POST["password"]);
@@ -92,7 +92,7 @@ if(isset($_POST['username'],$_POST['password'])){
         $_SESSION["confirm"]=$row['confirm'];
         $_SESSION["qq"]=$row['qq'];
         echo"<script> alert('欢迎您，管理员！');</script>";
-        echo "<script> window.location.href = '../manageblog.php';</script>";
+        echo "<script> window.location.href = 'manageblog.php';</script>";
     }else{
         echo"<script> alert('登录失败');</script>";
         echo "<script> window.location.href = 'index.php';</script>";

@@ -1,6 +1,6 @@
 <?php session_start();
 if(empty($_SESSION["name"]))
-{ echo "<script> window.location.href = 'administrator/index.php';</script>";
+{ echo "<script> window.location.href = 'index.php';</script>";
 }?>
 <!DOCTYPE>
 <html>
@@ -141,8 +141,6 @@ if(empty($_SESSION["name"]))
    
             <div>   
              
- 
-      </ul>
             </div>
 </div>
         </div><!--contentwrapper-->

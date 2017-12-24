@@ -55,7 +55,7 @@
               </div>
                 <button>注册</button>          
             </form>
-               <div class="regist" align="center"style="margin-top:10px;" ><a href="index.php"><font color="blank">已有账号，点击登录</font></a></div>
+               <div class="regist" align="center"style="margin-top:10px;" ><a href="../index.php"><font color="blank">已有账号，点击登录</font></a></div>
        
         </div><!--loginboxinner-->
     </div><!--loginbox-->
@@ -85,7 +85,7 @@ if(!empty($_POST["adminname"]) && !empty($_POST["phone"]) && !empty($_POST["emai
                 $_SESSION["name"]=$admin_name;
                 echo"<script>
                      alert('注册成功');
-                     window.location.href = 'index.php';</script>";
+                     window.location.href = '../index.php';</script>";
                 }else {
                     echo"<script >
                          alert('注册失败');
