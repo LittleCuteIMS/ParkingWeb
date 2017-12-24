@@ -17,4 +17,5 @@ if(isset($_POST['mother_name'],$_POST['teacher_name'],$_POST['poem'],$_POST['mob
  }else{
      $result = "请回答密保问题";
  }
+ echo $result;
 ?>

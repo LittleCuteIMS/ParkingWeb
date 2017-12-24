@@ -8,14 +8,14 @@ if(empty($_SESSION["name"]))
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>管理员中心</title>
-    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/log.js"></script>
+    <link rel="stylesheet" href="../css/style.default.css" type="text/css" />
+    <script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../js/custom/general.js"></script>
+    <script type="text/javascript" src="../js/custom/log.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -49,13 +49,13 @@ if(empty($_SESSION["name"]))
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
             </div-->
         	<div class="userinfo">
-            	<img src="images/thumbs/avatar.png" alt="" />
+            	<img src="../images/thumbs/avatar.png" alt="" />
                 <span>管理员</span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
             	<div class="avatar">
-                	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                	<a href=""><img src="../images/thumbs/avatarbig.png" alt="" /></a>
                     <div class="changetheme">
                     	切换主题: <br />
                     	<a class="default"></a>
@@ -69,9 +69,8 @@ if(empty($_SESSION["name"]))
                 	<h4><?php echo $_SESSION["name"];?></h4>
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                        <li><a href="admin_check_info.php">账号</a></li> 
-                          <li><a href="help.php">帮助</a></li>    
-                        <li><a href="manageblog.php">返回主页</a></li>  
+                        <li><a href="admin_check_info.php">账号</a></li>   
+                        <li><a href="../manageblog.php">返回主页</a></li>  
                         <li><a href="exit.php">退出</a></li>
                         
                     </ul>
@@ -100,7 +99,7 @@ if(empty($_SESSION["name"]))
     
      <div class="centercontent">
     <div class="pageheader" >
-        	<span class="profilepic"><img src="images/thumbs/avatar3.png" alt="" /></span>
+        	<span class="profilepic"><img src="../images/thumbs/avatar3.png" alt="" /></span>
             <div class="profiletitle">
             <h1 class="pagetitle">管理日志</h1> 
             </div>
@@ -121,14 +120,11 @@ if(empty($_SESSION["name"]))
                 <P><button class="stdbtn">保存</button>
                  </form>  
  <?php
-/*$log_date = "2017-12-04";
-$log = "dsffd";
-$recorder = "nico";*/
-if(isset($_POST['log_date'],$_POST['log'],$_POST['recorder'])){
+if($_POST){
     $log_date = $_POST['log_date'];
     $log = $_POST['log'];
     $recorder = $_POST['recorder'];  
-    include_once 'user/link1.php';
+    include_once '../user/link1.php';
     $sql = "INSERT INTO admin_log (recorder,log_date,log) VALUES ('$recorder','$log_date','$log')";
     $result = mysqli_query($link, $sql); 
     if($result==true){
@@ -138,9 +134,8 @@ if(isset($_POST['log_date'],$_POST['log'],$_POST['recorder'])){
     }
 }
 ?>		 
-        </div>
-     
-  
+       </div>
+
         <div id="log_check" class="subcontent" style="display: none" >
         
                         	<form id="check"  method="get"> 

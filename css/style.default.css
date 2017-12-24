@@ -122,15 +122,15 @@ body.withmenucoll2 { background-position: 35px 0; } /* with menu style 2 in coll
 	border-radius: 2px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4); 
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0;
 }
-.loginbox .usermailinner { 
-	margin-left: 45px; border-left: 1px solid #ddd; background: #fff; padding-right: 20px; 
-	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; 
-}
-
 .loginbox .userphone { 
 	background: #eee url(../images/icons/call.png) no-repeat 13px center; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
 	border-radius: 2px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4); 
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0;
+}
+.loginbox .password { 
+	background: #eee url(../images/icons/password.png) no-repeat 13px center; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
+	border-radius: 2px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4); 
+	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0; overflow: hidden;
 }
 .loginbox .userphoneinner { 
 	margin-left: 45px; border-left: 1px solid #ddd; background: #fff; padding-right: 20px; 
@@ -140,22 +140,30 @@ body.withmenucoll2 { background-position: 35px 0; } /* with menu style 2 in coll
 	margin-left: 45px; border-left: 1px solid #ddd; background: #fff; padding-right: 20px; 
 	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; 
 }
+.loginbox .usermailinner { 
+	margin-left: 45px; border-left: 1px solid #ddd; background: #fff; padding-right: 20px; 
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; 
+}
+.loginbox .passwordinner { margin-left: 45px; border-left: 1px solid #ddd; background: #fff; }
 .loginbox .username input { 
 	padding: 15px 10px; border: 0; font-size: 14px; width: 100%; box-shadow: none; color: #666; 
 	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; -moz-border-radius: 0 2px 2px 0; -webkit-border-radius: 0 2px 2px 0;
 	border-radius: 0 2px 2px 0;
 }
-.loginbox .password { 
-	background: #eee url(../images/icons/password.png) no-repeat 13px center; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
-	border-radius: 2px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4); 
-	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0; overflow: hidden;
-}
-.loginbox .passwordinner { margin-left: 45px; border-left: 1px solid #ddd; background: #fff; }
 .loginbox .password input { 
 	padding: 15px 10px; border: 0; font-size: 14px; width: 330px; box-shadow: none; color: #666; 
 	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
 }
-
+.loginbox .usermail input { 
+	padding: 15px 10px; border: 0; font-size: 14px; width: 100%; box-shadow: none; color: #666; 
+	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; -moz-border-radius: 0 2px 2px 0; -webkit-border-radius: 0 2px 2px 0;
+	border-radius: 0 2px 2px 0;
+}
+.loginbox .userphone input { 
+	padding: 15px 10px; border: 0; font-size: 14px; width: 100%; box-shadow: none; color: #666; 
+	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; -moz-border-radius: 0 2px 2px 0; -webkit-border-radius: 0 2px 2px 0;
+	border-radius: 0 2px 2px 0;
+}
 .loginbox button { 
 	background: #f0801d url(../images/btngrad.png) repeat-x top left; border: 0; padding: 15px 0; text-align: center; 
 	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; width: 100%; text-transform: uppercase;  
@@ -173,7 +181,7 @@ body.withmenucoll2 { background-position: 35px 0; } /* with menu style 2 in coll
 	-moz-box-shadow: inset 0 1px 1px #23324b; -webkit-box-shadow: inset 0 1px 1px #23324b; box-shadow: inset 0 1px 1px #23324b;
 	border-bottom: 1px solid #475875;
 }
-
+.loginpage .nomsg{display: none; margin-bottom: 10px; align: center; font-style: Arial; color: #f0801d; font-size: 20px;}
 .loginpage .nousername, .loginpage .nopassword { display: none; }
 .loginpage .nopassword { color: #fff; }
 .loginpage .nopassword .thumb { 
@@ -2517,101 +2525,47 @@ blockquote.bq2 {
 		
 }
 
-
-/*calendar 整体设置 */
-*{margin:0px;padding:0px;} 
-
-}
- 
-/**
- * 设置日历的大小
- */
-.calendar{
-  width: 200px;
-  height: 200px;
+.form-control {
   display: block;
-}
- 
-/**
- * 设置日历顶部盒子
- */
-.calendar .calendar-title-box{
-  position: relative;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
-  text-align:center;
-  border-bottom: 1px solid #CD6600;
-  top:10px; 
-  font:bold 200% Georgia
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
- 
-/**
- * 设置上个月的按钮图标
- */
-.calendar .prev-month {
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  display: inline-block;
-  width: 0px;
-  height: 0px;
-  border-left: 0px;
-  border-top: 10px solid transparent;
-  border-right: 12px solid #969696;
-  border-bottom: 10px solid transparent;
-  cursor: pointer;
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
- 
-/**
- * 设置下个月的按钮图标
- */
-.calendar .next-month {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  display: inline-block;
-  width: 0px;
-  height: 0px;
-  border-right: 0px;
-  border-top:10px solid transparent;
-  border-left: 12px solid #969696;
-  border-bottom: 10px solid transparent;
-  cursor: pointer;
-}
- 
- 
-/* 设置日历表格样式 */
-.calendar-table{
-  width: 100%;
-  border-collapse: collapse;
-  text-align:center;
-  font:bold 130% Georgia;
-}
- 
-/* 表格行高 */
-.calendar-table tr{
-  height: 50px;
-  line-height: 50px;
-}
- 
-/* 当前天 颜色特殊显示 */
-.currentDay {
-  color:  #EE7600 ;
-  font:bold 130% Georgia;  
-}
- 
-/* 本月 文字颜色 */
-.currentMonth {
-  color: black;
-   font:bold 130% Georgia;
-}
- 
-/* 其他月颜色 */
-.otherMonth{
+.form-control::-moz-placeholder {
   color: #999;
-   font:bold 130% Georgia;
+  opacity: 1;
 }
-
-
+.form-control:-ms-input-placeholder {
+  color: #999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+  background-color: #eee;
+  opacity: 1;
+}
+textarea.form-control {
+  height: auto;
+}
 

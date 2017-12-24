@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
 function timeGet(){   
 	var xmlHttp;
 	GetXmlHttpObject();
-	var url="adminPHP/log_check.php?timestamp="+new Date().getTime();
+	var url="../adminPHP/log_check.php?timestamp="+new Date().getTime();
 	xmlHttp.open("GET",url+"&"+dateCheck());
 	xmlHttp.send(null);
 	xmlHttp.onreadystatechange=stateChanged;

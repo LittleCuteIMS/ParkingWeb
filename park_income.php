@@ -2,31 +2,17 @@
 if(empty($_SESSION["name"]))
 { echo "<script> window.location.href = 'index.php';</script>";
 }?>
-<!DOCTYPE>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>用户信息管理页面</title>
+    <title>停车场管理</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/blog.js"></script>
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
+    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>   
+    <script type="text/javascript" src="js/custom/echarts.js"></script>
+    <script type="text/javascript" src="js/custom/park_income.js"></script>
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -70,19 +56,35 @@ if(empty($_SESSION["name"]))
                 	<h4><?php echo $_SESSION["name"];?></h4>
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                       <li><a href="admin_check_info.php">账号</a></li> 
-                         <li><a href="manageblog.php">主页</a></li>    
-                        <li><a href="exit.php">退出</a></li>
+                       <li><a href="administrator/admin_check_info.php">账号</a></li> 
+                         <li><a href="administrator/help.php">帮助</a></li>  
+                        <li><a href="administrator/exit.php">退出</a></li>
               
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
-    </div><!--topheader-->
+    </div><!--topheader-->  
     
-    
-   
-    
+    <div class="header">
+    	<ul class="headermenu">
+            <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
+            <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
+            <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
+        </ul>
+         
+    </div>
+    <div class="vernav">
+    	<ul>
+        	<li><a href="messages.php" class="inbox">停车场信息查询</a></li>
+            <li><a href="parkRegister.php" class="drafts">停车场信息注册</a></li>
+            <li class="current"><a href="park_income.php" class="drafts">停车场收入分析</a></li>
+        </ul>
+        <a class="togglemenu"></a>
+    </div><!--leftmenu-->
+    <div class="centercontent">
+<div id='main' style="width: 900px; height: 420px; float:left"></div>
+</div><!--centercontent-->
 </div><!--bodywrapper-->
 
 </body>

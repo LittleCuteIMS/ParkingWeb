@@ -8,14 +8,15 @@ if(empty($_SESSION["name"]))
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>管理员中心</title>
-    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/admin.js"></script>
+
+    <link rel="stylesheet" href="../css/style.default.css" type="text/css" />
+    <script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.alerts.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../js/custom/general.js"></script>
+    
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -49,13 +50,13 @@ if(empty($_SESSION["name"]))
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
             </div-->
         	<div class="userinfo">
-            	<img src="images/thumbs/avatar.png" alt="" />
+            	<img src="../images/thumbs/avatar.png" alt="" />
                 <span>管理员</span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
             	<div class="avatar">
-                	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                	<a href=""><img src="../images/thumbs/avatarbig.png" alt="" /></a>
                     <div class="changetheme">
                     	切换主题: <br />
                     	<a class="default"></a>
@@ -69,9 +70,8 @@ if(empty($_SESSION["name"]))
                 	<h4><?php echo $_SESSION["name"];?></h4>
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                        <li><a href="admin_check_info.php">账号</a></li> 
-                          <li><a href="help.php">帮助</a></li>    
-                        <li><a href="manageblog.php">返回主页</a></li>  
+                        <li><a href="admin_check_info.php">账号</a></li>   
+                        <li><a href="../manageblog.php">返回主页</a></li>  
                         <li><a href="exit.php">退出</a></li>
                         
                     </ul>
@@ -92,7 +92,7 @@ if(empty($_SESSION["name"]))
             <li class="current"><a href="accountsettings.php">账号设置</a></li>
             <li><a href="editprofile.php">编辑资料</a></li>
             <li><a href="security.php">安全设置</a></li>
-            <li><a href="log.php">管理日志</a></li>
+          <li><a href="log.php">管理日志</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
@@ -100,7 +100,7 @@ if(empty($_SESSION["name"]))
     
     <div class="centercontent">
     <div class="pageheader" >
-        	<span class="profilepic"><img src="images/thumbs/avatar2.png" alt="" /></span>
+        	<span class="profilepic"><img src="../images/thumbs/avatar2.png" alt="" /></span>
             <div class="profiletitle">
             <h1 class="pagetitle">信息修改</h1> 
             </div>
@@ -110,9 +110,8 @@ if(empty($_SESSION["name"]))
             </ul>
         </div><!--pageheader-->
         
-       <div class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-        
+       <div class="contentwrapper"> 
+          
             <div id="profile" class="subcontent" >
                <div class="widgetbox">
                             <div class="title"><font color="#f0801d" size="4">新的邮箱地址</font> </div>
@@ -121,12 +120,11 @@ if(empty($_SESSION["name"]))
                               
                               <form action="" method="post">     
                                           新的邮箱地址：
-                <br><input type="text" name="newemail" />   
+                <br><input type="text"  class="form-control"  name="newemail" />   
                 <p><button class="stdbtn">确认修改</button>
                 </form>  
-                 <?php 
-                 
-                 include_once 'user/link1.php';
+                 <?php  
+                 include_once '../user/link1.php';
                  if(!empty($_POST['newemail'])){                  
                      $newemail=$_POST['newemail'];
                      $oldemail=$_SESSION['email'];
@@ -140,12 +138,10 @@ if(empty($_SESSION["name"]))
                      }else{
                          echo"<script> alert('邮箱地址修改失败');</script>";
                      }
-                 }
-                 
+                 } 
                  ?>                                                                
                             </div><!--widgetcontent-->
                         </div><!--widgetbox-->    
-     
         </div>
      
   
@@ -154,20 +150,43 @@ if(empty($_SESSION["name"]))
                             <div class="title"><font color="#f0801d" size="4">密码修改</font> </div>
                             <div class="widgetcontent">
                                 <ul class="recent_list">  </ul>  
-                                <form   method="post" action="" >     
-                                         当前密码：
-                <br><input type="text" name="pwd1" />    
-                                        <p>新密码：
-                <br><input type="text" name="pwd2" /> 
-                                      <p>确认密码：
-                <br><input type="text" name="pwd3" />                                                                                                                                                                                          
-                  <p><button class="stdbtn">确认修改</button></p> 
+                                <form id="formid"  method="post" action="" >     
+                                         <div class="form-group">
+                   <font size="2"> 当前密码：</font>
+                    <br><input type="password" class="form-control" name="pwd1" id="pwd2">
+                </div>
+                <div class="form-group">
+                   <font size="2"> 新密码：</font>
+                <br><input type="password" class="form-control" name="pwd2" id="pwd2"/> 
+                </div>
+                <div class="form-group">
+                    <font size="2"> 确认密码：</font>
+                <br><input type="password" class="form-control" name="pwd3" id="pwd3"/> 
+                </div>                                                                                                                                                                                         
+                  <p><input type="button" class="stdbtn" id="sub" onclick="submit()" value="确认修改"></p> 
                    </form>
+                  <?php 
+                  include_once '../user/link1.php';
+                  if(!empty($_POST['pwd1']) & !empty($_POST['pwd2']) & !empty($_POST['pwd3']) ){
+                      $pwd1=md5($_POST['pwd1']);
+                      $pwd2=md5($_POST['pwd2']);
+                      $pwd3=md5($_POST['pwd3']);
+                      if($pwd2==$pwd3){
+                         $sql="UPDATE administrator SET admin_pwd = '$pwd2' WHERE admin_pwd = '$pwd1'";
+                         $result=mysqli_query($link, $sql);
+                         if($result==true){
+                             echo "<script> alert('密码修改成功');</script>";
+                         }else{
+                             echo "<script> alert('密码修改失败');</script>";
+                         }
+                      }else{
+                          echo"<script> alert('两次新密码不一致');</script>";
+                         }
+                  }    
+                  ?>  
                      </div><!--widgetcontent-->
                         </div><!--widgetbox--> 
-                <div id="txtHint">
-                </div> 
-        
+
         </div>
         
         
