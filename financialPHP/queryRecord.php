@@ -3,10 +3,10 @@
 	接收充值信息
 	 */
   	include_once "../mysql_db/Select.php";
-	$json = '{"mobile":18782003437,"amount":10}'; //测试数据
-	$arr=(array)json_decode($json);
-    //$json = file_get_contents('php://input');  //接收json数据
-	//$arr = json_decode($json,true);
+	//$json = '{"mobile":18782003437,"amount":10}'; //测试数据
+	//$arr=(array)json_decode($json);
+    $json = file_get_contents('php://input');  //接收json数据
+	$arr = json_decode($json,true);
 	$userTelephone=$arr['mobile'];
    
     //连接用户id
@@ -28,7 +28,7 @@
         mysqli_query($con,$sql);
         $sql = "set character_set_results=utf8";
         mysqli_query($con,$sql);
-    $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ";
+    $sql3 = "SELECT * FROM pay_rank WHERE user_id = '$UserId' ORDER BY id DESC";
     $result1 = mysqli_query($con,$sql3);
     
     $jarr = array();//说明$jarr是一个数组
