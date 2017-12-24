@@ -68,8 +68,7 @@ if(empty($_SESSION["name"]))
                 	<h4><?php echo $_SESSION["name"];?></h4>
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
-                        <li><a href="admin_check_info.php">账号</a></li>  
-                          <li><a href="help.php">帮助</a></li>   
+                        <li><a href="admin_check_info.php">账号</a></li>     
                         <li><a href="../manageblog.php">返回主页</a></li>  
                         <li><a href="exit.php">退出</a></li>
                         

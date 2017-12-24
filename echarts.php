@@ -15,7 +15,8 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/blog.js"></script>
+   <script type="text/javascript" src="js/custom/echarts.js"></script>
+   <script type="text/javascript" src="js/custom/1.js"></script>
     <!--[if IE 9]>
         <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
     <![endif]-->
@@ -92,65 +93,19 @@ if(empty($_SESSION["name"]))
     	<ul>
         	<li class="current"><a href="manageblog.php" class="editor">用户注册信息查询</a></li>
             <li><a href="userinfo.php">注册时间查询</a></li>
-            <li><a href="car_location.php ">用户停车信息</a></li>
-            <li><a href="user_regist_info.php">新增用户</a></li>
+            <li><a href="newpost.php ">用户停车信息</a></li>
+            <li><a href="echarts.php">其他</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
-    
     <div class="centercontent">
-    
-        <div class="pageheader notab">           
-            <h5 class="pagetitle">请输入查询号码</h5>
-        </div><!--pageheader-->
-       <div id="contentwrapper" class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-            <div>
-                <form   method="get" action="user/userinfo.php"> 查询号码
-                <div class="form-group" style="margin-right: 100px">
-               <input type="text" name="userTelephone" value=""  id="userTelephone" />
-               </div> 
-               <div style="margin-top: 5px">
-               <input type="button" onclick="phoneGet()"  value="查询"  />
-                <input type="button" onclick="cancle()" value="取消"  />
-                </div>
-                </form>
-                <div style="margin-top: 5px">
-                <table class="stdtable mailinbox">
-                    <colgroup>
-                        <col class="con1" width="20%"/>
-                        <col class="con0" width="12%" />
-                        <col class="con1" width="20%"/>
-                        <col class="con0" width="20%"/>
-                        <col class="con1" width="28%"/>      
-                    </colgroup>
-                    <thead>
-						<tr>
-							<th class="head0">手机号</th>
-							<th class="head1">id</th>
-							<th class="head0">昵称</th>
-							<th class="head1">余额</th>
-							<th class="head0">注册时间</th>		
-						</tr>
-                    </thead>
-                    <tbody id="Infotable">    
-                    </tbody>
-                </table>   
-                <br />
-        </div>
    
-            <div>   
-             
- 
-      </ul>
-            </div>
-</div>
-        </div><!--contentwrapper-->
-    
+   <div id='mainpicture' style="width: 600px; height: 400px;"></div> 
+  
     </div><!--centercontent-->
-    
-    
 </div><!--bodywrapper-->
 
 </body>
 </html>
+
+

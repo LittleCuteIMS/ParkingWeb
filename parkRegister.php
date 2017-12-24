@@ -95,6 +95,7 @@ if(empty($_SESSION["name"]))
     	<ul>
         	<li><a href="messages.php" class="inbox">停车场信息查询</a></li>
             <li class="current"><a href="#" class="drafts">停车场信息注册</a></li>
+            <li><a href="park_income.php" class="drafts">停车场收入分析</a></li>
         </ul>
         <a class="togglemenu"></a>
         <br /><br />

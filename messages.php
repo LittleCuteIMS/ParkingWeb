@@ -93,6 +93,7 @@ if(empty($_SESSION["name"]))
     	<ul>
         	<li class="current"><a href="#" class="inbox">停车场信息查询</a></li>
             <li><a href="parkRegister.php" class="drafts">停车场信息注册</a></li>
+            <li><a href="park_income.php" class="drafts">停车场收入分析</a></li>
         </ul>
         <a class="togglemenu"></a>
         <br /><br />

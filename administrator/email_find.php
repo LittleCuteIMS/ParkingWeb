@@ -57,7 +57,7 @@
 <?php
     //发送邮件
     function sendmail($time,$email,$url){
-        include_once("smtp.class.php");
+        include_once("../adminPHP/smtp.class.php");
         $smtpserver = "smtp.163.com"; //SMTP服务器，如smtp.163.com
         $smtpserverport = 25; //SMTP服务器端口
         $smtpusermail = "m18780073534@163.com"; //SMTP服务器的用户邮箱

@@ -9,27 +9,10 @@ if(empty($_SESSION["name"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>用户信息管理页面</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/blog.js"></script>
-    <script type="text/javascript" src="js/custom/selectuser.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.form.js"></script>
-    
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
+    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>   
+    <script type="text/javascript" src="js/custom/echarts.js"></script>
+    <script type="text/javascript" src="js/custom/user_regist_info.js"></script>
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -95,61 +78,17 @@ if(empty($_SESSION["name"]))
     <div class="vernav">
     	<ul>
         	<li><a href="manageblog.php" >用户手机号查询</a></li>
-            <li class="current"><a href="userinfo.php">注册时间查询</a></li>
+            <li ><a href="userinfo.php">注册时间查询</a></li>
             <li ><a href="car_location.php">用户停车信息</a></li>
-            <li><a href="user_regist_info.php">新增用户</a></li>
+            <li class="current"><a href="user_regist_info.php">新增用户</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
     
     <div class="centercontent">
-
-        <div class="pageheader notab">           
-            <h1 class="pagetitle">用户变动信息查询</h1>
-        </div><!--pageheader-->
-        
-        <div id="contentwrapper" class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-
-            <div>
-                <form  id="check"  method="get" "margin-top:15px;"> 
-                <h3 >请输入查询时间</h3>
-                <p>起始日期:
-                &nbsp;<input type="text" name="date1" value=""  id="datepickfrom" />
-               &nbsp; &nbsp; 截止日期:
-                &nbsp;<input type="text" name="date2" value=""   id="datepickto"/>
-               &nbsp;&nbsp;&nbsp; <input type="button" onclick="timeGet()" value="查询"  />
-                <input type="button" onclick="withdraw()" value="取消"  /> 
-                </form>
-                 <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">
-                    <colgroup>
-                        <col class="con1" width="30%"/>
-                        <col class="con0" width="10%" />
-                        <col class="con1" width="30%"/>
-                        <col class="con0" width="30%"/>                    
-                    </colgroup>
-                    <thead>
-						<tr>
-							<th class="head0">注册日期</th>
-							<th class="head1">id</th>
-							<th class="head0">昵称</th>
-							<th class="head1">手机号码</th>	
-						</tr>
-                    </thead>
-                    <tbody id="Datetable">
-                    </tbody>
-                </table>   
-                 <br />
-                <div id="txtHint"></div> 
-
-            </div>            
-
-        </div><!--contentwrapper-->
-    
+     <div id='registInfo' style="width: 900px; height: 500px; float:left"></div>
     </div><!--centercontent-->
-    
-    
-</div><!--bodywrapper-->
 
+</div><!--bodywrapper-->
 </body>
 </html>
