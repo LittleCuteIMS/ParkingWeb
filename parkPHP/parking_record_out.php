@@ -13,8 +13,8 @@ include_once '../mysql_db/mysqliBySql.php';
 include_once '../user/link1.php';
 $json = file_get_contents('php://input');  //接收车辆出停车场时传来的json数据
 $arr = json_decode($json,true);
-//$json ='{"plate_number":"川A11T11","park_id":"13","in_datetime":"2017-10-16 00:00:00","out_datetime":"2017-10-16 02:20:10"}';
-//$arr=(array)json_decode($json);
+// $json ='{"plate_number":"川A52333","park_id":"1","in_datetime":"2017-12-24 15:36:44","out_datetime":"2017-12-24 17:36:44"}';
+// $arr=(array)json_decode($json);
 $plateNumber=$arr['plate_number'];
 $parkId=$arr['park_id'];
 $dateTime1=$arr['in_datetime'];
@@ -26,7 +26,7 @@ $b=strtotime($dateTime2);
 $inDateTime=date("Y-m-d H:i:s",$a); //进入时间
 $outDateTime=date("Y-m-d H:i:s",$b); //出停车场时间
 //根据传来的信息查询该车辆是否有进入停车场的信息记录，如果有则更新出停车场的时间，没有就返回FAILURE
-$confirmSql="select * from parking_record where plate_number='".$plateNumber."'And in_datetime='$inDateTime'And park_id='$parkId'"; //在car表中查询是否存在这个车牌号
+$confirmSql="select * from parking_record where plate_number='".$plateNumber."'And in_datetime='$inDateTime'And park_id='$parkId'";
 $out=selectBySql($confirmSql);
 if($out==true)
 {
@@ -57,14 +57,14 @@ if($out==true)
     $balance=$Rbalance-$amount;
     if($balance<0)
     {
-        echo "账户余额不足，请充值<br>";
+        echo "账户余额不足，请充值";
     }else{
         $sql_balance="UPDATE user SET balance='$balance'WHERE id='$userId'";
         $result1=updateBySql($sql_balance);
         if($result1==true)
         {
             
-            echo "扣费成功<br>";
+            echo "扣费成功";
             /*
              * 2.当扣费成功后，停车场的收入增加
              */
@@ -84,7 +84,7 @@ if($out==true)
             $result=updateBySql($sql);
             if($result==true)
             {
-                echo "录入成功<br>";
+                echo "录入成功";
                 /*
                  * 4.当交易成功完成后，将本次的停车记录录入trading_record表中
                  */
@@ -96,19 +96,19 @@ if($out==true)
                 $result3=insertBySql($sql_trading);
                 if($result3==true)
                 {
-                    echo "交易成功<br>";
+                    echo "交易成功";
                 }else{
-                    echo "交易失败<br>";
+                    echo "交易失败";
                 }
             }else{
-                echo "录入失败<br>";
+                echo "录入失败";
             }
         }else{
-            echo "扣费失败<br>";
+            echo "扣费失败";
         }
     }
 }else{
-    echo "FAILURE<br>";
+    echo "FAILURE";
 }
 ?>
 

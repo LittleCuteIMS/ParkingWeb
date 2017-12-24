@@ -25,7 +25,7 @@ function selectBySql($sql){//查询表中的信息
     
     //插入数据，成功返回查询对象，失败返回false
     $result=$mysqli->query($sql);
-    if($result!=false){
+    if($result->num_rows != 0){
         //声明数组
         $data=Array();
     
