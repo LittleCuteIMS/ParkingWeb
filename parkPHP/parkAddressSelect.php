@@ -22,7 +22,7 @@ $result1 = mysqli_query($con,$sql);;
 $sql="set names 'UTF8'";
 $result1 = mysqli_query($con,$sql);
 
-$sql="SELECT * FROM park_info ";
+$sql="SELECT * FROM park ";
 $result1 = mysqli_query($con,$sql);
     
 $jarr = array();//说明$jarr是一个数组
