@@ -12,6 +12,7 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>   
     <script type="text/javascript" src="js/custom/echarts.js"></script>
     <script type="text/javascript" src="js/custom/user_regist_info.js"></script>
+    <script type="text/javascript" src="js/custom/userdata.js"></script>
 </head>
 <body class="withvernav">
 <div class="bodywrapper">
@@ -53,11 +54,11 @@ if(empty($_SESSION["name"]))
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
-                	<h4>管理员</h4>
-                    <span class="email">youremail@yourdomain.com</span>
+                	<h4><?php echo $_SESSION["name"];?></h4>
+                    <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
                         <li><a href="administrator/admin_check_info.php">账号</a></li> 
-                         <li><a href="administrator/help.php">帮助</a></li>  
+                         <li><a href="help.php">帮助</a></li>  
                         <li><a href="administrator/exit.php">退出</a></li>
                     </ul>
                 </div><!--userdata-->
@@ -79,14 +80,15 @@ if(empty($_SESSION["name"]))
     	<ul>
         	<li><a href="manageblog.php" >用户手机号查询</a></li>
             <li ><a href="userinfo.php">注册时间查询</a></li>
-            <li ><a href="car_location.php">用户停车信息</a></li>
+            <li ><a href="car_location.php">用户车辆归属</a></li>
             <li class="current"><a href="user_regist_info.php">新增用户</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
     
     <div class="centercontent">
-     <div id='registInfo' style="width: 900px; height: 500px; float:left"></div>
+     <div id='registInfo' style="width: 800px; height: 500px; float:left"></div>
+    
     </div><!--centercontent-->
 
 </div><!--bodywrapper-->

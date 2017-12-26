@@ -27,7 +27,6 @@ if(empty($_SESSION["name"]))
     	<script src="js/plugins/css3-mediaqueries.js"></script>
     <![endif]-->
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -40,10 +39,8 @@ if(empty($_SESSION["name"]))
                 	<input type="text" name="keyword" id="keyword" value="请输入" />
                     <button class="submitbutton"></button>
                 </form>
-            </div><!--search-->
-            
-            <br clear="all" />
-            
+            </div><!--search-->       
+            <br clear="all" />      
         </div><!--left-->  
         <div class="right">
             <!--div class="notification">
@@ -72,8 +69,7 @@ if(empty($_SESSION["name"]))
                     <ul>
                         <li><a href="admin_check_info.php">账号</a></li>   
                         <li><a href="../manageblog.php">返回主页</a></li>  
-                        <li><a href="exit.php">退出</a></li>
-                        
+                        <li><a href="exit.php">退出</a></li>           
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -84,8 +80,7 @@ if(empty($_SESSION["name"]))
     	<ul class="headermenu">
             <li class="current"><a href="accountsettings.php"><span class="icon icon-flatscreen"></span>管理员中心</a></li>  
         </ul>   
-    </div>
-    
+    </div>   
     <div class="vernav">
     	<ul>
         	<li><a href="admin_check_info.php" class="editor">个人信息</a></li>
@@ -96,8 +91,6 @@ if(empty($_SESSION["name"]))
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
-
-    
     <div class="centercontent">
     <div class="pageheader" >
         	<span class="profilepic"><img src="../images/thumbs/avatar2.png" alt="" /></span>
@@ -118,10 +111,12 @@ if(empty($_SESSION["name"]))
                             <div class="widgetcontent">
                                 <ul class="recent_list"></ul>                                   
                               
-                              <form action="" method="post">     
+                              <form action="" method="post">  
+                               <div class="form-group" style="margin-right: 600px">   
                                           新的邮箱地址：
                 <br><input type="text"  class="form-control"  name="newemail" />   
-                <p><button class="stdbtn">确认修改</button>
+                <p><button class="stdbtn">确认修改</button></p>
+                </div>
                 </form>  
                  <?php  
                  include_once '../user/link1.php';
@@ -143,23 +138,22 @@ if(empty($_SESSION["name"]))
                             </div><!--widgetcontent-->
                         </div><!--widgetbox-->    
         </div>
-     
-  
+
         <div id="revise_pwd" class="subcontent" style="display: none" >
          <div class="widgetbox"  id="#revise_pwd">
                             <div class="title"><font color="#f0801d" size="4">密码修改</font> </div>
                             <div class="widgetcontent">
                                 <ul class="recent_list">  </ul>  
                                 <form id="formid"  method="post" action="" >     
-                                         <div class="form-group">
+                                         <div class="form-group" style="margin-right: 600px">
                    <font size="2"> 当前密码：</font>
                     <br><input type="password" class="form-control" name="pwd1" id="pwd2">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-right: 600px">
                    <font size="2"> 新密码：</font>
                 <br><input type="password" class="form-control" name="pwd2" id="pwd2"/> 
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-right: 600px">
                     <font size="2"> 确认密码：</font>
                 <br><input type="password" class="form-control" name="pwd3" id="pwd3"/> 
                 </div>                                                                                                                                                                                         
@@ -186,17 +180,10 @@ if(empty($_SESSION["name"]))
                   ?>  
                      </div><!--widgetcontent-->
                         </div><!--widgetbox--> 
-
-        </div>
-        
-        
+        </div>    
     </div><!--contentwrapper-->
-    </div><!--centercontent-->
-    
-    
+    </div><!--centercontent-->   
 </div><!--bodywrapper-->
-
-
 </body>
 </html>
 

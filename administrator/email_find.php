@@ -57,13 +57,13 @@
 <?php
     //发送邮件
     function sendmail($time,$email,$url){
-        include_once("../adminPHP/smtp.class.php");
+        include_once("../adminPHP/smtp.php");
         $smtpserver = "smtp.163.com"; //SMTP服务器，如smtp.163.com
-        $smtpserverport = 25; //SMTP服务器端口
+        $smtpserverport = 465; //SMTP服务器端口
         $smtpusermail = "m18780073534@163.com"; //SMTP服务器的用户邮箱
         $smtpuser = "m18780073534"; //SMTP服务器的用户帐号
         $smtppass = "cvfgt666"; //SMTP服务器的用户密码
-        $smtp = new Smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass);
+       // $smtp = new Smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass);
         //这里面的一个true是表示使用身份验证,否则不使用身份验证.
         $emailtype = "HTML"; //信件类型，文本:text；网页：HTML
         $smtpemailto = $email;
@@ -71,7 +71,15 @@
         $emailsubject = "ParkingWeb - 找回密码";
         $emailbody = "亲爱的".$email."：<br/>您在".$time."提交了找回密码请求。请点击下面的链接重置密码
 （按钮24小时内有效）。<br/><a href='".$url."'target='_blank'>".$url."</a>";
-        $rs = $smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
+        //$rs = $smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
+       // return $rs;
+        $mail = new MySendMail();
+        //	$mail->setServer("smtp@126.com", "XXXXX@126.com", "XXXXX"); //设置smtp服务器，普通连接方式
+        $mail->setServer($smtpserver, $smtpuser, $smtppass, $smtpserverport, true); //设置smtp服务器，到服务器的SSL连接
+        $mail->setFrom($smtpemailfrom); //设置发件人
+        $mail->setReceiver($smtpemailto); //设置收件人，多个收件人，调用多次
+        $mail->setMail($emailsubject, $emailbody); //设置邮件主题、内容
+        $rs = $mail->sendMail();
         return $rs;
     }
     if(!empty($_POST['email'])){
@@ -90,13 +98,11 @@
                 //$getpasstime = time();
                 $uid = $row['id'];
                 $token = md5($uid.$row['admin_name'].$row['admin_pwd']);//组合验证码
-                $url = "http://localhost/ParkingWeb/administrator/reset.php?email=".$email."&token=".$token;//构造URL
+                $url = "http://120.78.173.73/ParkingWeb/administrator/reset.php?email=".$email."&token=".$token;//构造URL
                 $time = date('Y-m-d H:i');
                 $result = sendmail($time,$email,$url);
                 if($result==1){//邮件发送成功
-                    echo "<script> alert('系统已向您的邮箱发送了一封邮件，请登录到您的邮箱及时重置您的密码');</script>";
-                    //echo "系统已向您的邮箱发送了一封邮件<br/>请登录到您的邮箱及时重置您的密码！";
-                    //更新数据发送时间
+                    echo "<script> alert('系统已向您的邮箱发送了一封邮件，请登录到您的邮箱及时重置您的密码');</script>";         
                     //mysql_query("update administrator set `getpasstime`='$getpasstime' where id='$uid '");
                 }else{
                     echo "<script> alert('发送失败');</script>";

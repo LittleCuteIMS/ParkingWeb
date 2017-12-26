@@ -14,19 +14,10 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="js/custom/general.js"></script>
-    <script type="text/javascript" src="js/custom/blog.js"></script>
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
+    <script type="text/javascript" src="js/custom/userdata.js"></script>
+    <script type="text/javascript" src="js/custom/manageblog.js"></script>
+ 
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -71,7 +62,7 @@ if(empty($_SESSION["name"]))
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
                        <li><a href="administrator/admin_check_info.php">账号</a></li> 
-                         <li><a href="administrator/help.php">帮助</a></li>  
+                         <li><a href="help.php">帮助</a></li>  
                         <li><a href="administrator/exit.php">退出</a></li>
               
                     </ul>
@@ -85,37 +76,32 @@ if(empty($_SESSION["name"]))
             <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
-        </ul>
-         
+        </ul>    
     </div>
     <div class="vernav">
     	<ul>
         	<li class="current"><a href="manageblog.php" class="editor">用户注册信息查询</a></li>
             <li><a href="userinfo.php">注册时间查询</a></li>
-            <li><a href="car_location.php ">用户停车信息</a></li>
+            <li><a href="car_location.php ">用户车辆归属</a></li>
             <li><a href="user_regist_info.php">新增用户</a></li>
         </ul>
         <a class="togglemenu"></a>
-    </div><!--leftmenu-->
-    
+    </div><!--leftmenu-->   
     <div class="centercontent">
-    
         <div class="pageheader notab">           
             <h5 class="pagetitle">请输入查询号码</h5>
         </div><!--pageheader-->
-       <div id="contentwrapper" class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-            <div>
-                <form   method="get" action="user/userinfo.php"> 查询号码
-                <div class="form-group" style="margin-right: 100px">
-               <input type="text" name="userTelephone" value=""  id="userTelephone" />
-               </div> 
-               <div style="margin-top: 5px">
-               <input type="button" onclick="phoneGet()"  value="查询"  />
-                <input type="button" onclick="cancle()" value="取消"  />
-                </div>
-                </form>
-                <div style="margin-top: 5px">
+      <div id="contentwrapper" class="contentwrapper">
+             <form   method="post" > 查询号码 
+                <div class="form-group" style="margin-right: 100px"> 
+                <input type="text" class="form-control" name="userTelephone"  id="userTelephone" /> 
+                </div>  
+                <div style="margin-top: 5px"> 
+                <input type="button" id="sub"  value="查询"  /> 
+                <input type="button" onclick="cancle()" value="取消"  /> 
+                </div> 
+                 </form> 
+  <div style="margin-top: 5px">
                 <table class="stdtable mailinbox">
                     <colgroup>
                         <col class="con1" width="20%"/>
@@ -137,18 +123,10 @@ if(empty($_SESSION["name"]))
                     </tbody>
                 </table>   
                 <br />
-        </div>
-   
-            <div>   
-             
-            </div>
+                 </div>
+<div id="userInfo"></div>
 </div>
-        </div><!--contentwrapper-->
-    
-    </div><!--centercontent-->
-    
-    
+    </div><!--centercontent-->    
 </div><!--bodywrapper-->
-
 </body>
 </html>

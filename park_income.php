@@ -9,7 +9,7 @@ if(empty($_SESSION["name"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>停车场管理</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>   
+    <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script> 
     <script type="text/javascript" src="js/custom/echarts.js"></script>
     <script type="text/javascript" src="js/custom/park_income.js"></script>
 </head>
@@ -57,7 +57,7 @@ if(empty($_SESSION["name"]))
                     <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
                     <ul>
                        <li><a href="administrator/admin_check_info.php">账号</a></li> 
-                         <li><a href="administrator/help.php">帮助</a></li>  
+                         <li><a href="help.php">帮助</a></li>  
                         <li><a href="administrator/exit.php">退出</a></li>
               
                     </ul>
@@ -82,8 +82,8 @@ if(empty($_SESSION["name"]))
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
-    <div class="centercontent">
-<div id='main' style="width: 900px; height: 420px; float:left"></div>
+    <div class="centercontent">  
+<div id='main' style="width: 1000px; height: 500px; float:left" ></div>
 </div><!--centercontent-->
 </div><!--bodywrapper-->
 

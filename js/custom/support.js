@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
 		
 		//display message from a message box
 		if(msg != '') {
-			jQuery('#chatmessageinner').append('<p><img src="images/thumbs/avatar12.png" alt="" />'
+			jQuery('#chatmessageinner').append('<p><img src="/images/thumbs/avatar12.png" alt="" />'
 											   +'<span class="msgblock radius2"><strong>You</strong> <span class="time">- 10:14 am</span>'
 											   +'<span class="msg">'+msg+'</span></span></p>');
 			jQuery('.messagebox input').val('');
@@ -55,5 +55,6 @@ jQuery(document).ready(function(){
 				}, 1000);			
 		}	
 	}
+	
 	
 });

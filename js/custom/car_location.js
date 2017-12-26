@@ -1,4 +1,21 @@
 jQuery(document).ready(function(){
+///// SHOW/HIDE USERDATA WHEN USERINFO IS CLICKED ///// 
+	
+	jQuery('.userinfo').click(function(){
+		if(!jQuery(this).hasClass('active')) {
+			jQuery('.userinfodrop').show();
+			jQuery(this).addClass('active');
+		} else {
+			jQuery('.userinfodrop').hide();
+			jQuery(this).removeClass('active');
+		}
+		//remove notification box if visible
+		jQuery('.notification').removeClass('active');
+		jQuery('.noticontent').remove();
+		
+		return false;
+	});
+	
 	var myChart = echarts.init(document.getElementById('carLocation'));
 	//显示标题，图例和空的坐标轴
 	myChart.setOption({

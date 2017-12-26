@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+	
 	var myChart = echarts.init(document.getElementById('registInfo'));
 	//显示标题，图例和空的坐标轴
 	myChart.setOption({

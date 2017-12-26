@@ -1,31 +1,34 @@
-var pageSize = 5;//每页显示的条数
+var pageSize = 10;//每页显示的条数
 	var page = 1;//当前页
-$(document).ready(function(){
-	$("#time_sub").click(function(){
-		Load();
-		Loadlist();
-	})	
-});
+$(document).ready(function(){	
+$("#time_sub").click(function(){
+	
+	Load();
+	Loadlist();
+})
+})
+
 function Load(){
-	 date1=$("#datepickfrom").val();
-	 date2=$("#datepickto").val();
-   $.ajax({
-		type : "post",
-		async : false,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-		url : "../adminPHP/log_check.php",    
-		data : {page:page,pageSize:pageSize,date1:date1,date2:date2},
-		dataType : "json",        //返回数据形式为json
-		success : function(result,status) {
-			var dataTable="";
-			for(i=0;i<result.length;i++){
-				dataTable=dataTable
-				+"<tr><td>"+result[i].log_date
-				+"</td><td>"+result[i].recorder
-				+"</td><td>"+result[i].log+"</td></tr>";
+		 date1=$("#datepickfrom").val();
+		 date2=$("#datepickto").val();
+	    $.ajax({
+			type : "post",
+			async : false,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+			url : "user/dateinquiry.php",    
+			data : {page:page,pageSize:pageSize,date1:date1,date2:date2},
+			dataType : "json",        //返回数据形式为json
+			success : function(result,status) {
+				var dataTable="";
+				for(i=0;i<result.length;i++){
+					dataTable=dataTable
+					+"<tr><td>"+result[i].regis_date
+					+"</td><td>"+result[i].id
+					+"</td><td>"+result[i].nickname
+					+"</td><td>"+result[i].mobile+"</td></tr>";
+				}
+				$("#Datetable").html(dataTable);
 			}
-			$("#logtable").html(dataTable);
-		}
-	        })		       
+		        })		       
 }
 //加载分页列表
 function Loadlist(){
@@ -46,7 +49,7 @@ function Loadlist(){
 	//下一页
 	str+="<a id='next'><font color='#465875'size='3'>下一页</font></a>";
 	//alert(str);
-	$("#logPage").html(str);	
+	$("#txtHint").html(str);	
 	
 	//上一页的点击事件
 	$("#prev").click(function(){
@@ -79,18 +82,21 @@ function Loadlist(){
       })
 
 }
+
+
 //总页数
 function pagenum(){
     var totalPage=0;
     $.ajax({
     async:false,
-    url:"../adminPHP/log_check_totalpage.php",
+    url:"user/dateinquiry_totalpage.php",
     type:"POST",
     data:{date1:date1,date2:date2},
     dataType:"json",
     success:function(data){
 	var num=data.num;
     totalPage = parseInt(Math.ceil(num/pageSize));
+    
     }
 });
  return totalPage;
@@ -102,6 +108,6 @@ function withdraw(){
 	var items=new Array("datepickfrom","datepickto");
 	for(i=0;i<items.length;i++)
 	document.getElementById(items[i]).value=null;
-	document.getElementById("logtable").innerHTML="";
-	document.getElementById("logPage").innerHTML="";
+	document.getElementById("Datetable").innerHTML="";
+	document.getElementById("txtHint").innerHTML="";
 }

@@ -15,17 +15,7 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="../js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="../js/custom/general.js"></script>
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -70,8 +60,7 @@ if(empty($_SESSION["name"]))
                     <ul>
                         <li><a href="admin_check_info.php">账号</a></li>    
                         <li><a href="../manageblog.php">返回主页</a></li>  
-                        <li><a href="exit.php">退出</a></li>
-                        
+                        <li><a href="exit.php">退出</a></li>                   
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -81,8 +70,7 @@ if(empty($_SESSION["name"]))
     <div class="header">
     	<ul class="headermenu">
             <li class="current"><a href="admin_check_info.php"><span class="icon icon-flatscreen"></span>管理员中心</a></li>  
-        </ul>
-         
+        </ul>     
     </div>
     <div class="vernav">
     	<ul>
@@ -93,10 +81,8 @@ if(empty($_SESSION["name"]))
            <li><a href="log.php">管理日志</a></li>
         </ul>
         <a class="togglemenu"></a>
-    </div><!--leftmenu-->
-    
-    <div class="centercontent">
-    
+    </div><!--leftmenu--> 
+    <div class="centercontent">  
         <div class="pageheader">
         	<span class="profilepic"><img src="../images/thumbs/avatar4.png" alt="" /></span>
             <div class="profiletitle">
@@ -107,23 +93,19 @@ if(empty($_SESSION["name"]))
             </ul>
         </div><!--pageheader-->
        <div id="contentwrapper" class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-                                                     
+       <div class="form-group" style="margin-right: 200px;margin-left: 200px">                                       
                  <form action=""  method="post">     
                   <font size="2">您母亲的姓名是？</font>
-                <br><input type="text" name="mother_name" />             
+                <br><input type="text" class="form-control" name="mother_name" />             
                        <p><font size="2">您初中班主任的姓名是？</font>
-              <br><input type="text" name="teacher_name" /> 
+              <br><input type="text" class="form-control" name="teacher_name" /> 
                      <p><font size="2">您最喜爱的一句古诗是？</font>
-              <br><input type="text" name="poem" />          
-                <p><button class="stdbtn">确认提交</button>
-                </form>  
-
+              <br><input type="text" class="form-control" name="poem" />          
+                <p align="center"><button class="stdbtn">确认提交</button>
+                </form> 
+                </div>
         </div><!--contentwrapper-->
-    
     </div><!--centercontent-->
-    
-    
 </div><!--bodywrapper-->
 <?php 
 include_once '../user/link1.php';

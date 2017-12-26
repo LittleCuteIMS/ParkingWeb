@@ -1,5 +1,5 @@
 <?php
-include_once "../user/link1.php";
+/*include_once "../user/link1.php";
 $date1=$_GET['date1'];
 $date2=$_GET['date2'];
 //$date1="2017-12-03";
@@ -25,5 +25,17 @@ if ($datarow>0)
 }else{
     echo "请输入正确的查询时间！";
 }
-mysqli_close($link);
+mysqli_close($link);*/
+include_once '../mysql_db/mysqliBySql.php';
+$date1=$_POST['date1'];
+$date2=$_POST['date2'];
+$page=$_POST['page'];
+$pageSize=$_POST['pageSize'];
+$firstLine=($page-1)*$pageSize;
+$sql="select * from admin_log where log_date between '$date1' AND '$date2' limit $firstLine,$pageSize ";
+//$sql="select * from user where regis_date between '2017-10-10' AND '2017-11-10'";
+$result=selectBySql($sql);
+echo $result;
+
+
 ?>

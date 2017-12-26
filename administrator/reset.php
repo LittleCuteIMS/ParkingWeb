@@ -73,7 +73,7 @@ if($row){
                 $result = updateBySql($sql);
                 if($result){
                     echo "<script> alert('密码修改成功，请前往登录页面');</script>";
-                    echo "<script> window.location.href ='index.php';</script>";
+                    echo "<script> window.location.href ='../index.php';</script>";
                 }else{
                     echo "<script> alert('密码修改失败');</script>";      
                 }       

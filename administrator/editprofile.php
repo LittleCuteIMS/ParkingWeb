@@ -7,7 +7,7 @@ if(empty($_SESSION["name"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>资料编辑页面</title>
+    <title>管理员中心</title>
     <link rel="stylesheet" href="../css/style.default.css" type="text/css" />
     <script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
@@ -15,17 +15,7 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="../js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="../js/custom/general.js"></script>
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -70,19 +60,16 @@ if(empty($_SESSION["name"]))
                     <ul>
                         <li><a href="admin_check_info.php">账号</a></li>  
                         <li><a href="../manageblog.php">返回主页</a></li>  
-                        <li><a href="exit.php">退出</a></li>
-                        
+                        <li><a href="exit.php">退出</a></li>   
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
-    </div><!--topheader-->  
-    
+    </div><!--topheader-->    
     <div class="header">
     	<ul class="headermenu">
             <li class="current"><a href="admin_check_info.php"><span class="icon icon-flatscreen"></span>管理员中心</a></li>  
-        </ul>
-         
+        </ul>         
     </div>
     <div class="vernav">
     	<ul>
@@ -93,10 +80,8 @@ if(empty($_SESSION["name"]))
             <li><a href="log.php">管理日志</a></li>
        </ul>
         <a class="togglemenu"></a>
-    </div><!--leftmenu-->
-    
-    <div class="centercontent">
-    
+    </div><!--leftmenu-->   
+    <div class="centercontent">    
         <div class="pageheader">
         	<span class="profilepic"><img src="../images/thumbs/avatar1.png" alt="" /></span>
             <div class="profiletitle">
@@ -106,23 +91,20 @@ if(empty($_SESSION["name"]))
             </ul>
         </div><!--pageheader-->
        <div id="contentwrapper" class="contentwrapper">
-        <!--ajax实现局部页面刷新，将查询结果显示在"txtHint"div块中-->
-                                                     
+                  <div class="form-group" style="margin-right: 200px;margin-left: 200px">                                    
                  <form action=""  method="post">     
                                          真实姓名：
-                <br><input type="text" name="realname" />  
+                <br><input type="text" class="form-control" name="realname" />  
                    <p> 所在公司：
-              <br><input type="text" name="confirm" />  
+              <br><input type="text" class="form-control" name="confirm" />  
                        <p> qq号：
-              <br><input type="text" name="qq" />                 
-                <p><button class="stdbtn">确认提交</button>
+              <br><input type="text" class="form-control" name="qq" />                 
+                <p align="center"><button class="stdbtn">确认提交</button>
                 </form>  
-
-        </div><!--contentwrapper-->
-    
-    </div><!--centercontent-->
-    
-    
+             </div>
+ 
+        </div><!--contentwrapper-->  
+    </div><!--centercontent-->  
 </div><!--bodywrapper-->
 <?php
 include_once '../mysql_db/mysqliBySql.php';

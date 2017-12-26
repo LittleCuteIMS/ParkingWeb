@@ -14,19 +14,9 @@ if(empty($_SESSION["name"]))
     <script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery.alerts.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="../js/custom/general.js"></script>
+    <script type="text/javascript" src="../js/custom/userdata.js"></script>
     <script type="text/javascript" src="../js/custom/log.js"></script>
-    <!--[if IE 9]>
-        <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-    <![endif]-->
-    <!--[if IE 8]>
-        <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    	<script src="js/plugins/css3-mediaqueries.js"></script>
-    <![endif]-->
 </head>
-
 <body class="withvernav">
 <div class="bodywrapper">
     <div class="topheader">
@@ -39,10 +29,8 @@ if(empty($_SESSION["name"]))
                 	<input type="text" name="keyword" id="keyword" value="请输入" />
                     <button class="submitbutton"></button>
                 </form>
-            </div><!--search-->
-            
-            <br clear="all" />
-            
+            </div><!--search-->          
+            <br clear="all" />        
         </div><!--left-->  
         <div class="right">
             <!--div class="notification">
@@ -51,8 +39,7 @@ if(empty($_SESSION["name"]))
         	<div class="userinfo">
             	<img src="../images/thumbs/avatar.png" alt="" />
                 <span>管理员</span>
-            </div><!--userinfo-->
-            
+            </div><!--userinfo-->          
             <div class="userinfodrop">
             	<div class="avatar">
                 	<a href=""><img src="../images/thumbs/avatarbig.png" alt="" /></a>
@@ -71,20 +58,17 @@ if(empty($_SESSION["name"]))
                     <ul>
                         <li><a href="admin_check_info.php">账号</a></li>   
                         <li><a href="../manageblog.php">返回主页</a></li>  
-                        <li><a href="exit.php">退出</a></li>
-                        
+                        <li><a href="exit.php">退出</a></li>                     
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
         </div><!--right-->
     </div><!--topheader-->  
-    
     <div class="header">
     	<ul class="headermenu">
             <li class="current"><a href="accountsettings.php"><span class="icon icon-flatscreen"></span>管理员中心</a></li>  
         </ul>   
-    </div>
-    
+    </div> 
     <div class="vernav">
     	<ul>
         	<li><a href="admin_check_info.php" class="editor">个人信息</a></li>
@@ -95,8 +79,6 @@ if(empty($_SESSION["name"]))
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
-
-    
      <div class="centercontent">
     <div class="pageheader" >
         	<span class="profilepic"><img src="../images/thumbs/avatar3.png" alt="" /></span>
@@ -107,11 +89,9 @@ if(empty($_SESSION["name"]))
                 <li class="current"><a href="#log_write">日志记录</a></li>
                 <li><a href="#log_check">日志查询</a></li>
             </ul>
-        </div><!--pageheader-->
-        
+        </div><!--pageheader--> 
        <div  id="contentwrapper" class="contentwrapper">
-        
-            <div id="log_write" class="subcontent" >
+            <div id="log_write" class="subcontent" style="margin-right: 200px" >
             <form  method="post" >
                                记录时间：<input type="text" id="datepick" name="log_date"/>   
                 <p>记录人：<input type="text" name="recorder"/>          
@@ -135,16 +115,14 @@ if($_POST){
 }
 ?>		 
        </div>
-
         <div id="log_check" class="subcontent" style="display: none" >
-        
-                        	<form id="check"  method="get"> 
-                        	从: &nbsp;<input type="text" id="datepickfrom" /> &nbsp; &nbsp; 到: &nbsp;<input type="text" id="datepickto" />
-                        	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" onclick="timeGet()" value="查询"  /> &nbsp; &nbsp; 
-                        	<input type="button" onclick="withdraw()" value="清除"  />
-                       </form>
-                        
-                        <div id="logMessage" class="chatmessage radius2" style="margin-top: 20px">
+        <form id="check"  method="get"> 
+                   从: &nbsp;<input type="text" id="datepickfrom" /> &nbsp; &nbsp; 到: &nbsp;<input type="text" id="datepickto" />
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+         <input type="button" id="time_sub" value="查询"  /> &nbsp; &nbsp; 
+         <input type="button" onclick="withdraw()" value="清除"  />
+        </form>
+             <div  style="margin-top: 20px;margin-bottom: 10px">
                    		 <table cellpadding="0" cellspacing="0" border="0" align="center" class="stdtable mailinbox">
                     <colgroup>
                         <col class="con1" width="15%"/>
@@ -160,16 +138,13 @@ if($_POST){
                     </thead>
                     <tbody id="logtable">
                     </tbody>
-                </table>   
-                   </div><!--chatmessage-->
-         </div>
-              
+                </table>      
+            </div>
+            <div id="logPage" ></div>
+         </div>          
     </div><!--contentwrapper-->
     </div><!--centercontent-->
-
-</div><!--bodywrapper-->
-   
-   
+</div><!--bodywrapper-->  
 </body>
 </html>
 

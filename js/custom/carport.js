@@ -18,7 +18,7 @@ jQuery(document).ready(function(){
 	});
 
 	
-	var myChart = echarts.init(document.getElementById('main'));
+	var myChart = echarts.init(document.getElementById('carport'));
 	//显示标题，图例和空的坐标轴
 	myChart.setOption({
 		
@@ -29,8 +29,8 @@ jQuery(document).ready(function(){
 		        containLabel: true
 		    },
 	title: {
-	   text: '停车场收入柱状图',
-	   subtext:'收入/元'
+	   text: '停车场车位情况',
+	   subtext:'车位/个'
 	},
 	 tooltip : {
 		   show:true,
@@ -40,20 +40,16 @@ jQuery(document).ready(function(){
 	        }
 	    },//加载数据图表
 	legend: { 
-	   data:['收入']
+	   data:['总车位','空闲车位','利用率']
 	},
-	toolbox: {
-        show: true,
-        feature: {
-            dataZoom: {
-                yAxisIndex: 'none'
-            },
-            dataView: {readOnly: false},
-            magicType: {type: ['line', 'bar']},
-            restore: {},
-            saveAsImage: {}
-        }
-    },
+	 toolbox: {
+	        feature: {
+	            dataView: {show: true, readOnly: false},
+	            magicType: {show: true, type: ['line', 'bar']},
+	            restore: {show: true},
+	            saveAsImage: {show: true}
+	        }
+	    },
 	xAxis: {
 	   data: [],
 	   show: true,
@@ -66,7 +62,17 @@ jQuery(document).ready(function(){
         margin:8,  
     }    
 	},
-	yAxis: {},
+	yAxis:[
+		{
+			
+        },
+        {
+        	type: 'value',
+            name: '空闲率',
+            min: 0,
+            max: 1,      
+        }
+		] ,
 	dataZoom: [
         {
        	 type: 'slider',
@@ -79,18 +85,29 @@ jQuery(document).ready(function(){
         } 
     ],
 	series: [
-		{
-	   name: '收入',
-	   color: ['#c23531'],
-	   type: 'bar',
-	   barWidth: '40%',
-	   data: []
-	}]
+		 {
+	            name:'总车位',
+	            type:'bar',
+	            data:[]
+	        },
+	        {
+	            name:'空闲车位',
+	            type:'bar',
+	            data:[]
+	        },
+	        {
+	            name:'空闲率',
+	            type:'line',
+	            yAxisIndex: 1,
+	            data:[]
+	        }]
 	});
 	
 	myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-	var names=[];    //类别数组（实际用来盛放X轴坐标值）
-	var incomes=[];    //销量数组（实际用来盛放Y坐标值）
+	var names=[];    
+	var carportSum=[];    
+	var freeCarport=[];
+	var use=[];
 	$.ajax({
 	type : "post",
 	async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
@@ -102,9 +119,11 @@ jQuery(document).ready(function(){
 	    if (result) {
 	           for(var i=0;i<result.length;i++){       
 	              names.push(result[i].name);    //挨个取出类别并填入类别数组
-	              incomes.push(result[i].income); 
-	            }   
-
+	              carportSum.push(result[i].carport_sum);
+	              freeCarport.push(result[i].carport_free_num);
+	              var point=Number(result[i].carport_free_num/result[i].carport_sum).toFixed(2);
+	              use.push(point);
+	            }    
 	           myChart.hideLoading();    //隐藏加载动画
 	           myChart.setOption({    
 	               xAxis: {
@@ -113,9 +132,18 @@ jQuery(document).ready(function(){
 	               series: [
 	            	   {
 	                   // 根据名字对应到相应的系列
-	                   name: '收入',
-	                   data: incomes
-	               }]
+	                   name: '总车位',
+	                   data: carportSum
+	               },
+	               {
+	            	   name: '空闲车位',
+	                   data: freeCarport
+	               },
+	               {
+	            	   name:'空闲率',
+	            	   data:use,	            	   
+	               }
+	            	   ]
 	           });
 	           
 	    }

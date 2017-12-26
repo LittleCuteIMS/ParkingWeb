@@ -12,18 +12,7 @@
 	<script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
 	<script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="../js/custom/general.js"></script>	
-		
-	<!--[if IE 9]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-	<![endif]-->
-	<!--[if IE 8]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="js/plugins/css3-mediaqueries.js"></script>
-	<![endif]-->
 </head>
-
 <body class="loginpage">
 <div class="topheader orangeborderbottom5">
         <div class="left">
@@ -58,7 +47,7 @@
                 </div>
                 </form>
                 
-                <p align="center"><a href="index.php">返回登录</a></p>
+                <p align="center"><a href="../index.php">返回登录</a></p>
                 <p align="center"><a href="pwd_find.php">选择其他方法找回密码</a></p>
                              
         </div>
@@ -78,7 +67,7 @@ if(!empty($_POST['pwd1']) && !empty($_POST['pwd2']) && !empty($_POST['mobile']))
         $result = updateBySql($sql);
         if($result){
             echo "<script> alert('密码修改成功，请前往登录页面！');</script>";
-            echo "<script> window.location.href = 'index.php';</script>";
+            echo "<script> window.location.href = '../index.php';</script>";
         }else{
             echo "<script> alert('密码修改失败！');</script>";
         }
