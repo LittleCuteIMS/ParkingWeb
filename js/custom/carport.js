@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 	        }
 	    },//加载数据图表
 	legend: { 
-	   data:['总车位','空闲车位','利用率']
+	   data:['总车位','空闲车位','空闲率']
 	},
 	 toolbox: {
 	        feature: {

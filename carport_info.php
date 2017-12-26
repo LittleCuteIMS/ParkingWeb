@@ -8,7 +8,7 @@ if(empty($_SESSION["name"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>用户信息管理页面</title>
+    <title>停车场管理页面</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />  
     <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="js/custom/echarts.js"></script>
@@ -80,18 +80,17 @@ if(empty($_SESSION["name"]))
     
     <div class="vernav">
     	<ul>
-        	<li><a href="manageblog.php">用户手机号查询</a></li>
-            <li ><a href="userinfo.php">注册时间查询</a></li>
-            <li class="current"><a href="car_location.php">用户车辆归属</a></li>
-            <li><a href="user_regist_info.php">新增用户</a></li>
+        	<li><a href="messages.php" class="inbox">停车场信息查询</a></li>
+            <li><a href="parkRegister.php" class="drafts">停车场信息注册</a></li>
+            <li><a href="park_income.php" class="drafts">停车场收入分析</a></li>
+            <li class="current"><a href="carport_info.php" class="drafts">停车场车位情况</a></li>
         </ul>
         <a class="togglemenu"></a>
     </div><!--leftmenu-->
   
         <div class="centercontent">
-        <div id='carport' style="width: 900px; height: 550px; float:left"></div>
+        <div id='carport' style="width: 1000px; height: 550px; float:left"></div>
         </div><!--centercontent-->  
 </div><!--bodywrapper-->
-
 </body>
 </html>

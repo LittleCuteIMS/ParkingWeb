@@ -345,7 +345,7 @@ class MySendMail {
     * @return boolean
     */
     protected function sendCommand($command, $code) {
-        echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
+        //echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
         //发送命令给服务器
         try{
             if(socket_write($this->_socket, $command, strlen($command))){
@@ -355,7 +355,7 @@ class MySendMail {
                 }
                 //读取服务器返回
                 $data = trim(socket_read($this->_socket, 1024));
-                echo 'response:' . $data . '<br /><br />';
+               // echo 'response:' . $data . '<br /><br />';
                 if($data) {
                     $pattern = "/^".$code."+?/";
                     if(preg_match($pattern, $data)) {
@@ -387,7 +387,7 @@ class MySendMail {
     * @return boolean
     */
     protected function sendCommandSecurity($command, $code) {
-       echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
+      // echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
         try {
             if(fwrite($this->_socket, $command)){
                 //当邮件内容分多次发送时，没有$code，服务器没有返回
@@ -396,7 +396,7 @@ class MySendMail {
                 }
                 //读取服务器返回
                 $data = trim(fread($this->_socket, 1024));
-               echo 'response:' . $data . '<br /><br />';
+             //  echo 'response:' . $data . '<br /><br />';
                 if($data) {
                     $pattern = "/^".$code."+?/";
                     if(preg_match($pattern, $data)) {
