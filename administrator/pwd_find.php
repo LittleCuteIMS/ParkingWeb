@@ -14,15 +14,6 @@
 	<script type="text/javascript" src="../js/custom/general.js"></script>
 	<script type="text/javascript" src="../js/custom/mail_find.js"></script>
 	
-	<!--[if IE 9]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-	<![endif]-->
-	<!--[if IE 8]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="js/plugins/css3-mediaqueries.js"></script>
-	<![endif]-->
 </head>
 
 <body class="loginpage">

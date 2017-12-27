@@ -1,4 +1,8 @@
 <?php
+/*
+ * 根据系统时间提取年份，取出数据库中每月的注册用户数量
+ * written by 荣誉婷
+ */
 include_once '../user/link1.php';
 include_once '../mysql_db/mysqliBySql.php';
 $year= date('Y');

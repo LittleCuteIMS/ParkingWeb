@@ -1,6 +1,6 @@
 <?php session_start();
 if(empty($_SESSION["name"]))
-{ echo "<script> window.location.href = 'index.php';</script>";
+{ echo "<script> window.location.href = '../index.php';</script>";
 }?>
 <!DOCTYPE>
 <html>
@@ -60,7 +60,7 @@ if(empty($_SESSION["name"]))
                     <ul>
                         <li><a href="admin_check_info.php">账号</a></li>     
                         <li><a href="../manageblog.php">返回主页</a></li>  
-                        <li><a href="exit.php">退出</a></li>
+                        <li><a href="../adminPHP/exit.php">退出</a></li>
                         
                     </ul>
                 </div><!--userdata-->

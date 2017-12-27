@@ -1,4 +1,7 @@
 <?php
+/*车辆归属查询
+ * written by 荣誉婷
+ */
 include_once 'link1.php';
 $result1=mysqli_num_rows(mysqli_query($link, "select * from car where plate_number like '京%'"));
 $result2=mysqli_num_rows(mysqli_query($link, "select * from car where plate_number like '沪%'"));

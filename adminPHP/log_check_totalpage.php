@@ -1,4 +1,8 @@
 <?php
+/*
+ * 获取日志查询的总条数
+ * written by 荣誉婷
+ */
 include_once '../user/link1.php';
 $date1=$_POST['date1'];
 $date2=$_POST['date2'];
@@ -10,3 +14,5 @@ $num=mysqli_num_rows($result);
 $data=array("num"=>$num);
 $json=json_encode($data);
 echo $json;
+mysqli_close($link);
+?>

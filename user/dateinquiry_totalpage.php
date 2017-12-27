@@ -1,7 +1,7 @@
 <?php
 /*
  * 根据时间查询用户信息，返回给定时间范围内的记录总条数
- * 
+ * written by 荣誉婷
  */
 include_once 'link1.php';
 $date1=$_POST['date1'];

@@ -66,7 +66,7 @@ if(empty($_SESSION["name"]))
                     <ul>
                         	<li><a href="administrator/admin_check_info.php">账号</a></li> 
                          <li><a href="help.php">帮助</a></li>    
-                        <li><a href="administrator/exit.php">退出</a></li>
+                        <li><a href="adminPHP/exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->

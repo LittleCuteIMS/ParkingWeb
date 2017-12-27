@@ -1,7 +1,7 @@
 <?php
 /*
  * 接收客户端传来的数据，在user表中查找信息，将用户的个人基本信息反馈给客户端
- * 
+ * written by 荣誉婷
  */
 include_once 'link1.php';
 $json = file_get_contents('php://input');  //接收json数据

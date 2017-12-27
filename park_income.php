@@ -58,7 +58,7 @@ if(empty($_SESSION["name"]))
                     <ul>
                        <li><a href="administrator/admin_check_info.php">账号</a></li> 
                          <li><a href="help.php">帮助</a></li>  
-                        <li><a href="administrator/exit.php">退出</a></li>
+                        <li><a href="adminPHP/exit.php">退出</a></li>
               
                     </ul>
                 </div><!--userdata-->
@@ -71,8 +71,7 @@ if(empty($_SESSION["name"]))
             <li class="current"><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
             <li><a href="messages.php"><span class="icon icon-message"></span>停车场管理</a></li>
             <li><a href="financial.php"><span class="icon icon-chart"></span>财务管理</a></li>
-        </ul>
-         
+        </ul> 
     </div>
     <div class="vernav">
     	<ul>

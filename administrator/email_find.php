@@ -12,15 +12,7 @@
 	<script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
 	<script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="../js/custom/general.js"></script>
-	<!--[if IE 9]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-	<![endif]-->
-	<!--[if IE 8]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="js/plugins/css3-mediaqueries.js"></script>
-	<![endif]-->
+	
 </head>
 
 <body class="loginpage">
@@ -58,7 +50,7 @@
     //发送邮件
     function sendmail($time,$email,$url){
         include_once("../adminPHP/smtp.php");
-        $smtpserver = "smtp.163.com"; //SMTP服务器，如smtp.163.com
+        $smtpserver = "SMTP.163.com"; //SMTP服务器，如smtp.163.com
         $smtpserverport = 465; //SMTP服务器端口
         $smtpusermail = "m18780073534@163.com"; //SMTP服务器的用户邮箱
         $smtpuser = "m18780073534"; //SMTP服务器的用户帐号
@@ -69,8 +61,7 @@
         $smtpemailto = $email;
         $smtpemailfrom = $smtpusermail;
         $emailsubject = "ParkingWeb - 找回密码";
-        $emailbody = "亲爱的".$email."：<br/>您在".$time."提交了找回密码请求。请点击下面的链接重置密码
-（按钮24小时内有效）。<br/><a href='".$url."'target='_blank'>".$url."</a>";
+        $emailbody = "亲爱的".$email."：<br/>您在".$time."提交了找回密码请求。请点击下面的链接重置密码。<br/><a href='".$url."'target='_blank'>".$url."</a>";
         //$rs = $smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
        // return $rs;
         $mail = new MySendMail();
@@ -98,7 +89,7 @@
                 //$getpasstime = time();
                 $uid = $row['id'];
                 $token = md5($uid.$row['admin_name'].$row['admin_pwd']);//组合验证码
-                $url = "http://120.78.173.73/ParkingWeb/administrator/reset.php?email=".$email."&token=".$token;//构造URL
+                $url = "http://localhost/ParkingWeb/administrator/reset.php?email=".$email."&token=".$token;//构造URL
                 $time = date('Y-m-d H:i');
                 $result = sendmail($time,$email,$url);
                 if($result==1){//邮件发送成功

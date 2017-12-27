@@ -2,6 +2,7 @@
 /*
  * 数据库连接（需要用到的地方很多），写成一个php便于其他地方用require_once进行调用
  * 下面的class类是定义了转化为json输出，方便使用对象调用函数
+ * written by 荣誉婷
  */
 $db='intelligentparking';
 $servername='localhost';

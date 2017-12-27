@@ -12,21 +12,10 @@
 	<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/custom/general.js"></script>
 	<script type="text/javascript" src="js/custom/index.js"></script>
-	<!--[if IE 9]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
-	<![endif]-->
-	<!--[if IE 8]>
-	    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="js/plugins/css3-mediaqueries.js"></script>
-	<![endif]-->
 </head>
-
 <body class="loginpage">
 	<div class="loginbox">
     	<div class="loginboxinner">
-        	
             <div class="logo">
             	<h1 class="logo"><span>停了吗</span></h1>
 				<span class="slogan">后台管理系统</span>
@@ -47,16 +36,14 @@
                         <a href="index.php">账户不是 <span></span> 吗?</a> 
                     </div>
                 </div><!--loginf-->
-            </div><!--nopassword-->
-            
+            </div><!--nopassword-->        
             <form id="login" action=" " method="post">
             	
                 <div class="username">
                 	<div class="usernameinner">
                     	<input type="text" name="username" id="username" />
                     </div>
-                </div>
-                
+                </div>    
                 <div class="password">
                 	<div class="passwordinner">
                     	<input type="password" name="password" id="password" />

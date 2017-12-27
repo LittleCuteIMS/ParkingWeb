@@ -1,7 +1,7 @@
  <?php
     /*
      * 根据给出的时间范围查询用户信息
-     * 
+     * written by 荣誉婷
      */
  include_once '../mysql_db/mysqliBySql.php';
  $date1=$_POST['date1'];
