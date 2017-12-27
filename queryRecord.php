@@ -18,14 +18,11 @@ if(empty($_SESSION["name"])){
 </head>
 
 <body>
-
     <div class="bodywrapper">
-
         <div class="topheader">
             <div class="left">
                 <h1 class="logo">停了吗</h1>
-                <span class="slogan">后台管理系统</span>
-                
+                <span class="slogan">后台管理系统</span>                
                 <div class="search">
                 	<form action="" method="post">
                     	<input type="text" name="keyword" id="keyword" value="请输入" />
@@ -60,20 +57,18 @@ if(empty($_SESSION["name"])){
                         </div>
                     </div><!--avatar-->
                     <div class="userdata">
-                    	<h4>管理员</h4>
-                        <span class="email">youremail@yourdomain.com</span>
-                        <ul>
-                        	<li><a href="editprofile.html">编辑资料</a></li>
-                            <li><a href="accountsettings.html">账号设置</a></li>
-                            <li><a href="help.html">帮助</a></li>
-                            <li><a href="exit.php">退出</a></li>
+                    	<h4><?php echo $_SESSION["name"];?></h4>
+                    <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
+                    <ul>
+                        	<li><a href="administrator/admin_check_info.php">账号</a></li> 
+                         <li><a href="help.php">帮助</a></li>   
+                        <li><a href="administrator/exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->
             </div><!--right-->
         </div><!--topheader-->
-        
-        
+               
         <div class="header">
         	<ul class="headermenu">
                 <li><a href="manageblog.php"><span class="icon icon-pencil"></span>用户管理</a></li>
@@ -198,11 +193,8 @@ if(empty($_SESSION["name"])){
                         </thead>
                     </table>             
                 </div>                       
-            </div><!--contentwrapper-->       
-                      
+            </div><!--contentwrapper-->                           
         </div><!-- centercontent -->     
-
     </div><!--bodywrapper-->
-
 </body>
 </html>

@@ -165,7 +165,7 @@ jQuery(document).ready(function(){
 				var dataTable="";								//存放表格化处理的数据
 				for(var i in jsonObj){							//利用for in 循环，获取json对象中的值
 					dataTable=dataTable
-						+"<tr><td>"+jsonObj[i].id
+						+"<tr><td id=QRcode>"+jsonObj[i].id
 						+"</td><td>"+jsonObj[i].name
 						+"</td><td>"+jsonObj[i].carport_sum
 						+"</td><td>"+jsonObj[i].carport_free_num
@@ -185,8 +185,4 @@ jQuery(document).ready(function(){
 		xmlhttp.open("GET","parkPHP/parkSelect.php?mode=part"+"&parkName="+name,true);//规定请求的类型、URL 以及是否异步处理请求。
 		xmlhttp.send();//将请求发送到服务器
 	});
-	
-	
-	
-
 });

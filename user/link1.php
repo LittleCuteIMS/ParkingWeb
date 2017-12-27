@@ -9,7 +9,7 @@ $username='root';
 $mima='';                                           //这里的mima是数据库的登录密码，区别于用户注册的password
 $link=mysqli_connect($servername,$username,$mima,$db);
 if(!$link){
-    die("Can't connect $db:".mysqli_errno());
+    die("Can't connect $db:".mysqli_errno($link));
 }
 mysqli_query($link,'SET NAMES UTF8');
 $db_select=mysqli_select_db($link,$db);   //连接数据库

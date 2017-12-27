@@ -60,13 +60,12 @@ if(empty($_SESSION["name"]))
                         </div>
                     </div><!--avatar-->
                     <div class="userdata">
-                    	<h4>管理员</h4>
-                        <span class="email">youremail@yourdomain.com</span>
-                        <ul>
-                        	<li><a href="editprofile.html">编辑资料</a></li>
-                            <li><a href="accountsettings.html">账号设置</a></li>
-                            <li><a href="help.html">帮助</a></li>
-                            <li><a href="exit.php">退出</a></li>
+                    	<h4><?php echo $_SESSION["name"];?></h4>
+                    <br><span class="email"><?php echo $_SESSION["email"]; ?></span>
+                    <ul>
+                        	<li><a href="administrator/admin_check_info.php">账号</a></li> 
+                         <li><a href="help.php">帮助</a></li>     
+                        <li><a href="administrator/exit.php">退出</a></li>
                         </ul>
                     </div><!--userdata-->
                 </div><!--userinfodrop-->

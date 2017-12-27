@@ -10,30 +10,29 @@ include_once '../user/link1.php';
 include_once '../mysql_db/mysqliBySql.php';
 $json = file_get_contents('php://input');  //接收json数据
 $arr = json_decode($json,true);
-//$json ='{"mobile":"18281623534"}';
-//$arr=(array)json_decode($json);
+// $json ='{"mobile":"13551374417"}';
+// $arr=(array)json_decode($json);
 $userTelephone=$arr['mobile'];
-//echo $userTelephone;
-$sql1="select user.id from user where mobile='$userTelephone'";
-$result1=mysqli_query($link, $sql1);
-$row1=mysqli_fetch_assoc($result1);
-$userId=$row1['id'];
-$sql2="select car.plate_number from car where user_id='$userId'";
-$result2=mysqli_query($link, $sql2);
-$row2=mysqli_fetch_assoc($result2);
-$plateNumber=$row2['plate_number'];
-$sql3="select * from parking_record where plate_number='".$plateNumber."'";
-$result3=mysqli_query($link, $sql3);
+$sql4= "SELECT plate_number,park_id,in_datetime,out_datetime 
+        FROM parking_record 
+        WHERE plate_number 
+            IN (SELECT plate_number 
+                FROM car 
+                WHERE user_id=(
+                    SELECT id 
+                    FROM user 
+                    WHERE mobile='$userTelephone'))
+        ORDER BY in_datetime ASC";
+$result=mysqli_query($link, $sql4);
 $jarr = array();
-while ($row = mysqli_fetch_array($result3)){
+while($row=mysqli_fetch_array($result)){
     $count=count($row);//不能在循环语句中，由于每次删除 row数组长度都减小
     for($i=0;$i<$count;$i++){
-       unset($row[$i]);//删除冗余数据
+        unset($row[$i]);//删除冗余数据
     }
     array_push($jarr,$row);
 }
-$json=json_encode($jarr, JSON_UNESCAPED_UNICODE);//将数组进行json编码,防止中文乱码
-
+$json=json_encode($jarr, JSON_UNESCAPED_UNICODE);
 echo $json;
 
 ?>

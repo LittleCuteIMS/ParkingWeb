@@ -133,66 +133,21 @@ jQuery(document).ready(function(){
 		shortenedTab();
 	});
 
-	
+///// DATE PICKER /////
+	jQuery( "#datepickfrom, #datepickto" ).datepicker({ dateFormat: 'yy-mm-dd'});	
 	
 });
 
 
-function phoneGet()
-{
+//注册时间查询
+function timeGet(){   
 	var xmlHttp;
-	GetXmlHttpObject();
-	var url="user/userinfo.php?timestamp="+new Date().getTime();
-	xmlHttp.open("GET",url+"&"+phoneCheck());
-	xmlHttp.send(null);
-	xmlHttp.onreadystatechange=stateChanged;	
-	
-     function GetXmlHttpObject()
-     {
-	      if(window.ActiveXObject){
-		   xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-	       }else{
-
-	                xmlHttp=new XMLHttpRequest();
-	             }
-      }
-/*
-
- * 当readyState属性值发生改变时就会激活此函数来执行
-
- */
-     function stateChanged()
-     {
-	     if(xmlHttp.readyState==4 && xmlHttp.status==200)
-		 {
-			var content=xmlHttp.responseText;
-			document.getElementById("Infotable").innerHTML=content;						
-		 }
-	
-     }
-
-     function phoneCheck()
-     {
-	    var userTelephone=document.getElementById("userTelephone").value;
-	    var dateString="userTelephone="+userTelephone;
-		return dateString;		
-     }
-}
-function cancle(){
-	var items=new Array("userTelephone"); 
-	document.getElementById(items).value=null; 
- 	document.getElementById("Infotable").innerHTML=""; 
-
-}
-
-
-function timeGet()
-{   var xmlHttp;
 	GetXmlHttpObject();
 	var url="user/dateinquiry.php?timestamp="+new Date().getTime();
 	xmlHttp.open("GET",url+"&"+dateCheck());
 	xmlHttp.send(null);
 	xmlHttp.onreadystatechange=stateChanged;
+	
     function GetXmlHttpObject()
     {
 	if(window.ActiveXObject){
@@ -214,17 +169,21 @@ function timeGet()
 		
 	   }
     }
+    
+    //时间查询
    function dateCheck()
     {
-	var date1=document.getElementById("date1").value;
-	var date2=document.getElementById("date2").value;
+	var date1=document.getElementById("datepickfrom").value;
+	var date2=document.getElementById("datepickto").value;
 	var dateString="date1="+date1+"&date2="+date2;
 	return dateString;
     }
 }
+
+//取消事件
 function withdraw(){
 	var i;
-	var items=new Array("date1","date2");
+	var items=new Array("datepickfrom","datepickto");
 	for(i=0;i<items.length;i++)
 	document.getElementById(items[i]).value=null;
 	document.getElementById("Datetable").innerHTML="";

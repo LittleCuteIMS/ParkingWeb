@@ -7,7 +7,7 @@ if($mode=='all'){
     $sql="select * from park";
 }elseif($mode=='part'){
     $parkName=$_GET['parkName'];
-    $sql="select * from park where name='".$parkName."'";
+    $sql="select * from park where name LIKE '%".$parkName."%'";
 }else{
 	die('请确定查询模式');
 }
