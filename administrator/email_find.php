@@ -61,7 +61,8 @@
         $smtpemailto = $email;
         $smtpemailfrom = $smtpusermail;
         $emailsubject = "ParkingWeb - 找回密码";
-        $emailbody = "亲爱的".$email."：<br/>您在".$time."提交了找回密码请求。请点击下面的链接重置密码。<br/><a href='".$url."'target='_blank'>".$url."</a>";
+        $emailbody = "亲爱的".$email."：<br/>您在".$time."提交了找回密码请求。请点击下面的链接重置密码。
+        <br/><a href='".$url."'target='_blank'>".$url."</a>";
         //$rs = $smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
        // return $rs;
         $mail = new MySendMail();

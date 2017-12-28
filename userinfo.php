@@ -91,7 +91,7 @@ if(empty($_SESSION["name"]))
     <div class="centercontent">
 
         <div class="pageheader notab">           
-            <h1 class="pagetitle">用户变动信息查询</h1>
+            <h1 class="pagetitle">查询一定时间范围内的注册用户</h1>
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">  
